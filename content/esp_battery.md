@@ -1,5 +1,5 @@
 Title: ESP-WROOM-02をバッテリーで動かす
-Date: 2017-08-21
+Date: 2017-08-20
 Slug: esp_battery
 Category: 電子工作
 Tags: ESP-WROOM-02
@@ -201,8 +201,13 @@ void loop() {
 
 ### 参考記事
 * [Arduinoをリチウムイオン電池で動かすには | スイッチサイエンス マガジン](http://mag.switch-science.com/2016/02/12/arduino-lithium/)
+* [ESP-WROOM-02 で、モバイル物理スイッチを作る - Qiita](http://qiita.com/ie4/items/ae850cdb2c617f3fd6af)
+    - 設計が参考になる
 * [esp8266(esp-wroom-02)　電池ボックスから電源供給](http://knaka0209.blogspot.jp/2015/08/esp-wroom-02-05.html)
+    - レギュレーターやコンデンサーの説明が載っている
 * [ESP-WROOM-02とBME280 電池駆動で温度／湿度／気圧測定 (その1) | 東京お気楽カメラ](http://okiraku-camera.tokyo/blog/?p=5032)
+    - コンデンサの製品の特性を比べたり、電池の特性を比べている
+    - 回路設計も参考になる
 * [ESP8266の消費電流の徹底調査 – Ambient](https://ambidata.io/examples/esp8266-current/)
 * [ESP8266+ESP32 - 詳細表示 - ボクにもわかる電子工作 - Yahoo!ブログ](https://blogs.yahoo.co.jp/bokunimowakaru/folder/1681421.html)
     - 空気亜鉛電池の説明
