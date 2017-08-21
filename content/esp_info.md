@@ -4,12 +4,44 @@ Slug: esp_info
 Category: 電子工作
 Tags: ESP-WROOM-02
 
+
+### 通信について
+
+**通信には3種類ある。**
+
+- Wi-Fi
+- Bluetooth
+- LTE通信
+
+それぞれの強みがある。
+
+* Wi-Fi : 家の中
+* Bluetooth : 遅延が少ない状況での通信
+* LTE : 外の環境
+
+Arduinoで無線LANを利用する方法は3種類ある。
+
+* ArduinoとWi−Fiモジュールが一体となっているArduino YÚN。9990円
+* ArduinoとWi-Fiシールド。8432円
+* ArduinoとWi-Fiモジュール。4104円。最も安価に無線LANを利用できる。
+
+モジュールは、ESP8266という名前で、以前は、技適（電波を使うための総務省からの許可のようなもの）が未取得だったが、取得したことによって、名前を変えて新しく売られることになった。
+それが、ESP-WROOM-02 Wi-Fiモジュール。
+
+#### ESP-WROOM-02 ブレークアウトボード
+もとのWi-Fiモジュール単体では、ピンの間隔が1.5mmとなっているため、ブレッドボードの間隔と異なる.
+
+そのためブレッドボードに載せるようなブレークアウトボードが発売されている.
+
+* [Ｗｉ－Ｆｉモジュール　ＥＳＰ－ＷＲＯＯＭ－０２　ＤＩＰ化キット: 無線、高周波関連商品 秋月電子通商 電子部品 ネット通販](http://akizukidenshi.com/catalog/g/gK-09758/)
+* [Amazon.co.jp： ESP-WROOM-02 搭載mikroBUS(R)対応ブレークアウトボード Ver.2: おもちゃ](https://www.amazon.co.jp/gp/product/B015X3P2H4/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B015X3P2H4&linkCode=as2&tag=deko0f-22)
+
 #### ESPr Developer
+* ESP-WROOM-02の開発ボードで、ESP-WROOM-02に加えて、シリアル変換やレギュレータがセットになっている
 * ESP8266は、上海のファブレス半導体メーカー Espressif Systemsが製造している
 * ピンヘッダをはんだ付けして、ブレッドボードに接続する
 * ESP-WROOM-02とUSBシリアル変換やレギュレータ等を使うより、ESPr Developerを使ったほうが、若干安い
 
-##### 基盤
 この基盤には、
 
 * ESP8266本体
@@ -55,11 +87,6 @@ Tags: ESP-WROOM-02
 * リセットボタンを押すとリセットがかかる
 * モード切り替えボタンはIO0番ピンにつながっている.ボタンを押すとIO0がLOW、放すとIO0がHIGHになる.
 * モード切り替えボタンを押しながらリセットボタンを押すと、UART Download Modeになる
-
-#### シリアル通信
-* マイコンは、シリアル通信のためにUART（Universal Asynchronous Reciver Transmitter)という装置が搭載されている
-* UARTには、TX(送信)・RX（受信）の配線がある
-
 
 #### 参考
 * [ESPr® Developer（ESP-WROOM-02開発ボード） - スイッチサイエンス](https://www.switch-science.com/catalog/2500/)
