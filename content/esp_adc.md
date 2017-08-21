@@ -96,6 +96,6 @@ uint32 check(int channel) {
 * [MCP3004/3008データシート](http://ww1.microchip.com/downloads/en/DeviceDoc/21295d.pdf)
 * [ESP8266(ESP-WROOM-02)でアナログ値を見るには？ - Qiita](http://qiita.com/ryokai/items/9b0c56616b4550eb05f1)
 * [ESP8266 (ESP-WROOM-02) でセンサーを扱う - Qiita](http://qiita.com/exabugs/items/9ca4093813db71278b39)
-  * 回路を参考に
+    - 回路を参考に
 * [SPI通信で、PICと加速度センサを「お話」させてみた | 技ラボ](http://wazalabo.com/pic-spi.html)
-  * SPI通信について
+    - SPI通信について

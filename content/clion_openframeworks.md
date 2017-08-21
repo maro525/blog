@@ -4,16 +4,16 @@ Slug: clion_openframeworks
 Category: プログラミング
 Tags: Clion, openframeworks, c++
 
-#### 環境(2017/08/12)
+### 環境(2017/08/12)
 * Mac:10.12.6
 * CMake:3.8.2
 * openframeworks:0.9.8
 
-#### 準備
+### 準備
 1. [ofxCMake](https://github.com/BildPeter/ofxCMake)をクローンして、addonsフォルダに入れる
 2. `ofxCMake/project/CMakeLists.txt`の中で、OFのルートのフォルダを自分のPCのものに書き換える
 
-#### 手順
+### 手順
 1. `ofxCMake/project/CMakeLists.txt`をプロジェクトのフォルダにコピーする
 2. main.cppやofApp.cpp以外にも自分で書いたファイルがあれば、Source Filesに追加する(ヘッダーファイルは追加しなくていいっぽい）
 3. APP_NAMEの部分でアプリケーションの名前を変更する
@@ -23,7 +23,7 @@ Tags: Clion, openframeworks, c++
 7. アドオン追加する（アドオン追加方法は下記)
 8. ビルドする
 
-#### アドオン追加手順
+### アドオン追加手順
 **Internal Addons(元から入ってるaddon)の場合**
 `CMakeList.txt`のAddOnsの部分に書き加える
 
@@ -33,7 +33,7 @@ Tags: Clion, openframeworks, c++
 3. `ofxCMake/modules/addOns.cmake`の中に、`OF_include_external_addOns( ofxNAME )`を追加
 4. プロジェクトのaddOnsの部分にofxNAMEを追加する.
 
-#### CMakeの文法
+### CMakeの文法
 |言葉|意味|
 |:---|:---|
 |cmake_minimum_required(VERSION 3.8.2|プロジェクトに最低限必要なcmakeのバージョンを指定, 必須|

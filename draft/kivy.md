@@ -8,7 +8,7 @@ Slug: Kivy
 
 そして、MITライセンスで使いやすい形になっている.
 
-#### 環境　
+### 環境　
 Mac Sierra 10.12.6
 
 Python3.5.3
@@ -41,7 +41,7 @@ iOS環境で動作させたいときはまた別に[いろいろ準備](https://
 
 ### 基本を[公式のドキュメント](https://kivy.org/docs/guide/basic.html#quickstart)から学ぶ
 
-#### Kiyyの最小構成　
+### Kiyyの最小構成　
 
 ```
 import kivy
@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
 ![No Image!]({filename}/image/quickstart_kivy.png)
 
-#### カスタマイズしていく
+### カスタマイズしていく
 
 ##### ユーザー名とパスワードを入力するインターフェースを作る
 

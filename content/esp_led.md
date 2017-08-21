@@ -4,10 +4,10 @@ Slug: esp_led
 Category: 電子工作
 Tags: ESP-WROOM-02, Arduino
 
-#### パーツ
+### パーツ
 * ESPr Developer(ESP-WROOM-02開発ボード )[https://www.switch-science.com/catalog/2500/](https://www.switch-science.com/catalog/2500/)
 
-#### 手順
+### 手順
 
 ##### 1.ArduinoにESP-WROOM-02ボードを追加する
 * ファイル」-「環境設定」を開く

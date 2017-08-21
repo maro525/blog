@@ -23,15 +23,15 @@ Arduinoの自作によって、より商品に最適化された無駄のない�
 
 ### そもそものArduinoの構成
 - ソフトウェア
-	- Arduino IDE
-	- Arduino Bootloader
+		* Arduino IDE
+		* Arduino Bootloader
 - ハードウェア
-	- マイコンボード
-		- マイコン（ATmega328P）
-			- 32kバイトのフラッシュメモリ
-			- 1kバイトのEEPROM
-			- 2kバイトのRAM
-	- ライター
+	 	* マイコンボード
+				- マイコン（ATmega328P）
+						* 32kバイトのフラッシュメモリ
+			 			* 1kバイトのEEPROM
+						* 2kバイトのRAM
+		* ライター
 
 ### ArduinoやRasberry PIなどのボードについて
 
