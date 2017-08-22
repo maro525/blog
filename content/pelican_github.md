@@ -9,8 +9,8 @@ Tags: pelican, python
 * `pip install pelican Markdown`
 * `pip install ghp-import` -> 後々、Github Pagesへの公開操作が便利になる
 * `pelican-quickstart`
- 		- いろいろ設定を聞かれる.基本的にはデフォルトで問題なし
-		- あとで変更できるので、適当に答えても問題なし
+    - いろいろ設定を聞かれる.基本的にはデフォルトで問題なし
+    - あとで変更できるので、適当に答えても問題なし
 
 ```
 > Where do you want to create your new web site? [.] .

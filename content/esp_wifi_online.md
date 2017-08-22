@@ -36,4 +36,4 @@ wifiManager.autoConnect("AutoConnectAP");
 ### 	参考
 * [ESP8266 Wi-Fi SSID、パスワードのオンライン設定 - IoTラボ](http://takehikoshimojima.tumblr.com/post/138820924644/esp8266-wi-fi-ssid%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E3%81%AE%E3%82%AA%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%B3%E8%A8%AD%E5%AE%9A)
 * [ESP8266 がアクセスポイントとなってSSID・パスワードの初期設定をする - Qiita](http://qiita.com/hotchpotch/items/eec0260b8b1938dda696)
- 		- SSIDやパスワードをどこに保存しているかに関する記事あり
+    - SSIDやパスワードをどこに保存しているかに関する記事あり

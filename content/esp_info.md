@@ -67,9 +67,9 @@ Arduinoで無線LANを利用する方法は3種類ある。
 * リセットスイッチ、動作モード切替スイッチ搭載
 * 動作電圧：3.3 V
 * 電源ピン
-	 	- VINピン : USB以外から電源を取るときに使います。3.7～6.0 V
-		- VOUTピン : 5Vピンの名称をVOUTピンに変更しました。
-	 	- 3.3Vピンは出力専用ピン
+    - VINピン : USB以外から電源を取るときに使います。3.7～6.0 V
+    - VOUTピン : 5Vピンの名称をVOUTピンに変更しました。
+    - 3.3Vピンは出力専用ピン
 
 ### 動作環境
 * Arduino IDE
@@ -91,12 +91,12 @@ Arduinoで無線LANを利用する方法は3種類ある。
 ### 参考
 * [ESPr® Developer（ESP-WROOM-02開発ボード） - スイッチサイエンス](https://www.switch-science.com/catalog/2500/)
 * [ESP-WROOM-32 ( ESP32 ) で Wi-Fi スマホ LED スイッチ作り | mgo-tec電子工作](https://www.mgo-tec.com/blog-entry-esp-wroom-32-esp32-wifi-smartphone-led-switch.html)
-		- 開発ボードを使わずに回路づくりをするときに参考になりそう
+    - 開発ボードを使わずに回路づくりをするときに参考になりそう
 * [ESP-WROOM-02](http://ht-deko.com/arduino/esp-wroom-02.html)
- 		- このシリーズの様々な基盤や回路の説明など詳細な情報が載っている
+    - このシリーズの様々な基盤や回路の説明など詳細な情報が載っている
 * [Check! IoT ができるようになるまで ～ まずはシリアル通信を使えるようになる - Qiita](http://qiita.com/dz_/items/277eba8cb760b81a2688)
 * [ESP-WROOM-02使ってみる | Natural Days](https://www.hirotakaster.com/weblog/esp-wroom-02%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/)
 * [Wifiにつながるデバイス(ESP8266EX, ESP-WROOM-02, ESPr Developerなど)](https://www.slideshare.net/nishio/wifiesp8266ex-espwroom02-espr-developer)
 * [ESP8266をはじめよう](https://www.slideshare.net/quitsq/esp8266-60164967)
 * [GWだし、ESP8266関係の記事をまとめながら、IoT framework作ってみる - Qiita](http://qiita.com/hidenorly/items/0eadcf6cc8ba04c0145d#_reference-84f2d28391d764922e0d)
- 		- ESP8266関係の参考になるリファレンスがたくさん載っているQiita記事
+    - ESP8266関係の参考になるリファレンスがたくさん載っているQiita記事
