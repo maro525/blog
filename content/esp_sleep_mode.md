@@ -37,7 +37,7 @@ Tags: ESP-WROOM-02
 
 ### 1分毎にdeep-sleepから復帰して光センサーの値を読み、IFTTTにセンサーの値を送ってみる
 
-回路図は、[この記事](https://maro525.github.io/blog/esp_battery.html)にのっているのに追加して、RSTピンとIO１６ピンをつなげただけ.
+回路図は、[この記事](https://maro525.github.io/blog/esp_battery.html)にのっているのに追加して、RSTピンとIO16ピンをつなげただけ.
 
 ```
 #include <ESP8266WiFi.h> // WiFiモジュールのライブラリ
