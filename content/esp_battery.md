@@ -52,14 +52,14 @@ ESP-WROOM-02は、3.3Vをかけなければ動かない.
 出力側のコンデンサーの容量が47μFのとき、電源の立ち上がり時に200mAの電流が流れるらしい.
 
 ### 回路図
-![No Image!]()
+![No Image!]({filename}/image/ESP_Photocell_ADConverter_Battery_bb.png)
 
 ### 簡単なLチカをやってみる
 バッテリーとつないでLEDのがつくことは確認できた.
 
 しかし、バッテリー駆動だと、LEDの点灯（１秒ON↔1秒OFF)のプログラムの動作ができない. (ESP-WROOM-02の書き込みモードにできてない？)
 
-### バッテリーでWiFI通信してみる
+### バッテリーでWiFI通信できるか確認する
 IFTTTに一定時間ごとにセンサーの光センサー２つの情報を送ってみる.
 
 IFTTTとの連携についての[記事](https://maro525.github.io/blog/esp_ifttt.html)
@@ -77,13 +77,13 @@ extern "C"{
 }
 
 // wifiのSSID
-const char* ssid = "nsketch";
+const char* ssid = "******";
 // wifiのパスワード
-const char* password = "nsketchm1";
+const char* password = "******";
 // iftttの設定
 const char* host = "maker.ifttt.com";
 const char* event = "esp-wroom-02";
-const char* secretkey = "rKt5tM6D_zuHd4sFRh07v";
+const char* secretkey = "*****";
 
 Ticker ticker;
 
@@ -193,7 +193,7 @@ void loop() {
 
 ```
 
-しかし、コネクションロストと出てしまい、動作できいない.
+しかし、コネクションロストと出てしまい、動作できなかった.
 
 ### これから調べること
 * コンデンサ周りの計算方法

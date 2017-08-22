@@ -86,7 +86,7 @@ Arduinoで無線LANを利用する方法は3種類ある。
 ### ボタン
 * リセットボタンを押すとリセットがかかる
 * モード切り替えボタンはIO0番ピンにつながっている.ボタンを押すとIO0がLOW、放すとIO0がHIGHになる.
-* モード切り替えボタンを押しながらリセットボタンを押すと、UART Download Modeになる
+* モード切り替えボタンを押しながらリセットボタンを押すと、UART Download Modeになる. 逆にリセットボタンだけ押すとFlash Boot Modeになる.
 
 ### 参考
 * [ESPr® Developer（ESP-WROOM-02開発ボード） - スイッチサイエンス](https://www.switch-science.com/catalog/2500/)
@@ -99,5 +99,4 @@ Arduinoで無線LANを利用する方法は3種類ある。
 * [Wifiにつながるデバイス(ESP8266EX, ESP-WROOM-02, ESPr Developerなど)](https://www.slideshare.net/nishio/wifiesp8266ex-espwroom02-espr-developer)
 * [ESP8266をはじめよう](https://www.slideshare.net/quitsq/esp8266-60164967)
 * [GWだし、ESP8266関係の記事をまとめながら、IoT framework作ってみる - Qiita](http://qiita.com/hidenorly/items/0eadcf6cc8ba04c0145d#_reference-84f2d28391d764922e0d)
-
  		- ESP8266関係の参考になるリファレンスがたくさん載っているQiita記事

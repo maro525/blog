@@ -31,19 +31,17 @@ if (!client.connect(host, httpPort)) {
 ↑IFTTTに接続
 
 ```
-// We now create a URI for the request
 String url = "/trigger/";
 url += event;
 url += "/with/key/";
 url += secretkey;
 url += "?value1=";
 url += value1;
-url += "?value2=";
+url += "&value2=";
 url += value2;
-url += "?value3=";
+url += "&value3=";
 url += value3;
 
-// This will send the request to the server
 char sendData[256] = "";
 sprintf(sendData, "GET http://maker.ifttt.com/%s HTTP/1.1\r\nHost:maker.ifttt.com\r\nConnection: close\r\n\r\n", url.c_str());
 client.printf(sendData);
@@ -58,8 +56,6 @@ while (client.available() == 0) {
 }
 delay(10);
 
-// Read all the lines of the reply from server
-// and print them to Serial
 while(client.available()){
 	String line = client.readStringUntil('\r');
 	Serial.print(line);
