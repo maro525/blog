@@ -181,7 +181,21 @@ void uploadIFTTT() {
 ```
 
 **無事にSlackに投稿されている様子を確認できた**
+
 ![No Image!]({filename}/image/deepsleep_slack.png)
+
+### Light-Sleepについて調べてみる
+
+[この記事](https://community.blynk.cc/t/esp8266-ligh　t-sleep/13584)によると、
+
+```
+WiFi.mode(WIFI_STA);
+wifi_set_sleep_type(LIGHT_SLEEP_T);
+```
+
+のようにコードを書くだけで、delay関数の間、自動的にLight-Sleepモードい移行してくれるらしい.
+
+しかし、今回は、センサーの値が一定のときはLight-sleepをしておいて、センサーの値が大きく変化したときにWi-Fiに接続する方法を用いたいので、この方法は使えない.
 
 ### 今後できるようになりたいこと
 
@@ -205,3 +219,4 @@ void uploadIFTTT() {
 * [じわじわ進む: ESP単体で30分のデータをまとめて送信](https://jiwashin.blogspot.jp/2016/07/esp30.html)
 * [ESP8266の真骨頂Deep-Sleepモードの使い方 - Qiita](http://qiita.com/azusa9/items/65a5c3772c41631b5ca1)
 * [なんでも作っちゃう、かも。](http://arms22.blog91.fc2.com/?tag=esp8266)
+* [ESP8266 Light Sleep - Projects made with Blynk - Blynk](https://community.blynk.cc/t/esp8266-light-sleep/13584^)
