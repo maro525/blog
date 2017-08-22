@@ -210,7 +210,7 @@ wifi_set_sleep_type(LIGHT_SLEEP_T);
 だが、これをやるには回路の知識がないと時間だけがかかりそう.
 
 ### 参考記事
-* [ESP8266 IoT] 人感センサーでESP8266の目をさまさす | MONOxIT](http://www.monoxit.com/%E8%AC%9B%E5%BA%A7/irmotion/)
+* [ESP8266 IoT 人感センサーでESP8266の目をさまさす | MONOxIT](http://www.monoxit.com/%E8%AC%9B%E5%BA%A7/irmotion/)
 * [電子工作と治具ツールの備忘録: ESP-WROOM-02のメモ(11)：3つのSleepの使い分け](http://ekjigtool.blogspot.jp/2015/08/esp-wroom-02113sleep.html)
 * [電子工作と治具ツールの備忘録: ESP-WROOM-02プログラミング：スリープしながら定期的にツイート](http://ekjigtool.blogspot.jp/2015/08/esp-wroom-02_27.html)
 * [ESP-WROOM-02のLIGHT-SLEEPとGPIOでの復帰 | 東京お気楽カメラ](http://okiraku-camera.tokyo/blog/?p=4996)
