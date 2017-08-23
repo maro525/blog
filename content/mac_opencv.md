@@ -128,13 +128,13 @@ infoのところにあるURLに飛んでみたところ、opencv3の方のリン
 ### 再びopencvインストール
 
 ```
-brew install opencv
+% brew install opencv
 ```
 
 僕は、pyenv-virtualenvからpythonを扱っているので、pyenvの環境にシンボリックリンクをはる.(NAMEの部分は、virtualenvの環境の名前)
 
 ```
-ln -sf /usr/local/Cellar/opencv/3.3.0_2/lib/python3.6/site-packages/cv2.cpython-36m-darwin.so ~/.pyenv/versions/3.5.3/envs/NAME/lib/python3.5/site-packages/cv2.so
+% ln -sf /usr/local/Cellar/opencv/3.3.0_2/lib/python3.6/site-packages/cv2.cpython-36m-darwin.so ~/.pyenv/versions/3.5.3/envs/NAME/lib/python3.5/site-packages/cv2.so
 ```
 
 これで挙動を確認してみる.
