@@ -20,6 +20,12 @@ homebrewのパッケージの過去のversionを削除したい場合は、`brew
 
 その後、[この記事](http://qiita.com/neriai/items/0d9b3dd4344bdfa428f8)から、Homebrewにおいて、Opencvの2系と3系のリポジトリが統一され、Opencv3に統一されたとのことだったので、一旦Homebrewからopencv3を削除してから、また新しく入れることにした.
 
+ということで、一旦削除する.
+
+```
+brew unisntall --force opencv3
+```
+
 実際に`brew info`で確認してみた.
 
 ```

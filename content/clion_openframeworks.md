@@ -25,9 +25,11 @@ Tags: Clion, openframeworks, c++
 
 ### アドオン追加手順
 **Internal Addons(元から入ってるaddon)の場合**
+
 `CMakeList.txt`のAddOnsの部分に書き加える
 
 **External Addonsの場合**
+
 1. ofxNAME.cmake(NAMEはaddonの名前)を`ofxCMake/addOns`内のtemplateファイルからコピーして作成(ファイルの中身はaddonの形態に応じて書き換える)->CMakeの文法について下記
 2. `ofxCMake/addOns/external`に1.で作成したファイルをコピーする
 3. `ofxCMake/modules/addOns.cmake`の中に、`OF_include_external_addOns( ofxNAME )`を追加
