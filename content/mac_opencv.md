@@ -14,7 +14,7 @@ Tags: python, opencv
 
 そこでいろいろ調べてみると、
 
-homebrewのパッケージの過去のversionを削除したい場合は、`brew cleanup opencv3`のようにすればいいこともわかった.
+homebrewのパッケージの過去のversionを削除したい場合は、`brew cleanup opencv3`のようにすればいいことがわかったが、brewのパッケージについてもう少しいろいろ調べてみた.
 
 また、[`brew versions`コマンドを使う](http://qiita.com/ysk24ok/items/91a7c502d33e0dde72ad)のような手段もによって、brewからインストールしたパッケージのバージョンを変更しながら使えることもわかった.
 
