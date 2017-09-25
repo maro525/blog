@@ -39,6 +39,13 @@ Tags: Clion, openframeworks, c++
 |言葉|意味|
 |:---|:---|
 |cmake_minimum_required(VERSION 3.8.2|プロジェクトに最低限必要なcmakeのバージョンを指定, 必須|
-|add_executable(Main main.cpp)|名前とソース・ファイルを指定してビルド（？）させる|
+|add_executable(Main main.cpp)| 生成する実行ファイルとその元となるソースプログラム名を指定する|
 |project(TMP)|プロジェクト名設定|
 |set(XXX xxx)|キャッシュ変数定義・代入|
+|add_library|STATICをつけると静的ライブラリ|
+|target_link_libraries|ライブラリを実行ファイルにリンクする|
+|add_subdirectory|ディレクトリをcmakeの管理に追加する|
+|set_target_properties |   |
+|file   |   |
+
+* `set(CMAKE_VERBOSE_MAKEFILE 1)`とすると、makeの実行コマンドが見える
