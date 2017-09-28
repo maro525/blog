@@ -88,6 +88,10 @@ Arduinoで無線LANを利用する方法は3種類ある。
 * モード切り替えボタンはIO0番ピンにつながっている.ボタンを押すとIO0がLOW、放すとIO0がHIGHになる.
 * モード切り替えボタンを押しながらリセットボタンを押すと、UART Download Modeになる. 逆にリセットボタンだけ押すとFlash Boot Modeになる.
 
+### ---2017.09.28 追記---
+
+
+
 ### 参考
 * [ESPr® Developer（ESP-WROOM-02開発ボード） - スイッチサイエンス](https://www.switch-science.com/catalog/2500/)
 * [ESP-WROOM-32 ( ESP32 ) で Wi-Fi スマホ LED スイッチ作り | mgo-tec電子工作](https://www.mgo-tec.com/blog-entry-esp-wroom-32-esp32-wifi-smartphone-led-switch.html)
@@ -100,3 +104,4 @@ Arduinoで無線LANを利用する方法は3種類ある。
 * [ESP8266をはじめよう](https://www.slideshare.net/quitsq/esp8266-60164967)
 * [GWだし、ESP8266関係の記事をまとめながら、IoT framework作ってみる - Qiita](http://qiita.com/hidenorly/items/0eadcf6cc8ba04c0145d#_reference-84f2d28391d764922e0d)
     - ESP8266関係の参考になるリファレンスがたくさん載っているQiita記事
+* [Arduinoマイコンとしても使える小型WifiモジュールESP-WROOM-02を使ってみる(準備編) | Device Plus - デバプラ](http://deviceplus.jp/hobby/entry0032/)

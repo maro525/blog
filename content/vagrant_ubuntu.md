@@ -1,8 +1,8 @@
 Title: macにvagrantでubuntuをいれる
 Date: 2017-09-25
 Slug: vagrant_ubuntu
-Category:
-Tags: ubuntu, vagrant, virtualbox
+Category: ノート
+Tags: Ubuntu,Vagrant,Virtualbox
 
 ### インストール
 
@@ -82,6 +82,29 @@ startxfce4 &
 MacのFinderから、「サーバーへ接続」
 
 そして、`vnc://192.168.33.10:5901`にアクセス
+
+### vagrant-manager
+
+vagrantのマシンを、メニューバーから操作することができるアプリ
+
+#### インストール
+
+`brew cask install vagrant-manager`
+
+### GUIを有効にする
+
+Vagrantfile以下の部分のコメントを外す
+
+```
+  config.vm.provider "virtualbox" do |vb|
+     # Display the VirtualBox GUI when booting the machine
+     vb.gui = true
+
+     # Customize the amount of memory on the VM:
+     vb.memory = "1024"
+  end
+```
+
 
 
 ###
