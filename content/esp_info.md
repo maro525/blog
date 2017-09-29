@@ -1,4 +1,4 @@
-Title: ESP8266, ESP-WROOM-02, ESPr Developerについてまとめ
+Title: ESP-WROOM-02についてまとめ
 Date: 2017-07-20
 Slug: esp_info
 Category: 電子工作
@@ -70,6 +70,8 @@ Arduinoで無線LANを利用する方法は3種類ある。
     - VINピン : USB以外から電源を取るときに使います。3.7～6.0 V
     - VOUTピン : 5Vピンの名称をVOUTピンに変更しました。
     - 3.3Vピンは出力専用ピン
+* OTAに対応している. (ネットワーク経由で書き込みをすることができる)
+* 最大電流が50mA
 
 ### 動作環境
 * Arduino IDE
@@ -96,7 +98,7 @@ Arduinoで無線LANを利用する方法は3種類ある。
 
 #### ピンとモードの関係
 
-* IO0ピンがHIGHのとき、Flash Boot Modeになる
+※ ボタンはESPr Developerの基板上に乗っているボタンの名前
 
 |モード|GPIO15|GPIO2(リセットボタン)|GPIO0(モード切り替えボタン)|
 |:---|:---|:---|:---|
@@ -104,10 +106,8 @@ Arduinoで無線LANを利用する方法は3種類ある。
 |実行モード|Low|High|High|
 |SDブートモード|High|Low|Low|
 
-* ボタンはESPr Developerの基板上に乗っているボタンの名前
-* 押すとLOW、放すとHIGHになる
-* Arduinoスケッチをフラッシュに書き込むと、フラッシュメモリをすべて書き換えてArduino化することになり、ATコマンドは使えなくなる.
-再びATコマンドに戻りたいときは、ATコマンド仕様のフラッシュに書き換える.
+* ボタンは、押すとLOW、放すとHIGHになる
+* スケッチを書き込む際には、書き込みモードになっていないと、プロテクトがかかっているため、エラーがでてしまう。
 
 
 ### 参考
@@ -123,3 +123,4 @@ Arduinoで無線LANを利用する方法は3種類ある。
 * [GWだし、ESP8266関係の記事をまとめながら、IoT framework作ってみる - Qiita](http://qiita.com/hidenorly/items/0eadcf6cc8ba04c0145d#_reference-84f2d28391d764922e0d)
     - ESP8266関係の参考になるリファレンスがたくさん載っているQiita記事
 * [Arduinoマイコンとしても使える小型WifiモジュールESP-WROOM-02を使ってみる(準備編) | Device Plus - デバプラ](http://deviceplus.jp/hobby/entry0032/)
+* [ESP-WROOM-02の使い方/まとめ](https://www.petitmonte.com/robot/howto_esp_wroom_02.html)

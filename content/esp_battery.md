@@ -1,10 +1,9 @@
-Title: ESP-WROOM-02をバッテリーで動かす
+Title: ESP-WROOM-02の駆動、電圧まわりについて調べてみた
 Date: 2017-08-20
 Slug: esp_battery
 Category: 電子工作
 Tags: ESP-WROOM-02
 
-**以前に作った、ADコンバーターを使って2つのセンサーの値を取得した回路を使って、バッテリー駆動してみる.**
 
 ### バッテリーの種類
 * 乾電池
@@ -50,154 +49,6 @@ ESP-WROOM-02は、3.3Vをかけなければ動かない.
 出力側には、出力電流とレギュレーターでドロップする電圧からレギュレーターでの熱消費を計算して、必要な場合は放熱器をつける.
 
 出力側のコンデンサーの容量が47μFのとき、電源の立ち上がり時に200mAの電流が流れるらしい.
-
-### 回路図
-![No Image!]({filename}/image/ESP_Photocell_ADConverter_Battery_bb.png)
-
-### 簡単なLチカをやってみる
-バッテリーとつないでLEDのがつくことは確認できた.
-
-しかし、バッテリー駆動だと、LEDの点灯（１秒ON↔1秒OFF)のプログラムの動作ができない. (ESP-WROOM-02の書き込みモードにできてない？)
-
-### バッテリーでWiFI通信できるか確認する
-IFTTTに一定時間ごとにセンサーの光センサー２つの情報を送ってみる.
-
-IFTTTとの連携についての[記事](https://maro525.github.io/blog/esp_ifttt.html)
-
-プログラムは以下のような感じ
-```
-#include <ESP8266WiFi.h>
-#include <Ticker.h>
-#include <Arduino.h>
-
-extern "C"{
-#include <spi.h>
-#include <spi_register.h>
-#include "user_interface.h"
-}
-
-// wifiのSSID
-const char* ssid = "******";
-// wifiのパスワード
-const char* password = "******";
-// iftttの設定
-const char* host = "maker.ifttt.com";
-const char* event = "esp-wroom-02";
-const char* secretkey = "*****";
-
-Ticker ticker;
-
-int led = 16;
-
-uint32 val0, val1;
-
-void setup() {
-  Serial.begin(115200);
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
-
-  pinMode(led, OUTPUT);
-  spi_init(HSPI);
-
-  WiFi.begin(ssid, password);
-
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("WiFi connected");
-
-  // Print the IP address
-  Serial.println(WiFi.localIP());
-
-  ticker.attach_ms(1000, sendifttt);
-}
-
-void check() {
-  val0 = check(0);
-  val1 = check(1);
-}
-
-void sendifttt(){
-
-  check();
-
-  WiFiClient client;
-  const int httpPort = 80;
-  if (!client.connect(host, httpPort)) {
-      Serial.println("connection failed");
-      return;
-  }
-
-  // iftttに送るデータの文字列
-  String url = "trigger/";
-  url += event;
-  url += "/with/key/";
-  url += secretkey;
-  url += "?value1=";
-  url += val0;
-  url += "?value2=";
-  url += val1;
-
-  char sendData[256] = "";
-  sprintf(sendData, "GET http://maker.ifttt.com/%s HTTP/1.1\r\nHost:maker.ifttt.com\r\nConnection: close\r\n\r\n", url.c_str());
-  client.printf(sendData);
-
-  int timeout = millis() + 5000;
-  while (client.available() == 0) {
-      if (timeout - millis() < 0) {
-          Serial.println(">>> Client Timeout !");
-          client.stop();
-          return;
-      }
-  }
-  delay(10);
-
-  // Read all the lines of the reply from server
-  // and print them to Serial
-  while(client.available()){
-      String line = client.readStringUntil('\r');
-      Serial.print(line);
-  }
-  delay(10);
-
-  Serial.println();
-  Serial.println("closing connection");
-}
-
-uint32 check(int channel) {
-  uint8 cmd = (0b11 << 3) | channel;
-
-  const uint32 COMMAND_LENGTH = 5;
-  const uint32 RESPONSE_LENGTH = 12;
-
-  uint32 retval = spi_transaction(HSPI, 0, 0, 0, 0, COMMAND_LENGTH, cmd, RESPONSE_LENGTH, 0);
-
-  retval = retval & 0x3FF; // mask to 10-bit value
-  return retval;
-}
-
-void loop() {
-  check();
-
-  // 1つめの光センサーの値の2つめのセンサーの値以上のときはLEDが点灯するようにする
-  if(val0 >= val1) {
-    digitalWrite(led, HIGH);
-  } else {
-    digitalWrite(led, LOW);
-  }
-  delay(1000);
-  digitalWrite(led, LOW);
-  delay(1000);
-}
-
-```
-
-しかし、コネクションロストと出てしまい、動作できなかった.
-
-### これから調べること
-* コンデンサ周りの計算方法
-* バッテリー駆動をしたいときのプログラム書き込み方法
 
 ### 参考記事
 * [Arduinoをリチウムイオン電池で動かすには | スイッチサイエンス マガジン](http://mag.switch-science.com/2016/02/12/arduino-lithium/)
