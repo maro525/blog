@@ -1,7 +1,7 @@
 Title: CLionでopenframeworksをビルドする
 Date: 2017-08-12
 Slug: clion_openframeworks
-Category: プログラミング
+Category: ノート
 Tags: Clion, openframeworks, c++
 
 ### 環境(2017/08/12)
@@ -35,7 +35,7 @@ Tags: Clion, openframeworks, c++
 3. `ofxCMake/modules/addOns.cmake`の中に、`OF_include_external_addOns( ofxNAME )`を追加
 4. プロジェクトのaddOnsの部分にofxNAMEを追加する.
 
-### CMakeの文法
+### CMakeの文法(勉強中)
 |言葉|意味|
 |:---|:---|
 |cmake_minimum_required(VERSION 3.8.2|プロジェクトに最低限必要なcmakeのバージョンを指定, 必須|
