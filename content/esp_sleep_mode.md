@@ -71,3 +71,4 @@ wifi_set_sleep_type(LIGHT_SLEEP_T);
 * [ESP8266の真骨頂Deep-Sleepモードの使い方 - Qiita](http://qiita.com/azusa9/items/65a5c3772c41631b5ca1)
 * [なんでも作っちゃう、かも。](http://arms22.blog91.fc2.com/?tag=esp8266)
 * [ESP8266 Light Sleep - Projects made with Blynk - Blynk](https://community.blynk.cc/t/esp8266-light-sleep/13584^)
+* [DeepSleepへの移行とボタン押下による復帰](http://www.hiramine.com/physicalcomputing/espwroom02/deepsleepbuttonwakeup.html)
