@@ -105,6 +105,9 @@ Vagrantfile以下の部分のコメントを外す
   end
 ```
 
+また、~/.bashrcファイルに以下の記述をしていないとエラーがでる.
+
+`export DISPLAY=:0`
 
 
 ###
