@@ -1,7 +1,7 @@
 Title: CLionでopenframeworksをビルドする
 Date: 2017-08-12
 Slug: clion_openframeworks
-Category: ノート
+Category: Openframeworks
 Tags: Clion, openframeworks, c++
 
 ### 環境(2017/08/12)

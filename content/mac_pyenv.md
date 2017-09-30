@@ -1,7 +1,7 @@
 Title: Sierraでpyenv, virtualenvを使う
 Date: 2017-01-10
 Slug: mac_pyenv
-Category: ノート
+Category: Python
 Tags: python
 
 pyenv,virtualevまわりの話はweb上にたくさん情報が転がっているので、自分の環境セットアップ方法についてメモ代わりに記す

@@ -1,7 +1,7 @@
 Title: mac環境のbackup
 Date: 2017-07-16
 Slug: mac_backup
-Category: ノート
+Category: Mac
 Tags: Mac
 
 ### アプリについて

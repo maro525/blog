@@ -1,7 +1,7 @@
 Title: Pelican+Github Pagesでブログ生成
 Date: 2017-07-14
 Slug: pelican_github
-Category: ノート
+Category: Python
 Tags: pelican, python
 
 ### 準備

@@ -1,7 +1,7 @@
 Title: Mac Sierra でOpencv使う
 Date: 2017-08-23
 Slug: mac_opencv
-Category: ノート
+Category: Mac
 Tags: python, opencv
 
 最近のHomebrewのアップデートにより、opencvのバージョン3.3.0が導入されたが、Pythonでopencvを使ってみたところ、libjpegが見つからないとエラーが出た.
