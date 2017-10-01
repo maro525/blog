@@ -1,7 +1,7 @@
-Title: ubuntuにrosをいれる
-Date: 2017-09-25
-Slug: ros_ubuntu
-Category: Ubuntu
+Title: Ubuntu14.04にROSをいれる
+Date: 2017-09-30
+Slug: ros_setup
+Category: ROS
 Tags: Ubuntu, ROS
 
 ### インストール
@@ -36,6 +36,8 @@ Tags: Ubuntu, ROS
 #### 作業フォルダの作成と初期化
 
 ROSでは、catkinというROS専用のビルドシステムを使っていて、これを使用するためにcatkin作業フォルダを作成する必要がある.
+
+* catkinは、「キャッン」と読む
 
 この設定はインストール時に一度したら、それ以降はする必要はない
 
