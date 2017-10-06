@@ -1,3 +1,9 @@
+Title: Ubuntu14.04にUSBを接続する
+Date: 2017-09-30
+Slug: ros_setup
+Category: Ubuntu
+Tags: Ubuntu, ROS
+
 ### Extensionパックのダウンロード
 
 [このページ](https://www.virtualbox.org/wiki/Downloads)から、Extension Packをダウンロードし、インストールする.

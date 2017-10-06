@@ -1,7 +1,7 @@
 Title: MacにVagrantでUbuntuをいれる
 Date: 2017-09-25
 Slug: vagrant_ubuntu
-Category: Mac
+Category: Ubuntu
 Tags: Ubuntu,Vagrant,Virtualbox
 
 ### インストール

@@ -23,7 +23,7 @@ Tags: ESP-WROOM-02
 * io13 → din(11)
 * io15 → cs(10)
 
-![No Image!]({filename}/image/ESP_Photocell_ADConverter_bb.png)
+回路図は、[ここ](https://upverter.com/maro525/a5489562cfda0a26/ESP_ADC_DEEPSLEEP/)から見れる
 
 #### SPI通信
 「Serial Peripheral Interface」の略. 比較的近距離に配置されているデバイス同士をつなげるバスのこと
