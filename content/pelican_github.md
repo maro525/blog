@@ -4,6 +4,10 @@ Slug: pelican_github
 Category: Python
 Tags: pelican, python
 
+##### ※環境
+* Mac : Sierra 10.12.6
+* Python : 3.5.3
+
 ### 準備
 * virtualenv作成
 * `pip install pelican Markdown`
