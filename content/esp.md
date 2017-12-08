@@ -18,9 +18,8 @@ Tags: ESP-WROOM-02
 
 #### センサーとの連携
 
-* [ESP-WROOM-02にADコンバーターを繋いで、複数のセンサの値を取得](https://maro525.github.io/blog/esp_adc.html)
 * [ESP-WROOM-02をTOUTピンを使ってアナログ入力する](https://maro525.github.io/blog/esp_analog.html)
-*
+* [ESP-WROOM-02にADコンバーターを繋いで、複数のセンサの値を取得](https://maro525.github.io/blog/esp_adc.html)
 
 #### IFTTTとの連携
 
