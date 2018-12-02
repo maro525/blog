@@ -1,10 +1,10 @@
 Title: MacにVagrantでUbuntuをいれる
 Date: 2017-09-25
 Slug: vagrant_ubuntu
-Category: Ubuntu
+Category: プログラミング
 Tags: Ubuntu,Vagrant,Virtualbox
 
-### インストール
+# インストール
 
 `vagrant box add NAME URL`というコマンドでOSをインストールすることができる.
 
@@ -32,29 +32,29 @@ the comments in the Vagrantfile as well as documentation on
 Vagrantfileが作成されている.
 
 
-### 設定の変更
+# 設定の変更
 
 Vagrantfileの`congif.vm.network "private_network", ip: "192.168.33.10"`の部分のコメントアウトを外す
 
-### 仮想サーバー立ち上げ
+# 仮想サーバー立ち上げ
 
 `vagrant up`
 
-### 仮想サーバーに入る
+# 仮想サーバーに入る
 
 `vagrant ssh`
 
 出るときは、`exit`
 
-### VNCサーバー接続
+# VNCサーバー接続
 
-#### 準備
+## 準備
 ```
 % sudo apt-get update
 % sudo apt-get install xfce4 ubuntu-desktop vnc4server
 ```
 
-#### 起動
+## 起動
 
 ```
 # パスワードの設定
@@ -67,7 +67,7 @@ Vagrantfileの`congif.vm.network "private_network", ip: "192.168.33.10"`の部�
 % netstat -an | grep 5901
 ```
 
-#### 設定ファイル変更
+## 設定ファイル変更
 
 `~/.vnc/xstartup`に次の文が入るようにする
 
@@ -77,21 +77,21 @@ unset DBUS_SESSION_BUS_ADDRESS
 startxfce4 &
 ```
 
-#### 接続してみる
+## 接続してみる
 
 MacのFinderから、「サーバーへ接続」
 
 そして、`vnc://192.168.33.10:5901`にアクセス
 
-### vagrant-manager
+# vagrant-manager
 
 vagrantのマシンを、メニューバーから操作することができるアプリ
 
-#### インストール
+## インストール
 
 `brew cask install vagrant-manager`
 
-### GUIを有効にする
+# GUIを有効にする
 
 Vagrantfile以下の部分のコメントを外す
 
@@ -110,5 +110,5 @@ Vagrantfile以下の部分のコメントを外す
 `export DISPLAY=:0`
 
 
-###
+#
 - ![VagrantとVirtualboxでubuntu環境を構築し、Macからvnc接続する - juncollinの日記](http://juncollin.hatenablog.com/entry/2017/02/18/141358)

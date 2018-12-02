@@ -4,7 +4,7 @@ Slug: esp_sleep_mode
 Category: 電子工作
 Tags: ESP-WROOM-02
 
-### esp8266のSleepモードについて
+# esp8266のSleepモードについて
 
 **sleepモードは3種類ある**
 
@@ -35,7 +35,7 @@ Tags: ESP-WROOM-02
     - WiFiとの接続は維持されたまま
     - 15mA消費
 
-### Light-Sleepについて調べてみる
+# Light-Sleepについて調べてみる
 
 [この記事](https://community.blynk.cc/t/esp8266-ligh　t-sleep/13584)によると、
 
@@ -48,7 +48,7 @@ wifi_set_sleep_type(LIGHT_SLEEP_T);
 
 しかし、今回は、センサーの値が一定のときはLight-sleepをしておいて、センサーの値が大きく変化したときにWi-Fiに接続する方法を用いたいので、この方法は使えない.
 
-### 今後できるようになりたいこと
+# 今後できるようになりたいこと
 
 時間を設定して復帰するのではなく、光センサの値が変化したときにだけ、それがトリガーになってESP-WROOM-02がdeep-sleepモードから起動するような回路をくみたい.
 
@@ -60,7 +60,7 @@ wifi_set_sleep_type(LIGHT_SLEEP_T);
 
 だが、これをやるには回路の知識がないと時間だけがかかりそう.
 
-### 参考記事
+# 参考記事
 * [ESP8266 IoT 人感センサーでESP8266の目をさまさす | MONOxIT](http://www.monoxit.com/%E8%AC%9B%E5%BA%A7/irmotion/)
 * [電子工作と治具ツールの備忘録: ESP-WROOM-02のメモ(11)：3つのSleepの使い分け](http://ekjigtool.blogspot.jp/2015/08/esp-wroom-02113sleep.html)
 * [電子工作と治具ツールの備忘録: ESP-WROOM-02プログラミング：スリープしながら定期的にツイート](http://ekjigtool.blogspot.jp/2015/08/esp-wroom-02_27.html)

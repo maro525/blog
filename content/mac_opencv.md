@@ -1,8 +1,10 @@
 Title: Mac Sierra でOpencv使う
 Date: 2017-08-23
 Slug: mac_opencv
-Category: Mac
+Category: プログラミング
 Tags: python, opencv
+
+# OpenCV3.3.0
 
 最近のHomebrewのアップデートにより、opencvのバージョン3.3.0が導入されたが、Pythonでopencvを使ってみたところ、libjpegが見つからないとエラーが出た.
 
@@ -131,7 +133,7 @@ infoのところにあるURLに飛んでみたところ、opencv3の方のリン
 
 また、以前までは、openvとopencv3のバージョンが違ったため、opencvはkeg-onlyとなっていたので、`brew link opencv3 --force`のようにして使う必要があったが、これからはその必要がなくなりそう.
 
-### 再びopencvインストール
+# 再びopencvインストール
 
 ```
 % brew install opencv
@@ -157,7 +159,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 となっていたので、問題なくopencvをインストールすることができた.
 
-### 終わりに
+# 終わりに
 
 brew cleanupの存在をうっすらとしかしらなくて、`brew cleanup`を実行してみたら、1.6GBも容量が減った.
 

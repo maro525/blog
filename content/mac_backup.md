@@ -1,10 +1,10 @@
 Title: mac環境のbackup
 Date: 2017-07-16
 Slug: mac_backup
-Category: Mac
+Category: プログラミング
 Tags: Mac
 
-### アプリについて
+# アプリについて
 - 基本的にbrew-caskを使ってインストールする
 
 ```
@@ -31,7 +31,7 @@ brew cask cleanup
 brew cask uninstall firefox
 ```
 
-### Brew-file
+# Brew-file
 
 * Brew-fileを使うと、brewやbrew-caskを使ってインストールしたアプリやパッケージをファイルで管理できるようになる
 * 一緒にmasというパッケージもインストールすると、BrewfileにApp Storeからダウンロードしたアプリも記録される
@@ -111,7 +111,7 @@ if [ -f $(brew --prefix)/etc/brew-wrap ];then
 fi
 ```
 
-### Mackup
+# Mackup
 
 * mackupを使うと、アプリーケーションの設定を保存してくれる.
 
@@ -126,7 +126,7 @@ fi
 % mackup restore
 ```
 
-### Atomのパッケージのバックアップ
+# Atomのパッケージのバックアップ
 
 ```
 apm list -bi > Atomfile
@@ -134,5 +134,5 @@ apm list -bi > Atomfile
 
 のようにファイルを作成し、Dropboxなどに保存
 
-### 参考
+# 参考
 - [Brew-fileでApp Storeのアプリも含めてMacを完全自動初期化](https://rcmdnk.com/blog/2016/02/13/computer-mac-homebrew-brew-file/)

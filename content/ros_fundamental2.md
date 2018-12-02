@@ -1,21 +1,21 @@
 Title: ROSの基礎2 - トピック通信の実践 -
 Date: 2017-10-1
 Slug: ros_fundamental2
-Category: ROS
+Category: プログラミング
 Tags: Ubuntu, ROS
 
 [ROSの基礎1](https://maro525.github.io/blog/ros_fundamental2.html)に引き続き、ROSBOOKにもとづき、ROSの勉強を進めていく.
 
-### トピック通信の実践
+# トピック通信の実践
 
-#### パッケージの作成
+## パッケージの作成
 
 ```
 % cs
 % catkin_create_pkg irvs_ros_tutorials std_msgs roscpp
 ```
 
-#### package.xmlの編集
+## package.xmlの編集
 
 `~/catkin_ws/src/irvs_ros_tutorials/package.xml`を以下のようにする
 
@@ -43,7 +43,7 @@ Tags: Ubuntu, ROS
 </package>
 ```
 
-#### CmakeLists.txtの編集
+## CmakeLists.txtの編集
 
 `~/catkin_ws/src/irvs_ros_tutorials/CmakeLists.txt`を以下のように編集する
 
@@ -91,7 +91,7 @@ add_dependencies(ros_tutorial_msg_subscriber
   irvs_ros_tutorials_generate_message_cpp)
 ```
 
-#### メッセージファイルの作成
+## メッセージファイルの作成
 
 CMakeLists.txtで`add_message_files(FILES msgTutorial.msg)`のようなオプションを追加したので、ファイルを作成する
 
@@ -110,7 +110,7 @@ int32 data
 
 32ビット整数型メッセージ形式のdata変数を定義している
 
-#### 配信者ノードの作成
+## 配信者ノードの作成
 
 CMakeLists.txtで`add_executable(ros_tutorial_msg_publisher src/ros_tutorial_msg_publisher.cpp)`のように、配信者ノードの実行ファイルを生成するオプションを追加したので、そのためのプログラムを作成する
 
@@ -169,7 +169,7 @@ int main(int argc, char **argv)
 }
 ```
 
-#### 購読者ノードの作成
+## 購読者ノードの作成
 
 配信者ノードと同じような手順で、購読者ノードも追加する.
 
@@ -205,7 +205,7 @@ int main(int argc, char **argv)
 }
 ```
 
-#### ビルド
+## ビルド
 
 エイリアスがしてあれば一発でできる
 
@@ -217,25 +217,25 @@ int main(int argc, char **argv)
 * ~/catkin_ws/devel/lib/irvs_ros_tutorials : 実行ファイル
 * ~/catkin_wd/devel/include/irvs_ros_tutorials : メッセージファイルから自動生成されたヘッダーファイルが保存される
 
-#### 実行
+## 実行
 
 まず、マスターを起動
 
 `% roscore`
 
-##### 配信者ノードの実行
+## 配信者ノードの実行
 
 `% rosrun irvs_ros_tutorials ros_tutorial_msg_publisher`
 
 実行すると、トピックメッセージの内容が表示される
 
-##### 購読者ノードの実行
+## 購読者ノードの実行
 
 `% rosrun irvs_ros_tutorials ros_tutorial_msg_subscriber`
 
 実行すると受け取ったデータが表示される
 
-##### 通信状態の確認
+## 通信状態の確認
 
 `% rqt_graph`
 

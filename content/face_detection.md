@@ -4,7 +4,7 @@ Slug: face_detection
 Category: プログラミング
 Tags: python, opencv, dlib
 
-### opencvを使って顔検出し、そこから機械学習を利用して顔認識をする
+# opencvを使って顔検出し、そこから機械学習を利用して顔認識をする
 
 いろいろ調べたら、dlibというライブラリがあることもあることがわかった.
 
@@ -18,9 +18,9 @@ dlibは機械学習のライブラリで、画像処理などもすることが�
 
 顔認識が簡単にできるようになっているライブラリだったので、とりあえず使ってみる.
 
-### インストール
+# インストール
 
-##### ※環境
+## ※環境
 * Mac : Sierra 10.12.6
 * Python : 3.5.3
 
@@ -33,13 +33,13 @@ dlibは機械学習のライブラリで、画像処理などもすることが�
 % pip install face_recognition
 ```
 
-### 特徴
+# 特徴
 
 * 写真の中から顔を見つける
 * 顔の中での目、鼻、口、顎の位置を見つける
 * 顔認識(見つけた顔が誰の顔かを認識する.)
 
-### コマンドラインから試す
+# コマンドラインから試す
 
 まず、コマンドを使って顔認識を試す.
 
@@ -69,11 +69,11 @@ dlibは機械学習のライブラリで、画像処理などもすることが�
 
 `% face_recognition --torance 0.5 --show-distance true ./img_people ./img_unknown_people`
 
-### Pythonで試す
+# Pythonで試す
 
 Githubのface_recognitionのexampleフォルダにあるPythonファイルを実行して試してみる.
 
-#### 画像の中から顔検出
+## 画像の中から顔検出
 
 `% python find_faces_in_picture.py`
 
@@ -87,7 +87,7 @@ Githubのface_recognitionのexampleフォルダにあるPythonファイルを実
 
  実際、普通の顔検出で顔でない部分が誤検出されていたが、CNNを用いたものでやってみると、誤検出はなくなった.
 
-#### 画像で顔認識
+## 画像で顔認識
 
 `% python recognize_faces_in_picture.py`
 
@@ -96,7 +96,7 @@ Githubのface_recognitionのexampleフォルダにあるPythonファイルを実
 1. アメリカの政治家オバマ、バイデン（オバマ大統領時の副大統領)の画像を読み込む
 2. 新しい画像（オバマの画像）と手順1で読み込んだ2画像との"距離"を計算し、新しい画像が誰の顔か判定する
 
-#### 顔の特徴をとる
+## 顔の特徴をとる
 
 `% python find_facial_features_in_picture.py`
 

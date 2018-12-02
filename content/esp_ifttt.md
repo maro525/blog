@@ -4,7 +4,7 @@ Slug: esp_ifttt
 Category: 電子工作
 Tags: ESP-WROOM-02, Arduino, IFTTT
 
-### IFTTTで設定
+# IFTTTで設定
 - search欄からWebhooksと検索する
 - Connectする
 - httpsでGETコマンドでイベントとキーを送れる
@@ -13,7 +13,7 @@ Tags: ESP-WROOM-02, Arduino, IFTTT
 - Search欄からWebhooksを検索して、Documentationを見ると、シークレットキーや、使い方の説明が見れる
 
 
-### Arduinoに書き込むプログラム
+# Arduinoに書き込むプログラム
 ```
 const char* host = "maker.ifttt.com";
 const char* event = "IFTTTに設定したイベント名";
@@ -70,6 +70,6 @@ Serial.println("closing connection");
 ↑IFTTに送信
 
 
-### 参考記事
+# 参考記事
 * [ESP-WROOM-02で取得したセンサーの値をIFTTTに渡す - Qiita](http://qiita.com/snumano/items/ad453fd6137249c40147)
 * [IFTTTにMaker Channelができました | スイッチサイエンス マガジン](http://mag.switch-science.com/2015/06/25/ifttt-maker-channel/)

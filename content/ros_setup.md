@@ -1,10 +1,10 @@
 Title: Ubuntu14.04にROSをいれる
 Date: 2017-09-30
 Slug: ros_setup
-Category: ROS
+Category: プログラミング
 Tags: Ubuntu, ROS
 
-### インストール
+# インストール
 
 ```
 # sources.listを設定する
@@ -31,9 +31,9 @@ Tags: Ubuntu, ROS
 % source /opt/ros/indigo/setup.bash
 ```
 
-### セットアップ
+# セットアップ
 
-#### 作業フォルダの作成と初期化
+## 作業フォルダの作成と初期化
 
 ROSでは、catkinというROS専用のビルドシステムを使っていて、これを使用するためにcatkin作業フォルダを作成する必要がある.
 
@@ -49,7 +49,7 @@ ROSでは、catkinというROS専用のビルドシステムを使っていて�
 
 この時点では、catkin作業フォルダには、srcフォルダとその中のCMakeList.txtしか入っていない.
 
-#### ビルド
+## ビルド
 
 ```
 % cd ~/catkin_ws/
@@ -67,7 +67,7 @@ buildフォルダ、develフォルダが作成される.
 
 buildフォルダには、ビルドシステムに関連するファイル、develフォルダには、実行に関連するファイルが保存される.
 
-#### .bashrcに設定を書く
+## .bashrcに設定を書く
 
 Ubuntuを実行するたびに環境設定を読み込むのは煩わしいので、環境設定ファイルを読み込むように設定する.
 
@@ -81,7 +81,7 @@ vimやgedit,emacs,nano等のエディタで編集する
 % vim ~/.bashrc
 ```
 
-#####.bashrcへの追加部分
+## .bashrcへの追加部分
 
 ```
 # Set ROS Indigo
@@ -98,13 +98,13 @@ alias cm=’cd ~/catkin_ws && catkin_make’
 
 以後は、ubuntu起動時に.bashrcが読み込まれるため、rosの設定は自動で反映される
 
-### サンプル
+# サンプル
 
-#### マスター起動
+## マスター起動
 
 `% roscore`
 
-#### シミュレーター起動
+## シミュレーター起動
 
 別ウインドウでubuntuに入って以下のコマンド
 
@@ -114,13 +114,13 @@ GUIに亀が表示される
 
 ![No Image!]({filename}/image/ros_turtlesim.png)
 
-#### 操作のためのコンソール起動
+## 操作のためのコンソール起動
 
 `% rosrun turtlesim turtle_teleop_key`
 
 キーを押すと、亀が上下へ動く様子が確認できる
 
-### 実行中のノードの確認
+# 実行中のノードの確認
 
 `% rosrun rqt_graph rqt_graph`
 
@@ -132,5 +132,5 @@ GUIに亀が表示される
 
 以上で、基本的な導入はできた.
 
-### 参考
+# 参考
 * [仮想マシン上で手軽にROSのサンプルを動かしてみる - Qiita](https://qiita.com/ryskiwt/items/13451d46805ac2e9459c)

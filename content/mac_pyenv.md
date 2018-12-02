@@ -1,20 +1,20 @@
 Title: Sierraでpyenv, virtualenvを使う
 Date: 2017-01-10
 Slug: mac_pyenv
-Category: Python
+Category: プログラミング
 Tags: python
 
 pyenv,virtualevまわりの話はweb上にたくさん情報が転がっているので、自分の環境セットアップ方法についてメモ代わりに記す
 
-### 環境
+# 環境
 Mac: Sierra 10.12.6
 
-### 簡単な説明
+# 簡単な説明
 
 * pyenvはpythonのバージョンを切り替えて使用するために利用
 * virtualenvは仮想環境を構築するために利用. プロジェクトごとにパッケージを管理するために利用.
 
-### 環境設定
+# 環境設定
 
 * Homebrewからpyenvとvirtualenvをインストール.
 
@@ -44,7 +44,7 @@ fi
 
 `pyenv versions`でインストールできたか確認する
 
-### pyenvを使う
+# pyenvを使う
 
 ```
 # フォルダにpythonのバージョンを適用したいとき
@@ -57,7 +57,7 @@ pyenv global 3.5.3
 
 `pyenv local`コマンドを打つと、そのフォルダに`.python-verion`というファイルが作成されて、pythonのバージョンを認識するようになっている.
 
-### virtualenvを使う
+# virtualenvを使う
 
 ```
 # 仮想環境の作成
@@ -78,7 +78,7 @@ pyenv uninstall NAME
 
 仮想環境にちゃんと入れると、ターミナルで、`(NAME)`のように表示される.
 
-### 環境を保存したいとき
+# 環境を保存したいとき
 
 pipでインストールしたパッケージを保存して他の環境で使いたい場合がある.
 
@@ -92,7 +92,7 @@ pip freeze > packages.list
 pip install -r packages.list
 ```
 
-### Anacondaについて
+# Anacondaについて
 
 Anacondaは結構有名で、ネット上にもリファレンスがたくさんある.
 

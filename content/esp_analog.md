@@ -4,7 +4,7 @@ Slug: esp_analog
 Category: 電子工作
 Tags: ESP-WROOM-02, Arduino
 
-### 設定
+# 設定
 * ツールメニューを開いた部分
     - ボード : Generic ESP8266 Module
     - Flash Mode : QIO
@@ -17,7 +17,7 @@ Tags: ESP-WROOM-02, Arduino
     - Upload Speed : 921600
     - 書き込み装置 : USBasp
 
-### アナログ入力するには
+# アナログ入力するには
 - Arduino UNOでは、アナログ入力ピンがA0~A4とあるが、ESP-WROOM-02には存在しない. デジタルピンも、1, 3~4, 6~11がない.
 - ESP-WROOM-02にはanalogRead関数が用意されていない.
 - ESP-WROOM-02でアナログ入力を行うには、TOUTピンで「system_adc_read()」という関数を使って、アナログ値を取得して行う
@@ -31,25 +31,25 @@ extern "C" {
 
 - しかし、TOUTピンは、通常のArduinoのアナログピンとは違い、0v~1vの入力値の検出はできるが、3.3vの値をそのままTOUTピンに入力するとボードが壊れてしまう可能性がある. そのため、分圧回路を組む必要がある.
 
-### 光センサーについて
+# 光センサーについて
 
-#### CdSセル
+## CdSセル
 - CdSは「フォトレジスタ」という光センサの一種
 - 光が上がると抵抗値が下がる
 - CdS = 「硫化カドミウム(Cadmium sulfide)」
 - 街灯を自動的にオン・オフさせるスイッチとしてよく使われている
 - 明抵抗:10~20kΩ, 暗抵抗:1MΩ
 
-### 回路
+# 回路
 * 10kΩの抵抗をCdSセルのところにはさむ
 * 分圧回路を2.2kΩと1.0kΩの抵抗で作る
 
-#### 回路図
+## 回路図
 ![No Image!]({filename}/image/ESP_Photocell.png)
 
-### プログラム
+# プログラム
 
-#### 光センサーの値を取得し、シリアルモニターで値を確認するプログラム
+## 光センサーの値を取得し、シリアルモニターで値を確認するプログラム
 ```
 #include <Arduino.h>
 
@@ -71,7 +71,7 @@ void loop() {
 
 ```
 
-### 参考記事
+# 参考記事
 * [ハンダ付け不要！初心者でもできる、30分おきにセンサーの値をWeb上に保存する仕組みを安定して動かす（回路編） | Milkcocoa Engineers' Blog](http://blog.mlkcca.com/iot/save-sensor-values-by-half-hour/)
     - そもそもアナログ入ロクとは何かについて説明している
 * [光に反応する回路－光センサ回路](http://startelc.com/elc/Works/elc_W_CdsTr.html)

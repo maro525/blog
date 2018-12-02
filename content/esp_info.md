@@ -5,7 +5,7 @@ Category: 電子工作
 Tags: ESP-WROOM-02
 
 
-### 通信について
+# 通信について
 
 **通信には3種類ある。**
 
@@ -28,7 +28,7 @@ Arduinoで無線LANを利用する方法は3種類ある。
 モジュールは、ESP8266という名前で、以前は、技適（電波を使うための総務省からの許可のようなもの）が未取得だったが、取得したことによって、名前を変えて新しく売られることになった。
 それが、ESP-WROOM-02 Wi-Fiモジュール。
 
-### ESP-WROOM-02 ブレークアウトボード
+# ESP-WROOM-02 ブレークアウトボード
 もとのWi-Fiモジュール単体では、ピンの間隔が1.5mmとなっているため、ブレッドボードの間隔と異なる.
 
 そのためブレッドボードに載せるようなブレークアウトボードが発売されている.
@@ -36,7 +36,7 @@ Arduinoで無線LANを利用する方法は3種類ある。
 * [Ｗｉ－Ｆｉモジュール　ＥＳＰ－ＷＲＯＯＭ－０２　ＤＩＰ化キット: 無線、高周波関連商品 秋月電子通商 電子部品 ネット通販](http://akizukidenshi.com/catalog/g/gK-09758/)
 * [Amazon.co.jp： ESP-WROOM-02 搭載mikroBUS(R)対応ブレークアウトボード Ver.2: おもちゃ](https://www.amazon.co.jp/gp/product/B015X3P2H4/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B015X3P2H4&linkCode=as2&tag=deko0f-22)
 
-### ESPr Developer
+# ESPr Developer
 * ESP-WROOM-02の開発ボードで、ESP-WROOM-02に加えて、シリアル変換やレギュレータがセットになっている
 * ESP8266は、上海のファブレス半導体メーカー Espressif Systemsが製造している
 * ピンヘッダをはんだ付けして、ブレッドボードに接続する
@@ -50,7 +50,7 @@ Arduinoで無線LANを利用する方法は3種類ある。
 
 が載っている
 
-#### 仕様
+## 仕様
 * IEEE 802.11b/g/nに対応 (WiFi 2.4GHz)
 * 低消費電力の32 bit MCUを搭載
 * 4Mbyteのフラッシュメモリ
@@ -73,30 +73,30 @@ Arduinoで無線LANを利用する方法は3種類ある。
 * OTAに対応している. (ネットワーク経由で書き込みをすることができる)
 * 最大電流が50mA
 
-### 動作環境
+# 動作環境
 * Arduino IDE
 * Lua
 * Python -> [MicroPython](https://github.com/micropython/micropython/tree/master/esp8266)
 * NodeJS
 
-### モードについて
+# モードについて
 
-##### Flash Boot Mode(実行モード)
+## Flash Boot Mode(実行モード)
 
 * ATコマンドのやりとり
 * 書き込んだスケッチの実行
 
-##### UART Download Mode(書き込みモード)
+## UART Download Mode(書き込みモード)
 
 * スケッチを書き込む
 * ファームアップデートを行う.
 
-##### SD-Card Boot Mode（SDブートモード）
+## SD-Card Boot Mode（SDブートモード）
 
 * SDカードによるモード
 * 後日調べることにする
 
-#### ピンとモードの関係
+# ピンとモードの関係
 
 ※ ボタンはESPr Developerの基板上に乗っているボタンの名前
 
@@ -110,7 +110,7 @@ Arduinoで無線LANを利用する方法は3種類ある。
 * スケッチを書き込む際には、書き込みモードになっていないと、プロテクトがかかっているため、エラーがでてしまう。
 
 
-### 参考
+# 参考
 * [ESPr® Developer（ESP-WROOM-02開発ボード） - スイッチサイエンス](https://www.switch-science.com/catalog/2500/)
 * [ESP-WROOM-32 ( ESP32 ) で Wi-Fi スマホ LED スイッチ作り | mgo-tec電子工作](https://www.mgo-tec.com/blog-entry-esp-wroom-32-esp32-wifi-smartphone-led-switch.html)
     - 開発ボードを使わずに回路づくりをするときに参考になりそう

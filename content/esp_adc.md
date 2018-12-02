@@ -4,20 +4,20 @@ Slug: esp_adc
 Category: 電子工作
 Tags: ESP-WROOM-02
 
-### ESP-WROOM-02
+# ESP-WROOM-02
 * ESP8266にはデフォルトでADコンバーターが付いている
 * センサーが１つであれば、分圧回路を組み、TOUT端子を使用してデータを取得する
 * TOUTピンを使用しない場合は、外部のADコンバーターを使用する
 * ADコンバーターはSPIプロトコルで通信する. 使用するドライバは[Github](https://github.com/MetalPhreak/ESP8266_SPI_Driver)からダウンロード
 
-### ADコンバーター
+# ADコンバーター
 * 外付けADコンバーターは、MCP3002/3004/3008などある
 * 精度は10bit(0-1023までの整数を返す).
 * MCP3002とMCP3004/3008はプロトコルが異なる（？）
 * MCP3002が2チャンネル、MCP3004が4チャンネル、MCP3008が8チャンネル
 * MCP3002を使う場合、io15-抵抗(10kΩ)-GNDのように、pulldown回路を作る必要がある
 
-### 回路
+# 回路
 * io14 → clk(13)
 * io12 → dout(12)
 * io13 → din(11)
@@ -25,16 +25,16 @@ Tags: ESP-WROOM-02
 
 回路図は、[ここ](https://upverter.com/maro525/a5489562cfda0a26/ESP_ADC_DEEPSLEEP/)から見れる
 
-#### SPI通信
+# SPI通信
 「Serial Peripheral Interface」の略. 比較的近距離に配置されているデバイス同士をつなげるバスのこと
 
-### 信号の機能
+# 信号の機能
 * cs = チップセレクト
 * sck(clk) = クロック
 * MOSI(din) = データ入力
 * MOSO(dout) = データ出力
 
-### プログラム
+# プログラム
 ```
 extern "C"{
 #include <spi.h>
@@ -85,14 +85,14 @@ uint32 check(int channel) {
 
 ```
 
-### 結果
+# 結果
 シリアルモニタで２つのセンサの値を確認することができた
 ![No Image!]({filename}/image/esp_adc_output.png)
 
-### これから調べること
+# これから調べること
 * ESP-WROOM-02のENピンの意味
 
-### 参考記事
+# 参考記事
 * [MCP3004/3008データシート](http://ww1.microchip.com/downloads/en/DeviceDoc/21295d.pdf)
 * [ESP8266(ESP-WROOM-02)でアナログ値を見るには？ - Qiita](http://qiita.com/ryokai/items/9b0c56616b4550eb05f1)
 * [ESP8266 (ESP-WROOM-02) でセンサーを扱う - Qiita](http://qiita.com/exabugs/items/9ca4093813db71278b39)
