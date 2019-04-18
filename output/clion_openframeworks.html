@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Site Meta Data -->
+    <title>CLionでopenframeworksをビルドする</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Hidemaro">
+
+    <link rel="shortcut icon" href="">
+
+    <!-- schema.org -->
+    <meta itemprop="name" content="Maro Notebook">
+    <meta itemprop="image" content="">
+    <meta itemprop="description" content="">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Style Meta Data -->
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+
+    <!-- Feed Meta Data -->
+
+    <!-- Twitter Feed -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="/clion_openframeworks.html">
+<meta name="twitter:title" content="Maro Notebook ~ CLionでopenframeworksをビルドする">
+<meta name="twitter:description" content="環境(2017/08/12) Mac:10.12.6 CMake:3.8.2 openframeworks:0.9.8 準備 ofxCMakeをクローンして、addonsフォルダに入れる ofxCMake/project/CMakeLists.txtの中で、OFのルートのフォルダを自分のPCのものに書き換える 手順 ofxCMake/project/CMakeLists.txtをプロジェクトのフォルダにコピーする main.cppやofApp.cpp以外にも自分で書いたファイルがあれば、Source Filesに追加する(ヘッダーファイルは追加しなくていいっぽい） APP_NAMEの部分でアプリケーションの名前を変更する CLionのメニューからプロジェクトフォルダを開く プロジェクトのルートフォルダを変更するか聞かれるが無視する gitで&#39;.idea&#39;フォルダのファイルを管理するか聞かれるが、gitに追加する必要なし アドオン追加する（アドオン追加方法は下記) ビルドする アドオン追加手順 Internal Addons …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Maro Notebook ~ CLionでopenframeworksをビルドする" />
+<meta property="og:description" content="環境(2017/08/12) Mac:10.12.6 CMake:3.8.2 openframeworks:0.9.8 準備 ofxCMakeをクローンして、addonsフォルダに入れる ofxCMake/project/CMakeLists.txtの中で、OFのルートのフォルダを自分のPCのものに書き換える 手順 ofxCMake/project/CMakeLists.txtをプロジェクトのフォルダにコピーする main.cppやofApp.cpp以外にも自分で書いたファイルがあれば、Source Filesに追加する(ヘッダーファイルは追加しなくていいっぽい） APP_NAMEの部分でアプリケーションの名前を変更する CLionのメニューからプロジェクトフォルダを開く プロジェクトのルートフォルダを変更するか聞かれるが無視する gitで&#39;.idea&#39;フォルダのファイルを管理するか聞かれるが、gitに追加する必要なし アドオン追加する（アドオン追加方法は下記) ビルドする アドオン追加手順 Internal Addons …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside>
+        <!-- <center><a href=""><img id="avatar" src=""></a></center> -->
+        <h1 id="sitename"><a href="https://maro525.github.io/notebook/"></a>Maro Notebook</a></h1>
+        <br>
+
+
+        <nav class="nav">
+            <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://maro525.github.io/notebook/">HOME</a></li>
+                <li><a class="nav__link" href="https://maro525.github.io">ABOUT</a></li>
+
+
+            </ul>
+        </nav>
+
+        <p class="social">
+            <a href="https://twitter.com/HdmrF" target="_blank"><img src="/theme/images/icons/twitter.png"></a>
+            <a href="https://github.com/maro525" target="_blank"><img src="/theme/images/icons/github.png"></a>
+        </p>
+
+        <h2 class="categories">Categories</h2>
+        <ul class="navbar" id="categorylist">
+            <li ><a href="/category/ben.html">本</a></li>
+            <li ><a href="/category/dian-zi-gong-zuo.html">電子工作</a></li>
+            <li  class="active" ><a href="/category/puroguramingu.html">プログラミング</a></li>
+            <li ><a href="/category/si-kao-nobei-wang-lu.html">思考の備忘録</a></li>
+            <li ><a href="/category/yin-le.html">音楽</a></li>
+        </ul>
+
+
+    </aside>
+
+    <!-- Content -->
+    <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="/clion_openframeworks.html" rel="bookmark" title="Permalink to CLionでopenframeworksをビルドする">CLionでopenframeworksをビルドする</a></h2>
+        <div class="entry-content blog-post">
+            <h1>環境(2017/08/12)</h1>
+<ul>
+<li>Mac:10.12.6</li>
+<li>CMake:3.8.2</li>
+<li>openframeworks:0.9.8</li>
+</ul>
+<h1>準備</h1>
+<ol>
+<li><a href="https://github.com/BildPeter/ofxCMake">ofxCMake</a>をクローンして、addonsフォルダに入れる</li>
+<li><code>ofxCMake/project/CMakeLists.txt</code>の中で、OFのルートのフォルダを自分のPCのものに書き換える</li>
+</ol>
+<h1>手順</h1>
+<ol>
+<li><code>ofxCMake/project/CMakeLists.txt</code>をプロジェクトのフォルダにコピーする</li>
+<li>main.cppやofApp.cpp以外にも自分で書いたファイルがあれば、Source Filesに追加する(ヘッダーファイルは追加しなくていいっぽい）</li>
+<li>APP_NAMEの部分でアプリケーションの名前を変更する</li>
+<li>CLionのメニューからプロジェクトフォルダを開く</li>
+<li>プロジェクトのルートフォルダを変更するか聞かれるが無視する</li>
+<li>gitで'.idea'フォルダのファイルを管理するか聞かれるが、gitに追加する必要なし</li>
+<li>アドオン追加する（アドオン追加方法は下記)</li>
+<li>ビルドする</li>
+</ol>
+<h1>アドオン追加手順</h1>
+<h2>Internal Addons(元から入ってるaddon)の場合</h2>
+<p><code>CMakeList.txt</code>のAddOnsの部分に書き加える</p>
+<h2>External Addonsの場合</h2>
+<ol>
+<li>ofxNAME.cmake(NAMEはaddonの名前)を<code>ofxCMake/addOns</code>内のtemplateファイルからコピーして作成(ファイルの中身はaddonの形態に応じて書き換える)-&gt;CMakeの文法について下記</li>
+<li><code>ofxCMake/addOns/external</code>に1.で作成したファイルをコピーする</li>
+<li><code>ofxCMake/modules/addOns.cmake</code>の中に、<code>OF_include_external_addOns( ofxNAME )</code>を追加</li>
+<li>プロジェクトのaddOnsの部分にofxNAMEを追加する.</li>
+</ol>
+<h1>CMakeの文法(勉強中)</h1>
+<table>
+<thead>
+<tr>
+<th align="left">言葉</th>
+<th align="left">意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">cmake_minimum_required(VERSION 3.8.2</td>
+<td align="left">プロジェクトに最低限必要なcmakeのバージョンを指定, 必須</td>
+</tr>
+<tr>
+<td align="left">add_executable(Main main.cpp)</td>
+<td align="left">生成する実行ファイルとその元となるソースプログラム名を指定する</td>
+</tr>
+<tr>
+<td align="left">project(TMP)</td>
+<td align="left">プロジェクト名設定</td>
+</tr>
+<tr>
+<td align="left">set(XXX xxx)</td>
+<td align="left">キャッシュ変数定義・代入</td>
+</tr>
+<tr>
+<td align="left">add_library</td>
+<td align="left">STATICをつけると静的ライブラリ</td>
+</tr>
+<tr>
+<td align="left">target_link_libraries</td>
+<td align="left">ライブラリを実行ファイルにリンクする</td>
+</tr>
+<tr>
+<td align="left">add_subdirectory</td>
+<td align="left">ディレクトリをcmakeの管理に追加する</td>
+</tr>
+<tr>
+<td align="left">set_target_properties</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">file</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>set(CMAKE_VERBOSE_MAKEFILE 1)</code>とすると、makeの実行コマンドが見える</li>
+</ul>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href="/author/hidemaro.html">@Hidemaro</a>
+            <span> in </span>
+            <span class="post_category"><a href="/category/puroguramingu.html" rel="bookmark" title="Permalink to プログラミング">[
+                    プログラミング ]</a></span>
+            <span class="post_date">Sat 12 August 2017</span>
+            <div><span>Tags : </span>
+                <span><a href="/tag/clion.html">#Clion, </a></span>
+                <span><a href="/tag/openframeworks.html">#openframeworks, </a></span>
+                <span><a href="/tag/c.html">#c++, </a></span>
+            </div>
+
+            <!-- <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=/clion_openframeworks.html&text=CLionでopenframeworksをビルドする&via="><img
+                            src="/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=/clion_openframeworks.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=/clion_openframeworks.html&t=CLionでopenframeworksをビルドする"><img
+                            src="/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=/clion_openframeworks.html&title=CLionでopenframeworksをビルドする"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=CLionでopenframeworksをビルドする&amp;body=Viens découvrir un article à propos de [CLionでopenframeworksをビルドする] sur le site de Hidemaro. /clion_openframeworks.html"
+                            title="Share by Email" target="_blank"><img
+                            src="/theme/images/icons/mail-s.png"></a></span>
+                </div> -->
+        </div>
+    </article>
+</section>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+
+</html>

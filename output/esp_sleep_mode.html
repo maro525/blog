@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Site Meta Data -->
+    <title>ESP-WROOM-02のスリープモードまわり</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Hidemaro">
+
+    <link rel="shortcut icon" href="">
+
+    <!-- schema.org -->
+    <meta itemprop="name" content="Maro Notebook">
+    <meta itemprop="image" content="">
+    <meta itemprop="description" content="">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Style Meta Data -->
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+
+    <!-- Feed Meta Data -->
+
+    <!-- Twitter Feed -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="/esp_sleep_mode.html">
+<meta name="twitter:title" content="Maro Notebook ~ ESP-WROOM-02のスリープモードまわり">
+<meta name="twitter:description" content="esp8266のSleepモードについて sleepモードは3種類ある deep-sleep 記事 ESP8266の真骨頂Deep-Sleepモードの使い方 - Qiita ESP8266 (ESP-WROOM-02) で消費電力を抑えるには (スリープモードまとめ) - Qiita sleepモードのうち最も消費電力が少ない 復旧時、再起動されて、setup()から実行される IO16ピンをRST（リセット）に繋ぐ必要がある 一定間隔で何かを実行するのに向いている マイコン部分まですべて電源が切れるので、変数を所持したい場合などは、工夫が必要 RTCメモリーというメモリーが動き続けているので、それに変数等データを書き込むことができる RTCメモリーはユーザーエリアが512バイトある. 先人によると、最初の4バイトはなぜか読み込めないので、正確には508バイトしか使えないらしい light-sleep deep-sleepの次に消費電力が少ない WIFI_STA mode(ステーションモード）のみで実行可能 通信が行われないときにはWiFi用のRF回路をオフにし、CPの実行をサスペンドする WiFiとの接続は維持されたまま 0.9mA消費 modem-sleep sleepモードの中で最も消費電力が大きい CPUの動作を維持したまま、非通信時にWiFi用のRF回路をオフにして電力をおさえる WiFiとの接続は維持されたまま 15mA消費 Light-Sleepについて調べてみる この記事によると、 WiFi …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Maro Notebook ~ ESP-WROOM-02のスリープモードまわり" />
+<meta property="og:description" content="esp8266のSleepモードについて sleepモードは3種類ある deep-sleep 記事 ESP8266の真骨頂Deep-Sleepモードの使い方 - Qiita ESP8266 (ESP-WROOM-02) で消費電力を抑えるには (スリープモードまとめ) - Qiita sleepモードのうち最も消費電力が少ない 復旧時、再起動されて、setup()から実行される IO16ピンをRST（リセット）に繋ぐ必要がある 一定間隔で何かを実行するのに向いている マイコン部分まですべて電源が切れるので、変数を所持したい場合などは、工夫が必要 RTCメモリーというメモリーが動き続けているので、それに変数等データを書き込むことができる RTCメモリーはユーザーエリアが512バイトある. 先人によると、最初の4バイトはなぜか読み込めないので、正確には508バイトしか使えないらしい light-sleep deep-sleepの次に消費電力が少ない WIFI_STA mode(ステーションモード）のみで実行可能 通信が行われないときにはWiFi用のRF回路をオフにし、CPの実行をサスペンドする WiFiとの接続は維持されたまま 0.9mA消費 modem-sleep sleepモードの中で最も消費電力が大きい CPUの動作を維持したまま、非通信時にWiFi用のRF回路をオフにして電力をおさえる WiFiとの接続は維持されたまま 15mA消費 Light-Sleepについて調べてみる この記事によると、 WiFi …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside>
+        <!-- <center><a href=""><img id="avatar" src=""></a></center> -->
+        <h1 id="sitename"><a href="https://maro525.github.io/notebook/"></a>Maro Notebook</a></h1>
+        <br>
+
+
+        <nav class="nav">
+            <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://maro525.github.io/notebook/">HOME</a></li>
+                <li><a class="nav__link" href="https://maro525.github.io">ABOUT</a></li>
+
+
+            </ul>
+        </nav>
+
+        <p class="social">
+            <a href="https://twitter.com/HdmrF" target="_blank"><img src="/theme/images/icons/twitter.png"></a>
+            <a href="https://github.com/maro525" target="_blank"><img src="/theme/images/icons/github.png"></a>
+        </p>
+
+        <h2 class="categories">Categories</h2>
+        <ul class="navbar" id="categorylist">
+            <li ><a href="/category/ben.html">本</a></li>
+            <li  class="active" ><a href="/category/dian-zi-gong-zuo.html">電子工作</a></li>
+            <li ><a href="/category/puroguramingu.html">プログラミング</a></li>
+            <li ><a href="/category/si-kao-nobei-wang-lu.html">思考の備忘録</a></li>
+            <li ><a href="/category/yin-le.html">音楽</a></li>
+        </ul>
+
+
+    </aside>
+
+    <!-- Content -->
+    <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="/esp_sleep_mode.html" rel="bookmark" title="Permalink to ESP-WROOM-02のスリープモードまわり">ESP-WROOM-02のスリープモードまわり</a></h2>
+        <div class="entry-content blog-post">
+            <h1>esp8266のSleepモードについて</h1>
+<p><strong>sleepモードは3種類ある</strong></p>
+<ul>
+<li>
+<p>deep-sleep</p>
+<ul>
+<li>記事<ul>
+<li><a href="http://qiita.com/azusa9/items/65a5c3772c41631b5ca1">ESP8266の真骨頂Deep-Sleepモードの使い方 - Qiita</a></li>
+<li><a href="http://qiita.com/exabugs/items/9edf9e2ba8f69800e4c5">ESP8266 (ESP-WROOM-02) で消費電力を抑えるには (スリープモードまとめ) - Qiita</a></li>
+</ul>
+</li>
+<li>sleepモードのうち最も消費電力が少ない</li>
+<li>復旧時、再起動されて、setup()から実行される</li>
+<li>IO16ピンをRST（リセット）に繋ぐ必要がある</li>
+<li>一定間隔で何かを実行するのに向いている</li>
+<li>マイコン部分まですべて電源が切れるので、変数を所持したい場合などは、工夫が必要</li>
+<li>RTCメモリーというメモリーが動き続けているので、それに変数等データを書き込むことができる</li>
+<li>RTCメモリーはユーザーエリアが512バイトある.</li>
+<li>先人によると、最初の4バイトはなぜか読み込めないので、正確には508バイトしか使えないらしい</li>
+</ul>
+</li>
+<li>
+<p>light-sleep</p>
+<ul>
+<li>deep-sleepの次に消費電力が少ない</li>
+<li>WIFI_STA mode(ステーションモード）のみで実行可能</li>
+<li>通信が行われないときにはWiFi用のRF回路をオフにし、CPの実行をサスペンドする</li>
+<li>WiFiとの接続は維持されたまま</li>
+<li>0.9mA消費</li>
+</ul>
+</li>
+<li>
+<p>modem-sleep</p>
+<ul>
+<li>sleepモードの中で最も消費電力が大きい</li>
+<li>CPUの動作を維持したまま、非通信時にWiFi用のRF回路をオフにして電力をおさえる</li>
+<li>WiFiとの接続は維持されたまま</li>
+<li>15mA消費</li>
+</ul>
+</li>
+</ul>
+<h1>Light-Sleepについて調べてみる</h1>
+<p><a href="https://community.blynk.cc/t/esp8266-ligh　t-sleep/13584">この記事</a>によると、</p>
+<div class="highlight"><pre><span></span>WiFi.mode(WIFI_STA);
+wifi_set_sleep_type(LIGHT_SLEEP_T);
+</pre></div>
+
+
+<p>のようにコードを書くだけで、delay関数の間、自動的にLight-Sleepモードい移行してくれるらしい.</p>
+<p>しかし、今回は、センサーの値が一定のときはLight-sleepをしておいて、センサーの値が大きく変化したときにWi-Fiに接続する方法を用いたいので、この方法は使えない.</p>
+<h1>今後できるようになりたいこと</h1>
+<p>時間を設定して復帰するのではなく、光センサの値が変化したときにだけ、それがトリガーになってESP-WROOM-02がdeep-sleepモードから起動するような回路をくみたい.</p>
+<p><a href="http://www.monoxit.com/%E8%AC%9B%E5%BA%A7/irmotion/">この記事</a>では、人感センサのHIGH,LOWを（回路的に)用いて、deep-sleepモードからの復帰をしている.</p>
+<p>光センサの値によってdeep-sleepモードから復帰することは可能なのか.</p>
+<p><a href="光センサ回路（デジタルＩＣを使って）">このような記事</a>のように、回路をうまく組めばいけそう.</p>
+<p>だが、これをやるには回路の知識がないと時間だけがかかりそう.</p>
+<h1>参考記事</h1>
+<ul>
+<li><a href="http://www.monoxit.com/%E8%AC%9B%E5%BA%A7/irmotion/">ESP8266 IoT 人感センサーでESP8266の目をさまさす | MONOxIT</a></li>
+<li><a href="http://ekjigtool.blogspot.jp/2015/08/esp-wroom-02113sleep.html">電子工作と治具ツールの備忘録: ESP-WROOM-02のメモ(11)：3つのSleepの使い分け</a></li>
+<li><a href="http://ekjigtool.blogspot.jp/2015/08/esp-wroom-02_27.html">電子工作と治具ツールの備忘録: ESP-WROOM-02プログラミング：スリープしながら定期的にツイート</a></li>
+<li><a href="http://okiraku-camera.tokyo/blog/?p=4996">ESP-WROOM-02のLIGHT-SLEEPとGPIOでの復帰 | 東京お気楽カメラ</a></li>
+<li><a href="https://ambidata.io/examples/weatherstation-1/">ESPr Developer + Ambientで自宅の環境モニターを作る – Ambient</a></li>
+<li><a href="https://lowreal.net/2016/01/10/1">ESP8266 (ESP-WROOM-02) の Deep Sleep でデータを引き継ぐ | tech - 氾濫原</a></li>
+<li><a href="https://jiwashin.blogspot.jp/2016/07/esp30.html">じわじわ進む: ESP単体で30分のデータをまとめて送信</a></li>
+<li><a href="http://qiita.com/azusa9/items/65a5c3772c41631b5ca1">ESP8266の真骨頂Deep-Sleepモードの使い方 - Qiita</a></li>
+<li><a href="http://arms22.blog91.fc2.com/?tag=esp8266">なんでも作っちゃう、かも。</a></li>
+<li><a href="https://community.blynk.cc/t/esp8266-light-sleep/13584^">ESP8266 Light Sleep - Projects made with Blynk - Blynk</a></li>
+<li><a href="http://www.hiramine.com/physicalcomputing/espwroom02/deepsleepbuttonwakeup.html">DeepSleepへの移行とボタン押下による復帰</a></li>
+</ul>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href="/author/hidemaro.html">@Hidemaro</a>
+            <span> in </span>
+            <span class="post_category"><a href="/category/dian-zi-gong-zuo.html" rel="bookmark" title="Permalink to 電子工作">[
+                    電子工作 ]</a></span>
+            <span class="post_date">Tue 22 August 2017</span>
+            <div><span>Tags : </span>
+                <span><a href="/tag/esp-wroom-02.html">#ESP-WROOM-02, </a></span>
+            </div>
+
+            <!-- <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=/esp_sleep_mode.html&text=ESP-WROOM-02のスリープモードまわり&via="><img
+                            src="/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=/esp_sleep_mode.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=/esp_sleep_mode.html&t=ESP-WROOM-02のスリープモードまわり"><img
+                            src="/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=/esp_sleep_mode.html&title=ESP-WROOM-02のスリープモードまわり"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=ESP-WROOM-02のスリープモードまわり&amp;body=Viens découvrir un article à propos de [ESP-WROOM-02のスリープモードまわり] sur le site de Hidemaro. /esp_sleep_mode.html"
+                            title="Share by Email" target="_blank"><img
+                            src="/theme/images/icons/mail-s.png"></a></span>
+                </div> -->
+        </div>
+    </article>
+</section>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+
+</html>

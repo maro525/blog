@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Site Meta Data -->
+    <title>MacにVagrantでUbuntuをいれる</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Hidemaro">
+
+    <link rel="shortcut icon" href="">
+
+    <!-- schema.org -->
+    <meta itemprop="name" content="Maro Notebook">
+    <meta itemprop="image" content="">
+    <meta itemprop="description" content="">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Style Meta Data -->
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+
+    <!-- Feed Meta Data -->
+
+    <!-- Twitter Feed -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="/vagrant_ubuntu.html">
+<meta name="twitter:title" content="Maro Notebook ~ MacにVagrantでUbuntuをいれる">
+<meta name="twitter:description" content="インストール vagrant box add NAME URLというコマンドでOSをインストールすることができる. boxの一覧は、で確認することができる. 今回は、Official Ubuntu 14.04 daily Cloud Image amd64 (Development release, No Guest Additions)をインストールする % vagrant box add ubuntu1404 https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box 次に、設定ファイルを作成する vagrant init ubuntu1404 このコマンドを打つと、以下のように表示される A `Vagrantfile` has been placed in …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Maro Notebook ~ MacにVagrantでUbuntuをいれる" />
+<meta property="og:description" content="インストール vagrant box add NAME URLというコマンドでOSをインストールすることができる. boxの一覧は、で確認することができる. 今回は、Official Ubuntu 14.04 daily Cloud Image amd64 (Development release, No Guest Additions)をインストールする % vagrant box add ubuntu1404 https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box 次に、設定ファイルを作成する vagrant init ubuntu1404 このコマンドを打つと、以下のように表示される A `Vagrantfile` has been placed in …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside>
+        <!-- <center><a href=""><img id="avatar" src=""></a></center> -->
+        <h1 id="sitename"><a href="https://maro525.github.io/notebook/"></a>Maro Notebook</a></h1>
+        <br>
+
+
+        <nav class="nav">
+            <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://maro525.github.io/notebook/">HOME</a></li>
+                <li><a class="nav__link" href="https://maro525.github.io">ABOUT</a></li>
+
+
+            </ul>
+        </nav>
+
+        <p class="social">
+            <a href="https://twitter.com/HdmrF" target="_blank"><img src="/theme/images/icons/twitter.png"></a>
+            <a href="https://github.com/maro525" target="_blank"><img src="/theme/images/icons/github.png"></a>
+        </p>
+
+        <h2 class="categories">Categories</h2>
+        <ul class="navbar" id="categorylist">
+            <li ><a href="/category/ben.html">本</a></li>
+            <li ><a href="/category/dian-zi-gong-zuo.html">電子工作</a></li>
+            <li  class="active" ><a href="/category/puroguramingu.html">プログラミング</a></li>
+            <li ><a href="/category/si-kao-nobei-wang-lu.html">思考の備忘録</a></li>
+            <li ><a href="/category/yin-le.html">音楽</a></li>
+        </ul>
+
+
+    </aside>
+
+    <!-- Content -->
+    <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="/vagrant_ubuntu.html" rel="bookmark" title="Permalink to MacにVagrantでUbuntuをいれる">MacにVagrantでUbuntuをいれる</a></h2>
+        <div class="entry-content blog-post">
+            <h1>インストール</h1>
+<p><code>vagrant box add NAME URL</code>というコマンドでOSをインストールすることができる.</p>
+<p>boxの一覧は、<img alt="このページ" src="http://www.vagrantbox.es/">で確認することができる.</p>
+<p>今回は、Official Ubuntu 14.04 daily Cloud Image amd64 (Development release, No Guest Additions)をインストールする</p>
+<div class="highlight"><pre><span></span><span class="c">% vagrant box add ubuntu1404 https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box</span>
+</pre></div>
+
+
+<p>次に、設定ファイルを作成する</p>
+<p><code>vagrant init ubuntu1404</code></p>
+<p>このコマンドを打つと、以下のように表示される</p>
+<div class="highlight"><pre><span></span>A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+</pre></div>
+
+
+<p>Vagrantfileが作成されている.</p>
+<h1>設定の変更</h1>
+<p>Vagrantfileの<code>congif.vm.network "private_network", ip: "192.168.33.10"</code>の部分のコメントアウトを外す</p>
+<h1>仮想サーバー立ち上げ</h1>
+<p><code>vagrant up</code></p>
+<h1>仮想サーバーに入る</h1>
+<p><code>vagrant ssh</code></p>
+<p>出るときは、<code>exit</code></p>
+<h1>VNCサーバー接続</h1>
+<h2>準備</h2>
+<div class="highlight"><pre><span></span><span class="c">% sudo apt-get update</span>
+<span class="c">% sudo apt-get install xfce4 ubuntu-desktop vnc4server</span>
+</pre></div>
+
+
+<h2>起動</h2>
+<div class="highlight"><pre><span></span># パスワードの設定
+% vnspasswd
+
+# VNCサーバー起動
+% vncserver :1
+
+# 起動しているか確認
+% netstat -an | grep 5901
+</pre></div>
+
+
+<h2>設定ファイル変更</h2>
+<p><code>~/.vnc/xstartup</code>に次の文が入るようにする</p>
+<div class="highlight"><pre><span></span>unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+startxfce4 &amp;
+</pre></div>
+
+
+<h2>接続してみる</h2>
+<p>MacのFinderから、「サーバーへ接続」</p>
+<p>そして、<code>vnc://192.168.33.10:5901</code>にアクセス</p>
+<h1>vagrant-manager</h1>
+<p>vagrantのマシンを、メニューバーから操作することができるアプリ</p>
+<h2>インストール</h2>
+<p><code>brew cask install vagrant-manager</code></p>
+<h1>GUIを有効にする</h1>
+<p>Vagrantfile以下の部分のコメントを外す</p>
+<div class="highlight"><pre><span></span>  config.vm.provider &quot;virtualbox&quot; do |vb|
+     # Display the VirtualBox GUI when booting the machine
+     vb.gui = true
+
+     # Customize the amount of memory on the VM:
+     vb.memory = &quot;1024&quot;
+  end
+</pre></div>
+
+
+<p>また、~/.bashrcファイルに以下の記述をしていないとエラーがでる.</p>
+<p><code>export DISPLAY=:0</code></p>
+<h1></h1>
+<ul>
+<li><img alt="VagrantとVirtualboxでubuntu環境を構築し、Macからvnc接続する - juncollinの日記" src="http://juncollin.hatenablog.com/entry/2017/02/18/141358"></li>
+</ul>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href="/author/hidemaro.html">@Hidemaro</a>
+            <span> in </span>
+            <span class="post_category"><a href="/category/puroguramingu.html" rel="bookmark" title="Permalink to プログラミング">[
+                    プログラミング ]</a></span>
+            <span class="post_date">Mon 25 September 2017</span>
+            <div><span>Tags : </span>
+                <span><a href="/tag/ubuntu.html">#Ubuntu, </a></span>
+                <span><a href="/tag/vagrant.html">#Vagrant, </a></span>
+                <span><a href="/tag/virtualbox.html">#Virtualbox, </a></span>
+            </div>
+
+            <!-- <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=/vagrant_ubuntu.html&text=MacにVagrantでUbuntuをいれる&via="><img
+                            src="/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=/vagrant_ubuntu.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=/vagrant_ubuntu.html&t=MacにVagrantでUbuntuをいれる"><img
+                            src="/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=/vagrant_ubuntu.html&title=MacにVagrantでUbuntuをいれる"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=MacにVagrantでUbuntuをいれる&amp;body=Viens découvrir un article à propos de [MacにVagrantでUbuntuをいれる] sur le site de Hidemaro. /vagrant_ubuntu.html"
+                            title="Share by Email" target="_blank"><img
+                            src="/theme/images/icons/mail-s.png"></a></span>
+                </div> -->
+        </div>
+    </article>
+</section>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+
+</html>

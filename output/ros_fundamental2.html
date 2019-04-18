@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Site Meta Data -->
+    <title>ROSの基礎2 - トピック通信の実践 -</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Hidemaro">
+
+    <link rel="shortcut icon" href="">
+
+    <!-- schema.org -->
+    <meta itemprop="name" content="Maro Notebook">
+    <meta itemprop="image" content="">
+    <meta itemprop="description" content="">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Style Meta Data -->
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+
+    <!-- Feed Meta Data -->
+
+    <!-- Twitter Feed -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="/ros_fundamental2.html">
+<meta name="twitter:title" content="Maro Notebook ~ ROSの基礎2 - トピック通信の実践 -">
+<meta name="twitter:description" content="ROSの基礎1に引き続き、ROSBOOKにもとづき、ROSの勉強を進めていく. トピック通信の実践 パッケージの作成 % cs % catkin_create_pkg irvs_ros_tutorials std_msgs roscpp package.xmlの編集 ~/catkin_ws/src/irvs_ros_tutorials/package.xmlを以下のようにする &lt;?xml version=&#34;1.0&#34;?&gt; &lt;package&gt; &lt;name&gt;irvs_ros_tutorials&lt;/name&gt; &lt;version&gt;0.0.0&lt;/version&gt; &lt;description&gt;The irvs_ros_tutorials package&lt;/description&gt; &lt;maintainer email=&#34;vagrant@todo.todo&#34;&gt;vagrant&lt;/maintainer&gt; &lt;license&gt;TODO&lt;/license&gt; &lt;buildtool_depend&gt;catkin&lt;/buildtool_depend …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Maro Notebook ~ ROSの基礎2 - トピック通信の実践 -" />
+<meta property="og:description" content="ROSの基礎1に引き続き、ROSBOOKにもとづき、ROSの勉強を進めていく. トピック通信の実践 パッケージの作成 % cs % catkin_create_pkg irvs_ros_tutorials std_msgs roscpp package.xmlの編集 ~/catkin_ws/src/irvs_ros_tutorials/package.xmlを以下のようにする &lt;?xml version=&#34;1.0&#34;?&gt; &lt;package&gt; &lt;name&gt;irvs_ros_tutorials&lt;/name&gt; &lt;version&gt;0.0.0&lt;/version&gt; &lt;description&gt;The irvs_ros_tutorials package&lt;/description&gt; &lt;maintainer email=&#34;vagrant@todo.todo&#34;&gt;vagrant&lt;/maintainer&gt; &lt;license&gt;TODO&lt;/license&gt; &lt;buildtool_depend&gt;catkin&lt;/buildtool_depend …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside>
+        <!-- <center><a href=""><img id="avatar" src=""></a></center> -->
+        <h1 id="sitename"><a href="https://maro525.github.io/notebook/"></a>Maro Notebook</a></h1>
+        <br>
+
+
+        <nav class="nav">
+            <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://maro525.github.io/notebook/">HOME</a></li>
+                <li><a class="nav__link" href="https://maro525.github.io">ABOUT</a></li>
+
+
+            </ul>
+        </nav>
+
+        <p class="social">
+            <a href="https://twitter.com/HdmrF" target="_blank"><img src="/theme/images/icons/twitter.png"></a>
+            <a href="https://github.com/maro525" target="_blank"><img src="/theme/images/icons/github.png"></a>
+        </p>
+
+        <h2 class="categories">Categories</h2>
+        <ul class="navbar" id="categorylist">
+            <li ><a href="/category/ben.html">本</a></li>
+            <li ><a href="/category/dian-zi-gong-zuo.html">電子工作</a></li>
+            <li  class="active" ><a href="/category/puroguramingu.html">プログラミング</a></li>
+            <li ><a href="/category/si-kao-nobei-wang-lu.html">思考の備忘録</a></li>
+            <li ><a href="/category/yin-le.html">音楽</a></li>
+        </ul>
+
+
+    </aside>
+
+    <!-- Content -->
+    <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="/ros_fundamental2.html" rel="bookmark" title="Permalink to ROSの基礎2 - トピック通信の実践 -">ROSの基礎2 - トピック通信の実践 -</a></h2>
+        <div class="entry-content blog-post">
+            <p><a href="https://maro525.github.io/blog/ros_fundamental2.html">ROSの基礎1</a>に引き続き、ROSBOOKにもとづき、ROSの勉強を進めていく.</p>
+<h1>トピック通信の実践</h1>
+<h2>パッケージの作成</h2>
+<div class="highlight"><pre><span></span><span class="c">% cs</span>
+<span class="c">% catkin_create_pkg irvs_ros_tutorials std_msgs roscpp</span>
+</pre></div>
+
+
+<h2>package.xmlの編集</h2>
+<p><code>~/catkin_ws/src/irvs_ros_tutorials/package.xml</code>を以下のようにする</p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;package&gt;</span>
+  <span class="nt">&lt;name&gt;</span>irvs_ros_tutorials<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;version&gt;</span>0.0.0<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;description&gt;</span>The irvs_ros_tutorials package<span class="nt">&lt;/description&gt;</span>
+
+  <span class="nt">&lt;maintainer</span> <span class="na">email=</span><span class="s">&quot;vagrant@todo.todo&quot;</span><span class="nt">&gt;</span>vagrant<span class="nt">&lt;/maintainer&gt;</span>
+
+  <span class="nt">&lt;license&gt;</span>TODO<span class="nt">&lt;/license&gt;</span>
+
+<span class="nt">&lt;buildtool_depend&gt;</span>catkin<span class="nt">&lt;/buildtool_depend&gt;</span>
+  <span class="nt">&lt;build_depend&gt;</span>roscpp<span class="nt">&lt;/build_depend&gt;</span>
+  <span class="nt">&lt;build_depend&gt;</span>std_msgs<span class="nt">&lt;/build_depend&gt;</span>
+  <span class="nt">&lt;build_depend&gt;</span>message_generation<span class="nt">&lt;/build_depend&gt;</span>
+  <span class="nt">&lt;run_depend&gt;</span>roscpp<span class="nt">&lt;/run_depend&gt;</span>
+  <span class="nt">&lt;run_depend&gt;</span>std_msgs<span class="nt">&lt;/run_depend&gt;</span>
+  <span class="nt">&lt;run_depend&gt;</span>message_runtime<span class="nt">&lt;/run_depend&gt;</span>
+
+  <span class="nt">&lt;export&gt;</span>
+  <span class="nt">&lt;/export&gt;</span>
+<span class="nt">&lt;/package&gt;</span>
+</pre></div>
+
+
+<h2>CmakeLists.txtの編集</h2>
+<p><code>~/catkin_ws/src/irvs_ros_tutorials/CmakeLists.txt</code>を以下のように編集する</p>
+<div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span> <span class="p">(</span><span class="s">VERSION</span> <span class="s">2.8.3</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">irvs_ros_tutorials</span><span class="p">)</span>
+
+<span class="c">## catkinビルドに必要なコンポーネントパッケージの設定</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">catkin</span> <span class="s">REQUIRED</span> <span class="s">COMPONENTS</span> <span class="s">roscpp</span> <span class="s">std_msgs</span> <span class="s">message_generation</span><span class="p">)</span>
+
+<span class="c">## メッセージファイルの設定</span>
+<span class="nb">add_message_files</span><span class="p">(</span><span class="s">FILES</span> <span class="s">msgTutorial.msg</span><span class="p">)</span>
+
+<span class="c">## サービスファイルの設定</span>
+<span class="nb">add_service_files</span><span class="p">(</span><span class="s">FILES</span> <span class="s">srvTutorial.srv</span><span class="p">)</span>
+
+<span class="c">## add_message_filesで使用するメッセージの依存関係を設定</span>
+<span class="nb">generate_messages</span><span class="p">(</span><span class="s">DEPENDENCIES</span> <span class="s">std_msgs</span><span class="p">)</span>
+
+<span class="c">## インクルートディレクトリ、ライブラリ、catkinビルド、システムに依存するパッケージの指定</span>
+<span class="nb">catkin_package</span><span class="p">(</span>
+  <span class="s">INCLUDE_DIRS</span> <span class="s">include</span>
+  <span class="s">LIBRARIES</span> <span class="s">irvs_ros_tutorials</span>
+  <span class="s">CATKIN_DEPENDS</span> <span class="s">roscpp</span> <span class="s">std_msgs</span>
+  <span class="s">DEPENDS</span> <span class="s">system_lib</span>
+<span class="p">)</span>
+
+<span class="c">## インクルードディレクトリの設定</span>
+<span class="nb">include_directories</span><span class="p">(</span><span class="s">include</span> <span class="o">${</span><span class="nv">catkin_INCLUDE_DIRS</span><span class="o">}</span><span class="p">)</span>
+
+<span class="c">## ros_tutorial_msg_publisherノードの設定</span>
+<span class="c">## 実行ファイル、ターゲットリンクライブラリ、追加の依存関係などを設定</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">ros_tutorial_msg_publisher</span>
+  <span class="s">src/ros_tutorial_msg_publisher.cpp</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">ros_tutorial_msg_publisher</span> <span class="o">${</span><span class="nv">catkin_LIBRARIES</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">add_dependencies</span><span class="p">(</span><span class="s">ros_tutorial_msg_publisher</span>
+  <span class="s">irvs_ros_tutorials_generate_messages_cpp</span><span class="p">)</span>
+
+<span class="c">## ros_tutorial_msg_subscriberノードの設定</span>
+<span class="c">## 実行ファイル、ターゲットリンクライブラリ、追加の依存関係などを設定</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">ros_tutorial_msg_subscriber</span>
+  <span class="s">src/ros_tutorial_msg_subscriber.cpp</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">ros_tutorial_msg_subscriber</span> <span class="o">${</span><span class="nv">catkin_LIBRARIES</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">add_dependencies</span><span class="p">(</span><span class="s">ros_tutorial_msg_subscriber</span>
+  <span class="s">irvs_ros_tutorials_generate_message_cpp</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>メッセージファイルの作成</h2>
+<p>CMakeLists.txtで<code>add_message_files(FILES msgTutorial.msg)</code>のようなオプションを追加したので、ファイルを作成する</p>
+<div class="highlight"><pre><span></span><span class="c">% roscd irvs_ros_tutorials</span>
+<span class="c">% mkdir msg</span>
+<span class="c">% cd msg</span>
+<span class="c">% vim msgTutorisl.msg</span>
+</pre></div>
+
+
+<p>そして、ファイルの中身は以下のようにする.</p>
+<div class="highlight"><pre><span></span>int32 data
+</pre></div>
+
+
+<p>32ビット整数型メッセージ形式のdata変数を定義している</p>
+<h2>配信者ノードの作成</h2>
+<p>CMakeLists.txtで<code>add_executable(ros_tutorial_msg_publisher src/ros_tutorial_msg_publisher.cpp)</code>のように、配信者ノードの実行ファイルを生成するオプションを追加したので、そのためのプログラムを作成する</p>
+<div class="highlight"><pre><span></span><span class="c">% roscd irvs_ros_tutorials/src</span>
+<span class="c">% vim ros_tutorial_msg_publisher.cpp</span>
+</pre></div>
+
+
+<p>ファイルの中身は以下のようにする</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;ros/ros.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;irvs_ros_tutorials/msgTutorial.h&quot;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// ノード名の初期化</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">&quot;ros_tutorial_msg_publisher&quot;</span><span class="p">);</span>
+  <span class="c1">// ROSシステムとの通信のためのノードハンドルを宣言</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span> <span class="n">nh</span><span class="p">;</span>
+
+  <span class="c1">// 配信者ノードの宣言</span>
+  <span class="c1">// irvs_ros_tutorialsパッケージのmsgTutorialメッセージファイルを利用した配信者ros_tutorial_pubを宣言する</span>
+  <span class="c1">// トピック名をros_tutorial_msgとし、配信者キュー( queue )のサイズを100に設定する</span>
+  <span class="c1">// 配信者キューには、メッセージを送る際、メッセージデータを蓄積する</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">Publisher</span> <span class="n">ros_tutorial_pub</span> <span class="o">=</span> <span class="n">nh</span><span class="p">.</span><span class="n">advertise</span><span class="o">&lt;</span><span class="n">irvs_ros_tutorials</span><span class="o">::</span><span class="n">msgTutorial</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;ros_tutorial_msg&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+
+  <span class="c1">// ループの周期を設定する. &quot;10&quot;は10Hzを表す</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">Rate</span> <span class="n">loop_rate</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+  <span class="c1">// メッセージに使用する変数の宣言</span>
+  <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// ros::ok()はROSの動作が正常であるならtrueを返す関数である</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">ros</span><span class="o">::</span><span class="n">ok</span><span class="p">())</span>
+  <span class="p">{</span>
+    <span class="c1">// msgTutorialメッセージファイル形式でmsg変数を宣言する</span>
+    <span class="n">irvs_ros_tutorials</span><span class="o">::</span><span class="n">msgTutorial</span> <span class="n">msg</span><span class="p">;</span>
+
+    <span class="c1">// 変数countを使用して、メッセージの値を定める</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">count</span><span class="p">;</span>
+
+    <span class="c1">// ROS_INFOというROS関数を使用して、count変数を表示する</span>
+    <span class="n">ROS_INFO</span><span class="p">(</span><span class="s">&quot;send msg = %d&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+
+    <span class="c1">// メッセージを発行する.</span>
+    <span class="n">ros_tutorial_pub</span><span class="p">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+
+    <span class="c1">// 上で定められたループサイクルになるように、スリープに入る</span>
+    <span class="n">loop_rate</span><span class="p">.</span><span class="n">sleep</span><span class="p">();</span>
+
+    <span class="c1">// count変数に1ずつ追加</span>
+    <span class="o">++</span><span class="n">count</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>購読者ノードの作成</h2>
+<p>配信者ノードと同じような手順で、購読者ノードも追加する.</p>
+<p>ファイル名 : ros_tutorial_msg_subscriber.cpp</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;ros/ros.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;irvs_ros_tutorials/msgTutorial.h&quot;</span><span class="cp"></span>
+
+<span class="c1">// メッセージを受信したときに動作するコールバック関数を定義</span>
+<span class="kt">void</span> <span class="nf">msgCallback</span><span class="p">(</span><span class="k">const</span> <span class="n">irvs_ros_tutorials</span><span class="o">::</span><span class="n">msgTutorial</span><span class="o">::</span><span class="n">ConstPtr</span><span class="o">&amp;</span> <span class="n">msg</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// 受信したメッセージを表示する</span>
+  <span class="n">ROS_INFO</span><span class="p">(</span><span class="s">&quot;recieve msg: %d&quot;</span><span class="p">,</span> <span class="n">msg</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// ノード名の初期化</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">&quot;ros_tutorial_msg_subscriber&quot;</span><span class="p">);</span>
+  <span class="c1">// ROSシステムとの通信のためのノードのハンドルを宣言</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span> <span class="n">nh</span><span class="p">;</span>
+
+  <span class="c1">// 購読者ノードの宣言</span>
+  <span class="c1">// irvs_ros_tutorialパッケージのmsgTutorialメッセージファイルを利用した購読者ros_tutorial_subを宣言する</span>
+  <span class="c1">// トピック名をros_tutorial_msgとし、購読者キュー( queue )のサイズを100に設定する</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">Subscriber</span> <span class="n">ros_tutorial_sub</span> <span class="o">=</span> <span class="n">nh</span><span class="p">.</span><span class="n">subscribe</span><span class="p">(</span><span class="s">&quot;ros_tutorial_msg&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">msgCallback</span><span class="p">);</span>
+
+  <span class="c1">// メッセージが受信されるまで待機し、受信が行われた場合、コールバック関数を実行する</span>
+  <span class="n">ros</span><span class="o">::</span><span class="n">spin</span><span class="p">();</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>ビルド</h2>
+<p>エイリアスがしてあれば一発でできる</p>
+<p><code>% cm</code></p>
+<p>このコマンドにより、「~/catkin_ws/build」と「~/catkin_ws/devel」フォルダにファイルが生成される</p>
+<ul>
+<li>~/catkin_ws/build : catkinビルドで使用された設定内容の保存</li>
+<li>~/catkin_ws/devel/lib/irvs_ros_tutorials : 実行ファイル</li>
+<li>~/catkin_wd/devel/include/irvs_ros_tutorials : メッセージファイルから自動生成されたヘッダーファイルが保存される</li>
+</ul>
+<h2>実行</h2>
+<p>まず、マスターを起動</p>
+<p><code>% roscore</code></p>
+<h2>配信者ノードの実行</h2>
+<p><code>% rosrun irvs_ros_tutorials ros_tutorial_msg_publisher</code></p>
+<p>実行すると、トピックメッセージの内容が表示される</p>
+<h2>購読者ノードの実行</h2>
+<p><code>% rosrun irvs_ros_tutorials ros_tutorial_msg_subscriber</code></p>
+<p>実行すると受け取ったデータが表示される</p>
+<h2>通信状態の確認</h2>
+<p><code>% rqt_graph</code></p>
+<p>これによりトピック通信の実践ができた.</p>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href="/author/hidemaro.html">@Hidemaro</a>
+            <span> in </span>
+            <span class="post_category"><a href="/category/puroguramingu.html" rel="bookmark" title="Permalink to プログラミング">[
+                    プログラミング ]</a></span>
+            <span class="post_date">Sun 01 October 2017</span>
+            <div><span>Tags : </span>
+                <span><a href="/tag/ubuntu.html">#Ubuntu, </a></span>
+                <span><a href="/tag/ros.html">#ROS, </a></span>
+            </div>
+
+            <!-- <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=/ros_fundamental2.html&text=ROSの基礎2 - トピック通信の実践 -&via="><img
+                            src="/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=/ros_fundamental2.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=/ros_fundamental2.html&t=ROSの基礎2 - トピック通信の実践 -"><img
+                            src="/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=/ros_fundamental2.html&title=ROSの基礎2 - トピック通信の実践 -"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=ROSの基礎2 - トピック通信の実践 -&amp;body=Viens découvrir un article à propos de [ROSの基礎2 - トピック通信の実践 -] sur le site de Hidemaro. /ros_fundamental2.html"
+                            title="Share by Email" target="_blank"><img
+                            src="/theme/images/icons/mail-s.png"></a></span>
+                </div> -->
+        </div>
+    </article>
+</section>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+
+</html>

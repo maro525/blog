@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Site Meta Data -->
+    <title>ESP-WROOM-02についてまとめ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Hidemaro">
+
+    <link rel="shortcut icon" href="">
+
+    <!-- schema.org -->
+    <meta itemprop="name" content="Maro Notebook">
+    <meta itemprop="image" content="">
+    <meta itemprop="description" content="">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Style Meta Data -->
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+
+    <!-- Feed Meta Data -->
+
+    <!-- Twitter Feed -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="/esp_info.html">
+<meta name="twitter:title" content="Maro Notebook ~ ESP-WROOM-02についてまとめ">
+<meta name="twitter:description" content="通信について 通信には3種類ある。 Wi-Fi Bluetooth LTE通信 それぞれの強みがある。 Wi-Fi : 家の中 Bluetooth : 遅延が少ない状況での通信 LTE : 外の環境 Arduinoで無線LANを利用する方法は3種類ある。 ArduinoとWi−Fiモジュールが一体となっているArduino YÚN。9990円 ArduinoとWi-Fiシールド。8432円 ArduinoとWi-Fiモジュール。4104円。最も安価に無線LANを利用できる。 モジュールは、ESP8266という名前で、以前は、技適（電波を使うための総務省からの許可のようなもの）が未取得だったが、取得したことによって、名前を変えて新しく売られることになった。 それが、ESP-WROOM-02 Wi-Fiモジュール。 ESP-WROOM-02 ブレークアウトボード もとのWi-Fiモジュール単体では、ピンの間隔が1.5mmとなっているため、ブレッドボードの間隔と異なる. そのためブレッドボードに載せるようなブレークアウトボードが発売されている. Ｗｉ－Ｆｉモジュール ＥＳＰ－ＷＲＯＯＭ－０２ ＤＩＰ化キット: 無線、高周波関連商品 秋月電子通商 電子部品 …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Maro Notebook ~ ESP-WROOM-02についてまとめ" />
+<meta property="og:description" content="通信について 通信には3種類ある。 Wi-Fi Bluetooth LTE通信 それぞれの強みがある。 Wi-Fi : 家の中 Bluetooth : 遅延が少ない状況での通信 LTE : 外の環境 Arduinoで無線LANを利用する方法は3種類ある。 ArduinoとWi−Fiモジュールが一体となっているArduino YÚN。9990円 ArduinoとWi-Fiシールド。8432円 ArduinoとWi-Fiモジュール。4104円。最も安価に無線LANを利用できる。 モジュールは、ESP8266という名前で、以前は、技適（電波を使うための総務省からの許可のようなもの）が未取得だったが、取得したことによって、名前を変えて新しく売られることになった。 それが、ESP-WROOM-02 Wi-Fiモジュール。 ESP-WROOM-02 ブレークアウトボード もとのWi-Fiモジュール単体では、ピンの間隔が1.5mmとなっているため、ブレッドボードの間隔と異なる. そのためブレッドボードに載せるようなブレークアウトボードが発売されている. Ｗｉ－Ｆｉモジュール ＥＳＰ－ＷＲＯＯＭ－０２ ＤＩＰ化キット: 無線、高周波関連商品 秋月電子通商 電子部品 …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside>
+        <!-- <center><a href=""><img id="avatar" src=""></a></center> -->
+        <h1 id="sitename"><a href="https://maro525.github.io/notebook/"></a>Maro Notebook</a></h1>
+        <br>
+
+
+        <nav class="nav">
+            <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://maro525.github.io/notebook/">HOME</a></li>
+                <li><a class="nav__link" href="https://maro525.github.io">ABOUT</a></li>
+
+
+            </ul>
+        </nav>
+
+        <p class="social">
+            <a href="https://twitter.com/HdmrF" target="_blank"><img src="/theme/images/icons/twitter.png"></a>
+            <a href="https://github.com/maro525" target="_blank"><img src="/theme/images/icons/github.png"></a>
+        </p>
+
+        <h2 class="categories">Categories</h2>
+        <ul class="navbar" id="categorylist">
+            <li ><a href="/category/ben.html">本</a></li>
+            <li  class="active" ><a href="/category/dian-zi-gong-zuo.html">電子工作</a></li>
+            <li ><a href="/category/puroguramingu.html">プログラミング</a></li>
+            <li ><a href="/category/si-kao-nobei-wang-lu.html">思考の備忘録</a></li>
+            <li ><a href="/category/yin-le.html">音楽</a></li>
+        </ul>
+
+
+    </aside>
+
+    <!-- Content -->
+    <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="/esp_info.html" rel="bookmark" title="Permalink to ESP-WROOM-02についてまとめ">ESP-WROOM-02についてまとめ</a></h2>
+        <div class="entry-content blog-post">
+            <h1>通信について</h1>
+<p><strong>通信には3種類ある。</strong></p>
+<ul>
+<li>Wi-Fi</li>
+<li>Bluetooth</li>
+<li>LTE通信</li>
+</ul>
+<p>それぞれの強みがある。</p>
+<ul>
+<li>Wi-Fi : 家の中</li>
+<li>Bluetooth : 遅延が少ない状況での通信</li>
+<li>LTE : 外の環境</li>
+</ul>
+<p>Arduinoで無線LANを利用する方法は3種類ある。</p>
+<ul>
+<li>ArduinoとWi−Fiモジュールが一体となっているArduino YÚN。9990円</li>
+<li>ArduinoとWi-Fiシールド。8432円</li>
+<li>ArduinoとWi-Fiモジュール。4104円。最も安価に無線LANを利用できる。</li>
+</ul>
+<p>モジュールは、ESP8266という名前で、以前は、技適（電波を使うための総務省からの許可のようなもの）が未取得だったが、取得したことによって、名前を変えて新しく売られることになった。
+それが、ESP-WROOM-02 Wi-Fiモジュール。</p>
+<h1>ESP-WROOM-02 ブレークアウトボード</h1>
+<p>もとのWi-Fiモジュール単体では、ピンの間隔が1.5mmとなっているため、ブレッドボードの間隔と異なる.</p>
+<p>そのためブレッドボードに載せるようなブレークアウトボードが発売されている.</p>
+<ul>
+<li><a href="http://akizukidenshi.com/catalog/g/gK-09758/">Ｗｉ－Ｆｉモジュール　ＥＳＰ－ＷＲＯＯＭ－０２　ＤＩＰ化キット: 無線、高周波関連商品 秋月電子通商 電子部品 ネット通販</a></li>
+<li><a href="https://www.amazon.co.jp/gp/product/B015X3P2H4/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=B015X3P2H4&amp;linkCode=as2&amp;tag=deko0f-22">Amazon.co.jp： ESP-WROOM-02 搭載mikroBUS(R)対応ブレークアウトボード Ver.2: おもちゃ</a></li>
+</ul>
+<h1>ESPr Developer</h1>
+<ul>
+<li>ESP-WROOM-02の開発ボードで、ESP-WROOM-02に加えて、シリアル変換やレギュレータがセットになっている</li>
+<li>ESP8266は、上海のファブレス半導体メーカー Espressif Systemsが製造している</li>
+<li>ピンヘッダをはんだ付けして、ブレッドボードに接続する</li>
+<li>ESP-WROOM-02とUSBシリアル変換やレギュレータ等を使うより、ESPr Developerを使ったほうが、若干安い</li>
+</ul>
+<p>この基盤には、</p>
+<ul>
+<li>ESP8266本体</li>
+<li>3.3V対応USBシリアル変換ＩＣ　FT231XS</li>
+<li>5V→3.3V 電源レギュレーター　XC6222B　（最大出力電流700mA）</li>
+</ul>
+<p>が載っている</p>
+<h2>仕様</h2>
+<ul>
+<li>IEEE 802.11b/g/nに対応 (WiFi 2.4GHz)</li>
+<li>低消費電力の32 bit MCUを搭載</li>
+<li>4Mbyteのフラッシュメモリ</li>
+<li>10 bitA/Dコンバータを搭載</li>
+<li>TCP/IPのプロトコル・スタックを搭載</li>
+<li>SDIO, (H)SPI, UART, I2C, I2S, IrDA, PWM, GPIOなどさまざまなインターフェースを搭載</li>
+<li>ディープスリープモード時10uA未満、電源オフ時5uA未満</li>
+<li>起動からパケット送信まで2ms未満</li>
+<li>スタンバイ時消費電力 1mW未満（DTIM3）</li>
+<li>+20 dBm出力（802.11b使用時）</li>
+<li>-40℃〜125℃</li>
+<li>FCC、CE、工事設計認証取得済</li>
+<li>FT231XS搭載</li>
+<li>リセットスイッチ、動作モード切替スイッチ搭載</li>
+<li>動作電圧：3.3 V</li>
+<li>電源ピン<ul>
+<li>VINピン : USB以外から電源を取るときに使います。3.7～6.0 V</li>
+<li>VOUTピン : 5Vピンの名称をVOUTピンに変更しました。</li>
+<li>3.3Vピンは出力専用ピン</li>
+</ul>
+</li>
+<li>OTAに対応している. (ネットワーク経由で書き込みをすることができる)</li>
+<li>最大電流が50mA</li>
+</ul>
+<h1>動作環境</h1>
+<ul>
+<li>Arduino IDE</li>
+<li>Lua</li>
+<li>Python -&gt; <a href="https://github.com/micropython/micropython/tree/master/esp8266">MicroPython</a></li>
+<li>NodeJS</li>
+</ul>
+<h1>モードについて</h1>
+<h2>Flash Boot Mode(実行モード)</h2>
+<ul>
+<li>ATコマンドのやりとり</li>
+<li>書き込んだスケッチの実行</li>
+</ul>
+<h2>UART Download Mode(書き込みモード)</h2>
+<ul>
+<li>スケッチを書き込む</li>
+<li>ファームアップデートを行う.</li>
+</ul>
+<h2>SD-Card Boot Mode（SDブートモード）</h2>
+<ul>
+<li>SDカードによるモード</li>
+<li>後日調べることにする</li>
+</ul>
+<h1>ピンとモードの関係</h1>
+<p>※ ボタンはESPr Developerの基板上に乗っているボタンの名前</p>
+<table>
+<thead>
+<tr>
+<th align="left">モード</th>
+<th align="left">GPIO15</th>
+<th align="left">GPIO2(リセットボタン)</th>
+<th align="left">GPIO0(モード切り替えボタン)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">書き込みモード</td>
+<td align="left">Low</td>
+<td align="left">High</td>
+<td align="left">Low</td>
+</tr>
+<tr>
+<td align="left">実行モード</td>
+<td align="left">Low</td>
+<td align="left">High</td>
+<td align="left">High</td>
+</tr>
+<tr>
+<td align="left">SDブートモード</td>
+<td align="left">High</td>
+<td align="left">Low</td>
+<td align="left">Low</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>ボタンは、押すとLOW、放すとHIGHになる</li>
+<li>スケッチを書き込む際には、書き込みモードになっていないと、プロテクトがかかっているため、エラーがでてしまう。</li>
+</ul>
+<h1>参考</h1>
+<ul>
+<li><a href="https://www.switch-science.com/catalog/2500/">ESPr® Developer（ESP-WROOM-02開発ボード） - スイッチサイエンス</a></li>
+<li><a href="https://www.mgo-tec.com/blog-entry-esp-wroom-32-esp32-wifi-smartphone-led-switch.html">ESP-WROOM-32 ( ESP32 ) で Wi-Fi スマホ LED スイッチ作り | mgo-tec電子工作</a><ul>
+<li>開発ボードを使わずに回路づくりをするときに参考になりそう</li>
+</ul>
+</li>
+<li><a href="http://ht-deko.com/arduino/esp-wroom-02.html">ESP-WROOM-02</a><ul>
+<li>このシリーズの様々な基盤や回路の説明など詳細な情報が載っている</li>
+</ul>
+</li>
+<li><a href="http://qiita.com/dz_/items/277eba8cb760b81a2688">Check! IoT ができるようになるまで ～ まずはシリアル通信を使えるようになる - Qiita</a></li>
+<li><a href="https://www.hirotakaster.com/weblog/esp-wroom-02%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/">ESP-WROOM-02使ってみる | Natural Days</a></li>
+<li><a href="https://www.slideshare.net/nishio/wifiesp8266ex-espwroom02-espr-developer">Wifiにつながるデバイス(ESP8266EX, ESP-WROOM-02, ESPr Developerなど)</a></li>
+<li><a href="https://www.slideshare.net/quitsq/esp8266-60164967">ESP8266をはじめよう</a></li>
+<li><a href="http://qiita.com/hidenorly/items/0eadcf6cc8ba04c0145d#_reference-84f2d28391d764922e0d">GWだし、ESP8266関係の記事をまとめながら、IoT framework作ってみる - Qiita</a><ul>
+<li>ESP8266関係の参考になるリファレンスがたくさん載っているQiita記事</li>
+</ul>
+</li>
+<li><a href="http://deviceplus.jp/hobby/entry0032/">Arduinoマイコンとしても使える小型WifiモジュールESP-WROOM-02を使ってみる(準備編) | Device Plus - デバプラ</a></li>
+<li><a href="https://www.petitmonte.com/robot/howto_esp_wroom_02.html">ESP-WROOM-02の使い方/まとめ</a></li>
+</ul>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href="/author/hidemaro.html">@Hidemaro</a>
+            <span> in </span>
+            <span class="post_category"><a href="/category/dian-zi-gong-zuo.html" rel="bookmark" title="Permalink to 電子工作">[
+                    電子工作 ]</a></span>
+            <span class="post_date">Thu 20 July 2017</span>
+            <div><span>Tags : </span>
+                <span><a href="/tag/esp-wroom-02.html">#ESP-WROOM-02, </a></span>
+            </div>
+
+            <!-- <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=/esp_info.html&text=ESP-WROOM-02についてまとめ&via="><img
+                            src="/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=/esp_info.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=/esp_info.html&t=ESP-WROOM-02についてまとめ"><img
+                            src="/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=/esp_info.html&title=ESP-WROOM-02についてまとめ"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=ESP-WROOM-02についてまとめ&amp;body=Viens découvrir un article à propos de [ESP-WROOM-02についてまとめ] sur le site de Hidemaro. /esp_info.html"
+                            title="Share by Email" target="_blank"><img
+                            src="/theme/images/icons/mail-s.png"></a></span>
+                </div> -->
+        </div>
+    </article>
+</section>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+
+</html>

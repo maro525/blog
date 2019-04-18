@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Site Meta Data -->
+    <title>ArduinoでWiFiモジュールを使って、Lチカまでやってみる</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Hidemaro">
+
+    <link rel="shortcut icon" href="">
+
+    <!-- schema.org -->
+    <meta itemprop="name" content="Maro Notebook">
+    <meta itemprop="image" content="">
+    <meta itemprop="description" content="">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Style Meta Data -->
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+
+    <!-- Feed Meta Data -->
+
+    <!-- Twitter Feed -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="/esp_led.html">
+<meta name="twitter:title" content="Maro Notebook ~ ArduinoでWiFiモジュールを使って、Lチカまでやってみる">
+<meta name="twitter:description" content="パーツ ESPr Developer(ESP-WROOM-02開発ボード )https://www.switch-science.com/catalog/2500/ 手順 1.ArduinoにESP-WROOM-02ボードを追加する ファイル」-「環境設定」を開く https://github.com/esp8266/Arduino のInstalling with Boards ManagerのところにあるURLをコピーし、Additional Boards Managerに貼り付ける. (複数のURLがある場合はコンマでつなげる) 入力したらOKを押して閉じる. 次に「Tools」から「Boards」- 「Boards Maneger」を選択して開く 上にある検索欄に「ESP82」と入力すると、「esp8266」が出てくるので、インストール インストールが完了したらArduinoを再起動する。「Tools」-「Board」を開くと、ESP8266に関係するボード一式が追加されている 2.開発ボードをピンではんだ付けする …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Maro Notebook ~ ArduinoでWiFiモジュールを使って、Lチカまでやってみる" />
+<meta property="og:description" content="パーツ ESPr Developer(ESP-WROOM-02開発ボード )https://www.switch-science.com/catalog/2500/ 手順 1.ArduinoにESP-WROOM-02ボードを追加する ファイル」-「環境設定」を開く https://github.com/esp8266/Arduino のInstalling with Boards ManagerのところにあるURLをコピーし、Additional Boards Managerに貼り付ける. (複数のURLがある場合はコンマでつなげる) 入力したらOKを押して閉じる. 次に「Tools」から「Boards」- 「Boards Maneger」を選択して開く 上にある検索欄に「ESP82」と入力すると、「esp8266」が出てくるので、インストール インストールが完了したらArduinoを再起動する。「Tools」-「Board」を開くと、ESP8266に関係するボード一式が追加されている 2.開発ボードをピンではんだ付けする …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside>
+        <!-- <center><a href=""><img id="avatar" src=""></a></center> -->
+        <h1 id="sitename"><a href="https://maro525.github.io/notebook/"></a>Maro Notebook</a></h1>
+        <br>
+
+
+        <nav class="nav">
+            <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://maro525.github.io/notebook/">HOME</a></li>
+                <li><a class="nav__link" href="https://maro525.github.io">ABOUT</a></li>
+
+
+            </ul>
+        </nav>
+
+        <p class="social">
+            <a href="https://twitter.com/HdmrF" target="_blank"><img src="/theme/images/icons/twitter.png"></a>
+            <a href="https://github.com/maro525" target="_blank"><img src="/theme/images/icons/github.png"></a>
+        </p>
+
+        <h2 class="categories">Categories</h2>
+        <ul class="navbar" id="categorylist">
+            <li ><a href="/category/ben.html">本</a></li>
+            <li  class="active" ><a href="/category/dian-zi-gong-zuo.html">電子工作</a></li>
+            <li ><a href="/category/puroguramingu.html">プログラミング</a></li>
+            <li ><a href="/category/si-kao-nobei-wang-lu.html">思考の備忘録</a></li>
+            <li ><a href="/category/yin-le.html">音楽</a></li>
+        </ul>
+
+
+    </aside>
+
+    <!-- Content -->
+    <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="/esp_led.html" rel="bookmark" title="Permalink to ArduinoでWiFiモジュールを使って、Lチカまでやってみる">ArduinoでWiFiモジュールを使って、Lチカまでやってみる</a></h2>
+        <div class="entry-content blog-post">
+            <h1>パーツ</h1>
+<ul>
+<li>ESPr Developer(ESP-WROOM-02開発ボード )<a href="https://www.switch-science.com/catalog/2500/">https://www.switch-science.com/catalog/2500/</a></li>
+</ul>
+<h1>手順</h1>
+<h2>1.ArduinoにESP-WROOM-02ボードを追加する</h2>
+<ul>
+<li>ファイル」-「環境設定」を開く</li>
+<li><a href="https://github.com/esp8266/Arduino">https://github.com/esp8266/Arduino</a> のInstalling with Boards ManagerのところにあるURLをコピーし、Additional Boards Managerに貼り付ける. (複数のURLがある場合はコンマでつなげる)</li>
+<li>入力したらOKを押して閉じる. 次に「Tools」から「Boards」- 「Boards Maneger」を選択して開く</li>
+<li>上にある検索欄に「ESP82」と入力すると、「esp8266」が出てくるので、インストール</li>
+<li>インストールが完了したらArduinoを再起動する。「Tools」-「Board」を開くと、ESP8266に関係するボード一式が追加されている</li>
+</ul>
+<h2>2.開発ボードをピンではんだ付けする</h2>
+<h2>3.プログラムを動かす</h2>
+<ul>
+<li>Bordの中から「Generic ESP8266 Module」を選択する</li>
+<li>このとき、ESP8266ボード設定のReset Methodを"nodemcu"にする必要がある. "nodemcu"では、自動で書き込みモードに切り替えて書き込みができるが、"ck”の場合はGPIO #0 を押しながらリセットキーを押さないと書き込み可能にならない.</li>
+</ul>
+<h1>Lチカやってみる</h1>
+<div class="highlight"><pre><span></span> void setup() {
+  pinMode(13, OUTPUT);
+
+}
+
+void loop() {
+  digitalWrite(13, HIGH);
+  delay(1000);
+  digitalWrite(13, LOW);
+  delay(1000);
+}
+</pre></div>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href="/author/hidemaro.html">@Hidemaro</a>
+            <span> in </span>
+            <span class="post_category"><a href="/category/dian-zi-gong-zuo.html" rel="bookmark" title="Permalink to 電子工作">[
+                    電子工作 ]</a></span>
+            <span class="post_date">Sun 16 July 2017</span>
+            <div><span>Tags : </span>
+                <span><a href="/tag/esp-wroom-02.html">#ESP-WROOM-02, </a></span>
+                <span><a href="/tag/arduino.html">#Arduino, </a></span>
+            </div>
+
+            <!-- <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=/esp_led.html&text=ArduinoでWiFiモジュールを使って、Lチカまでやってみる&via="><img
+                            src="/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=/esp_led.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=/esp_led.html&t=ArduinoでWiFiモジュールを使って、Lチカまでやってみる"><img
+                            src="/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=/esp_led.html&title=ArduinoでWiFiモジュールを使って、Lチカまでやってみる"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=ArduinoでWiFiモジュールを使って、Lチカまでやってみる&amp;body=Viens découvrir un article à propos de [ArduinoでWiFiモジュールを使って、Lチカまでやってみる] sur le site de Hidemaro. /esp_led.html"
+                            title="Share by Email" target="_blank"><img
+                            src="/theme/images/icons/mail-s.png"></a></span>
+                </div> -->
+        </div>
+    </article>
+</section>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Site Meta Data -->
+    <title>ArduinoからIFTTTを使ってslackに投稿する</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Hidemaro">
+
+    <link rel="shortcut icon" href="">
+
+    <!-- schema.org -->
+    <meta itemprop="name" content="Maro Notebook">
+    <meta itemprop="image" content="">
+    <meta itemprop="description" content="">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Style Meta Data -->
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+
+    <!-- Feed Meta Data -->
+
+    <!-- Twitter Feed -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="/esp_ifttt.html">
+<meta name="twitter:title" content="Maro Notebook ~ ArduinoからIFTTTを使ってslackに投稿する">
+<meta name="twitter:description" content="IFTTTで設定 search欄からWebhooksと検索する Connectする httpsでGETコマンドでイベントとキーを送れる iftttのレシピを作る 通知先をslackに指定 Search欄からWebhooksを検索して、Documentationを見ると、シークレットキーや、使い方の説明が見れる Arduinoに書き込むプログラム const char* host = &#34;maker.ifttt.com&#34;; const char* event = &#34;IFTTTに設定したイベント名&#34;; const char* secretkey = &#34;********&#34;; のように変数を設定 WiFiClient client; const int httpPort = 80; if (!client.connect(host, httpPort)) { Serial.println(&#34;connection failed&#34;); return; } ↑IFTTTに接続 String url = &#34;/trigger/&#34;; url += event; url += &#34;/with/key …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Maro Notebook ~ ArduinoからIFTTTを使ってslackに投稿する" />
+<meta property="og:description" content="IFTTTで設定 search欄からWebhooksと検索する Connectする httpsでGETコマンドでイベントとキーを送れる iftttのレシピを作る 通知先をslackに指定 Search欄からWebhooksを検索して、Documentationを見ると、シークレットキーや、使い方の説明が見れる Arduinoに書き込むプログラム const char* host = &#34;maker.ifttt.com&#34;; const char* event = &#34;IFTTTに設定したイベント名&#34;; const char* secretkey = &#34;********&#34;; のように変数を設定 WiFiClient client; const int httpPort = 80; if (!client.connect(host, httpPort)) { Serial.println(&#34;connection failed&#34;); return; } ↑IFTTTに接続 String url = &#34;/trigger/&#34;; url += event; url += &#34;/with/key …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside>
+        <!-- <center><a href=""><img id="avatar" src=""></a></center> -->
+        <h1 id="sitename"><a href="https://maro525.github.io/notebook/"></a>Maro Notebook</a></h1>
+        <br>
+
+
+        <nav class="nav">
+            <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://maro525.github.io/notebook/">HOME</a></li>
+                <li><a class="nav__link" href="https://maro525.github.io">ABOUT</a></li>
+
+
+            </ul>
+        </nav>
+
+        <p class="social">
+            <a href="https://twitter.com/HdmrF" target="_blank"><img src="/theme/images/icons/twitter.png"></a>
+            <a href="https://github.com/maro525" target="_blank"><img src="/theme/images/icons/github.png"></a>
+        </p>
+
+        <h2 class="categories">Categories</h2>
+        <ul class="navbar" id="categorylist">
+            <li ><a href="/category/ben.html">本</a></li>
+            <li  class="active" ><a href="/category/dian-zi-gong-zuo.html">電子工作</a></li>
+            <li ><a href="/category/puroguramingu.html">プログラミング</a></li>
+            <li ><a href="/category/si-kao-nobei-wang-lu.html">思考の備忘録</a></li>
+            <li ><a href="/category/yin-le.html">音楽</a></li>
+        </ul>
+
+
+    </aside>
+
+    <!-- Content -->
+    <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="/esp_ifttt.html" rel="bookmark" title="Permalink to ArduinoからIFTTTを使ってslackに投稿する">ArduinoからIFTTTを使ってslackに投稿する</a></h2>
+        <div class="entry-content blog-post">
+            <h1>IFTTTで設定</h1>
+<ul>
+<li>search欄からWebhooksと検索する</li>
+<li>Connectする</li>
+<li>httpsでGETコマンドでイベントとキーを送れる</li>
+<li>iftttのレシピを作る</li>
+<li>通知先をslackに指定</li>
+<li>Search欄からWebhooksを検索して、Documentationを見ると、シークレットキーや、使い方の説明が見れる</li>
+</ul>
+<h1>Arduinoに書き込むプログラム</h1>
+<div class="highlight"><pre><span></span>const char* host = &quot;maker.ifttt.com&quot;;
+const char* event = &quot;IFTTTに設定したイベント名&quot;;
+const char* secretkey = &quot;********&quot;;
+</pre></div>
+
+
+<p>のように変数を設定</p>
+<div class="highlight"><pre><span></span>WiFiClient client;
+const int httpPort = 80;
+if (!client.connect(host, httpPort)) {
+    Serial.println(&quot;connection failed&quot;);
+    return;
+}
+</pre></div>
+
+
+<p>↑IFTTTに接続</p>
+<div class="highlight"><pre><span></span><span class="nt">String</span> <span class="nt">url</span> <span class="o">=</span> <span class="s2">&quot;/trigger/&quot;</span><span class="o">;</span>
+<span class="nt">url</span> <span class="o">+=</span> <span class="nt">event</span><span class="o">;</span>
+<span class="nt">url</span> <span class="o">+=</span> <span class="s2">&quot;/with/key/&quot;</span><span class="o">;</span>
+<span class="nt">url</span> <span class="o">+=</span> <span class="nt">secretkey</span><span class="o">;</span>
+<span class="nt">url</span> <span class="o">+=</span> <span class="s2">&quot;?value1=&quot;</span><span class="o">;</span>
+<span class="nt">url</span> <span class="o">+=</span> <span class="nt">value1</span><span class="o">;</span>
+<span class="nt">url</span> <span class="o">+=</span> <span class="s2">&quot;&amp;value2=&quot;</span><span class="o">;</span>
+<span class="nt">url</span> <span class="o">+=</span> <span class="nt">value2</span><span class="o">;</span>
+<span class="nt">url</span> <span class="o">+=</span> <span class="s2">&quot;&amp;value3=&quot;</span><span class="o">;</span>
+<span class="nt">url</span> <span class="o">+=</span> <span class="nt">value3</span><span class="o">;</span>
+
+<span class="nt">char</span> <span class="nt">sendData</span><span class="cp">[</span><span class="mi">256</span><span class="cp">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">;</span>
+<span class="nt">sprintf</span><span class="o">(</span><span class="nt">sendData</span><span class="o">,</span> <span class="s2">&quot;GET http://maker.ifttt.com/%s HTTP/1.1\r\nHost:maker.ifttt.com\r\nConnection: close\r\n\r\n&quot;</span><span class="o">,</span> <span class="nt">url</span><span class="p">.</span><span class="nc">c_str</span><span class="o">());</span>
+<span class="nt">client</span><span class="p">.</span><span class="nc">printf</span><span class="o">(</span><span class="nt">sendData</span><span class="o">);</span>
+
+<span class="nt">int</span> <span class="nt">timeout</span> <span class="o">=</span> <span class="nt">millis</span><span class="o">()</span> <span class="o">+</span> <span class="nt">5000</span><span class="o">;</span>
+<span class="nt">while</span> <span class="o">(</span><span class="nt">client</span><span class="p">.</span><span class="nc">available</span><span class="o">()</span> <span class="o">==</span> <span class="nt">0</span><span class="o">)</span> <span class="p">{</span>
+    <span class="err">if</span> <span class="err">(timeout</span> <span class="err">-</span> <span class="err">millis()</span> <span class="err">&lt;</span> <span class="err">0)</span> <span class="err">{</span>
+        <span class="err">Serial.println(&quot;&gt;&gt;&gt;</span> <span class="err">Client</span> <span class="err">Timeout</span> <span class="err">!&quot;)</span><span class="p">;</span>
+       <span class="err">client.stop()</span><span class="p">;</span>
+       <span class="err">return</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="err">}</span>
+<span class="nt">delay</span><span class="o">(</span><span class="nt">10</span><span class="o">);</span>
+
+<span class="nt">while</span><span class="o">(</span><span class="nt">client</span><span class="p">.</span><span class="nc">available</span><span class="o">())</span><span class="p">{</span>
+    <span class="err">String</span> <span class="err">line</span> <span class="err">=</span> <span class="err">client.readStringUntil(&#39;\r&#39;)</span><span class="p">;</span>
+    <span class="err">Serial.print(line)</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">delay</span><span class="o">(</span><span class="nt">10</span><span class="o">);</span>
+
+<span class="nt">Serial</span><span class="p">.</span><span class="nc">println</span><span class="o">();</span>
+<span class="nt">Serial</span><span class="p">.</span><span class="nc">println</span><span class="o">(</span><span class="s2">&quot;closing connection&quot;</span><span class="o">);</span>
+</pre></div>
+
+
+<p>↑IFTTに送信</p>
+<h1>参考記事</h1>
+<ul>
+<li><a href="http://qiita.com/snumano/items/ad453fd6137249c40147">ESP-WROOM-02で取得したセンサーの値をIFTTTに渡す - Qiita</a></li>
+<li><a href="http://mag.switch-science.com/2015/06/25/ifttt-maker-channel/">IFTTTにMaker Channelができました | スイッチサイエンス マガジン</a></li>
+</ul>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href="/author/hidemaro.html">@Hidemaro</a>
+            <span> in </span>
+            <span class="post_category"><a href="/category/dian-zi-gong-zuo.html" rel="bookmark" title="Permalink to 電子工作">[
+                    電子工作 ]</a></span>
+            <span class="post_date">Tue 25 July 2017</span>
+            <div><span>Tags : </span>
+                <span><a href="/tag/esp-wroom-02.html">#ESP-WROOM-02, </a></span>
+                <span><a href="/tag/arduino.html">#Arduino, </a></span>
+                <span><a href="/tag/ifttt.html">#IFTTT, </a></span>
+            </div>
+
+            <!-- <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=/esp_ifttt.html&text=ArduinoからIFTTTを使ってslackに投稿する&via="><img
+                            src="/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=/esp_ifttt.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=/esp_ifttt.html&t=ArduinoからIFTTTを使ってslackに投稿する"><img
+                            src="/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=/esp_ifttt.html&title=ArduinoからIFTTTを使ってslackに投稿する"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=ArduinoからIFTTTを使ってslackに投稿する&amp;body=Viens découvrir un article à propos de [ArduinoからIFTTTを使ってslackに投稿する] sur le site de Hidemaro. /esp_ifttt.html"
+                            title="Share by Email" target="_blank"><img
+                            src="/theme/images/icons/mail-s.png"></a></span>
+                </div> -->
+        </div>
+    </article>
+</section>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+
+</html>

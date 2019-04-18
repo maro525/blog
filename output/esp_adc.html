@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Site Meta Data -->
+    <title>ESP-WROOM-02にADコンバーターを繋いで、複数のセンサの値を取得</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Hidemaro">
+
+    <link rel="shortcut icon" href="">
+
+    <!-- schema.org -->
+    <meta itemprop="name" content="Maro Notebook">
+    <meta itemprop="image" content="">
+    <meta itemprop="description" content="">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Style Meta Data -->
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+
+    <!-- Feed Meta Data -->
+
+    <!-- Twitter Feed -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="/esp_adc.html">
+<meta name="twitter:title" content="Maro Notebook ~ ESP-WROOM-02にADコンバーターを繋いで、複数のセンサの値を取得">
+<meta name="twitter:description" content="ESP-WROOM-02 ESP8266にはデフォルトでADコンバーターが付いている センサーが１つであれば、分圧回路を組み、TOUT端子を使用してデータを取得する TOUTピンを使用しない場合は、外部のADコンバーターを使用する ADコンバーターはSPIプロトコルで通信する. 使用するドライバはGithubからダウンロード ADコンバーター 外付けADコンバーターは、MCP3002/3004/3008などある 精度は10bit(0-1023までの整数を返す). MCP3002とMCP3004/3008はプロトコルが異なる（？） MCP3002が2チャンネル、MCP3004が4チャンネル、MCP3008が8チャンネル MCP3002を使う場合、io15-抵抗(10kΩ)-GNDのように、pulldown回路を作る必要がある 回路 io14 → clk(13) io12 → dout(12) io13 → din(11) io15 → cs(10) 回路図は、ここから見れる SPI通信 「Serial Peripheral Interface」の略. 比較的近距離に配置されているデバイス同士をつなげるバスのこと …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Maro Notebook ~ ESP-WROOM-02にADコンバーターを繋いで、複数のセンサの値を取得" />
+<meta property="og:description" content="ESP-WROOM-02 ESP8266にはデフォルトでADコンバーターが付いている センサーが１つであれば、分圧回路を組み、TOUT端子を使用してデータを取得する TOUTピンを使用しない場合は、外部のADコンバーターを使用する ADコンバーターはSPIプロトコルで通信する. 使用するドライバはGithubからダウンロード ADコンバーター 外付けADコンバーターは、MCP3002/3004/3008などある 精度は10bit(0-1023までの整数を返す). MCP3002とMCP3004/3008はプロトコルが異なる（？） MCP3002が2チャンネル、MCP3004が4チャンネル、MCP3008が8チャンネル MCP3002を使う場合、io15-抵抗(10kΩ)-GNDのように、pulldown回路を作る必要がある 回路 io14 → clk(13) io12 → dout(12) io13 → din(11) io15 → cs(10) 回路図は、ここから見れる SPI通信 「Serial Peripheral Interface」の略. 比較的近距離に配置されているデバイス同士をつなげるバスのこと …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside>
+        <!-- <center><a href=""><img id="avatar" src=""></a></center> -->
+        <h1 id="sitename"><a href="https://maro525.github.io/notebook/"></a>Maro Notebook</a></h1>
+        <br>
+
+
+        <nav class="nav">
+            <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://maro525.github.io/notebook/">HOME</a></li>
+                <li><a class="nav__link" href="https://maro525.github.io">ABOUT</a></li>
+
+
+            </ul>
+        </nav>
+
+        <p class="social">
+            <a href="https://twitter.com/HdmrF" target="_blank"><img src="/theme/images/icons/twitter.png"></a>
+            <a href="https://github.com/maro525" target="_blank"><img src="/theme/images/icons/github.png"></a>
+        </p>
+
+        <h2 class="categories">Categories</h2>
+        <ul class="navbar" id="categorylist">
+            <li ><a href="/category/ben.html">本</a></li>
+            <li  class="active" ><a href="/category/dian-zi-gong-zuo.html">電子工作</a></li>
+            <li ><a href="/category/puroguramingu.html">プログラミング</a></li>
+            <li ><a href="/category/si-kao-nobei-wang-lu.html">思考の備忘録</a></li>
+            <li ><a href="/category/yin-le.html">音楽</a></li>
+        </ul>
+
+
+    </aside>
+
+    <!-- Content -->
+    <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="/esp_adc.html" rel="bookmark" title="Permalink to ESP-WROOM-02にADコンバーターを繋いで、複数のセンサの値を取得">ESP-WROOM-02にADコンバーターを繋いで、複数のセンサの値を取得</a></h2>
+        <div class="entry-content blog-post">
+            <h1>ESP-WROOM-02</h1>
+<ul>
+<li>ESP8266にはデフォルトでADコンバーターが付いている</li>
+<li>センサーが１つであれば、分圧回路を組み、TOUT端子を使用してデータを取得する</li>
+<li>TOUTピンを使用しない場合は、外部のADコンバーターを使用する</li>
+<li>ADコンバーターはSPIプロトコルで通信する. 使用するドライバは<a href="https://github.com/MetalPhreak/ESP8266_SPI_Driver">Github</a>からダウンロード</li>
+</ul>
+<h1>ADコンバーター</h1>
+<ul>
+<li>外付けADコンバーターは、MCP3002/3004/3008などある</li>
+<li>精度は10bit(0-1023までの整数を返す).</li>
+<li>MCP3002とMCP3004/3008はプロトコルが異なる（？）</li>
+<li>MCP3002が2チャンネル、MCP3004が4チャンネル、MCP3008が8チャンネル</li>
+<li>MCP3002を使う場合、io15-抵抗(10kΩ)-GNDのように、pulldown回路を作る必要がある</li>
+</ul>
+<h1>回路</h1>
+<ul>
+<li>io14 → clk(13)</li>
+<li>io12 → dout(12)</li>
+<li>io13 → din(11)</li>
+<li>io15 → cs(10)</li>
+</ul>
+<p>回路図は、<a href="https://upverter.com/maro525/a5489562cfda0a26/ESP_ADC_DEEPSLEEP/">ここ</a>から見れる</p>
+<h1>SPI通信</h1>
+<p>「Serial Peripheral Interface」の略. 比較的近距離に配置されているデバイス同士をつなげるバスのこと</p>
+<h1>信号の機能</h1>
+<ul>
+<li>cs = チップセレクト</li>
+<li>sck(clk) = クロック</li>
+<li>MOSI(din) = データ入力</li>
+<li>MOSO(dout) = データ出力</li>
+</ul>
+<h1>プログラム</h1>
+<div class="highlight"><pre><span></span><span class="k">extern</span> <span class="s">&quot;C&quot;</span><span class="p">{</span>
+<span class="cp">#include</span> <span class="cpf">&lt;spi.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;spi_register.h&gt;</span><span class="cp"></span>
+<span class="p">}</span>
+
+<span class="c1">// loopを回しやすくするライブラリ</span>
+<span class="cp">#include</span> <span class="cpf">&lt;Ticker.h&gt;</span><span class="cp"></span>
+
+<span class="n">Ticker</span> <span class="n">ticker</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="n">spi_init</span><span class="p">(</span><span class="n">HSPI</span><span class="p">);</span>
+
+  <span class="n">ticker</span><span class="p">.</span><span class="n">attach_ms</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">timer</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">timer</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="n">uint32</span> <span class="n">val0</span> <span class="o">=</span> <span class="n">check</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">uint32</span> <span class="n">val1</span> <span class="o">=</span> <span class="n">check</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; Sencor1:&quot;</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">val0</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot; Sencor2:&quot;</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">val1</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="n">uint32</span> <span class="nf">check</span><span class="p">(</span><span class="kt">int</span> <span class="n">channel</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">uint8</span> <span class="n">cmd</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="n">b11</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">channel</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="n">uint32</span> <span class="n">COMMAND_LENGTH</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="k">const</span> <span class="n">uint32</span> <span class="n">RESPONSE_LENGTH</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+
+  <span class="n">uint32</span> <span class="n">retval</span> <span class="o">=</span> <span class="n">spi_transaction</span><span class="p">(</span><span class="n">HSPI</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">COMMAND_LENGTH</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">RESPONSE_LENGTH</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="n">retval</span> <span class="o">=</span> <span class="n">retval</span> <span class="o">&amp;</span> <span class="mh">0x3FF</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">retval</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h1>結果</h1>
+<p>シリアルモニタで２つのセンサの値を確認することができた
+<img alt="No Image!" src="/image/esp_adc_output.png"></p>
+<h1>これから調べること</h1>
+<ul>
+<li>ESP-WROOM-02のENピンの意味</li>
+</ul>
+<h1>参考記事</h1>
+<ul>
+<li><a href="http://ww1.microchip.com/downloads/en/DeviceDoc/21295d.pdf">MCP3004/3008データシート</a></li>
+<li><a href="http://qiita.com/ryokai/items/9b0c56616b4550eb05f1">ESP8266(ESP-WROOM-02)でアナログ値を見るには？ - Qiita</a></li>
+<li><a href="http://qiita.com/exabugs/items/9ca4093813db71278b39">ESP8266 (ESP-WROOM-02) でセンサーを扱う - Qiita</a><ul>
+<li>回路を参考に</li>
+</ul>
+</li>
+<li><a href="http://wazalabo.com/pic-spi.html">SPI通信で、PICと加速度センサを「お話」させてみた | 技ラボ</a><ul>
+<li>SPI通信について</li>
+</ul>
+</li>
+</ul>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href="/author/hidemaro.html">@Hidemaro</a>
+            <span> in </span>
+            <span class="post_category"><a href="/category/dian-zi-gong-zuo.html" rel="bookmark" title="Permalink to 電子工作">[
+                    電子工作 ]</a></span>
+            <span class="post_date">Wed 16 August 2017</span>
+            <div><span>Tags : </span>
+                <span><a href="/tag/esp-wroom-02.html">#ESP-WROOM-02, </a></span>
+            </div>
+
+            <!-- <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=/esp_adc.html&text=ESP-WROOM-02にADコンバーターを繋いで、複数のセンサの値を取得&via="><img
+                            src="/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=/esp_adc.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=/esp_adc.html&t=ESP-WROOM-02にADコンバーターを繋いで、複数のセンサの値を取得"><img
+                            src="/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=/esp_adc.html&title=ESP-WROOM-02にADコンバーターを繋いで、複数のセンサの値を取得"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=ESP-WROOM-02にADコンバーターを繋いで、複数のセンサの値を取得&amp;body=Viens découvrir un article à propos de [ESP-WROOM-02にADコンバーターを繋いで、複数のセンサの値を取得] sur le site de Hidemaro. /esp_adc.html"
+                            title="Share by Email" target="_blank"><img
+                            src="/theme/images/icons/mail-s.png"></a></span>
+                </div> -->
+        </div>
+    </article>
+</section>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+
+</html>

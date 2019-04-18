@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Site Meta Data -->
+    <title>ROSの基礎１ - 用語の理解~サンプル -</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Hidemaro">
+
+    <link rel="shortcut icon" href="">
+
+    <!-- schema.org -->
+    <meta itemprop="name" content="Maro Notebook">
+    <meta itemprop="image" content="">
+    <meta itemprop="description" content="">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Style Meta Data -->
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+
+    <!-- Feed Meta Data -->
+
+    <!-- Twitter Feed -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="/ros_fundamental1.html">
+<meta name="twitter:title" content="Maro Notebook ~ ROSの基礎１ - 用語の理解~サンプル -">
+<meta name="twitter:description" content="ROSの勉強は、このフリーの本を使って行う. これは、九州大学の倉爪研究室が書いたものらしい. ありがたく使って勉強する. マスターとノード マスター : すべてのノードの管理. 起動していないと何もできない. ノード : ROSの最小の構成要素. 一つのノードに一つのロボットの機能があるイメージ ROSで使用される通信 メッセージ通信 : ノード間でメッセージをやり取りする パラメータ通信 : パラメータサーバーとノード間でパラメータ値をやり取りする. パラメータサーバはROSネットワーク内に１つだけ存在する ノード間のメッセージ通信 全体のプログラムは、ノード同士が通信を行うことによって動く.そのときに行うのが、メッセージ通信である. ノード間のメッセージ通信には、トピックメッセージ通信とサービスメッセージ通信の2種類がある. また、メッセージを送信することをROSでは「配信」、受信することを「購読」という. トピックメッセージ通信 : 名前の通り、トピックという形式でメッセージを送受信すること. 1対多の通信が可能. サービスメッセージ通信 : サービスクライアントとサービスサーバー間の双方向の通信. 1対1のみの通信. ここで少しわかりずらいので、サービスについて説明する. サービスとは 以下の2つによって構成されている. サービスクライアント : サービスを送信し情報を受け取る. リクエストを出力し、レスポンスを受け取る. サービスサーバー : リクエストを受け取ると情報を送信する. リクエストを受取 …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Maro Notebook ~ ROSの基礎１ - 用語の理解~サンプル -" />
+<meta property="og:description" content="ROSの勉強は、このフリーの本を使って行う. これは、九州大学の倉爪研究室が書いたものらしい. ありがたく使って勉強する. マスターとノード マスター : すべてのノードの管理. 起動していないと何もできない. ノード : ROSの最小の構成要素. 一つのノードに一つのロボットの機能があるイメージ ROSで使用される通信 メッセージ通信 : ノード間でメッセージをやり取りする パラメータ通信 : パラメータサーバーとノード間でパラメータ値をやり取りする. パラメータサーバはROSネットワーク内に１つだけ存在する ノード間のメッセージ通信 全体のプログラムは、ノード同士が通信を行うことによって動く.そのときに行うのが、メッセージ通信である. ノード間のメッセージ通信には、トピックメッセージ通信とサービスメッセージ通信の2種類がある. また、メッセージを送信することをROSでは「配信」、受信することを「購読」という. トピックメッセージ通信 : 名前の通り、トピックという形式でメッセージを送受信すること. 1対多の通信が可能. サービスメッセージ通信 : サービスクライアントとサービスサーバー間の双方向の通信. 1対1のみの通信. ここで少しわかりずらいので、サービスについて説明する. サービスとは 以下の2つによって構成されている. サービスクライアント : サービスを送信し情報を受け取る. リクエストを出力し、レスポンスを受け取る. サービスサーバー : リクエストを受け取ると情報を送信する. リクエストを受取 …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside>
+        <!-- <center><a href=""><img id="avatar" src=""></a></center> -->
+        <h1 id="sitename"><a href="https://maro525.github.io/notebook/"></a>Maro Notebook</a></h1>
+        <br>
+
+
+        <nav class="nav">
+            <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://maro525.github.io/notebook/">HOME</a></li>
+                <li><a class="nav__link" href="https://maro525.github.io">ABOUT</a></li>
+
+
+            </ul>
+        </nav>
+
+        <p class="social">
+            <a href="https://twitter.com/HdmrF" target="_blank"><img src="/theme/images/icons/twitter.png"></a>
+            <a href="https://github.com/maro525" target="_blank"><img src="/theme/images/icons/github.png"></a>
+        </p>
+
+        <h2 class="categories">Categories</h2>
+        <ul class="navbar" id="categorylist">
+            <li ><a href="/category/ben.html">本</a></li>
+            <li ><a href="/category/dian-zi-gong-zuo.html">電子工作</a></li>
+            <li  class="active" ><a href="/category/puroguramingu.html">プログラミング</a></li>
+            <li ><a href="/category/si-kao-nobei-wang-lu.html">思考の備忘録</a></li>
+            <li ><a href="/category/yin-le.html">音楽</a></li>
+        </ul>
+
+
+    </aside>
+
+    <!-- Content -->
+    <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="/ros_fundamental1.html" rel="bookmark" title="Permalink to ROSの基礎１ - 用語の理解~サンプル -">ROSの基礎１ - 用語の理解~サンプル -</a></h2>
+        <div class="entry-content blog-post">
+            <p>ROSの勉強は、<a href="http://irvs.github.io/rosbook_jp/">このフリーの本</a>を使って行う.</p>
+<p>これは、九州大学の倉爪研究室が書いたものらしい.</p>
+<p>ありがたく使って勉強する.</p>
+<h1>マスターとノード</h1>
+<ul>
+<li>マスター : すべてのノードの管理. 起動していないと何もできない.</li>
+<li>ノード : ROSの最小の構成要素. 一つのノードに一つのロボットの機能があるイメージ</li>
+</ul>
+<h1>ROSで使用される通信</h1>
+<ul>
+<li>メッセージ通信 : ノード間でメッセージをやり取りする</li>
+<li>パラメータ通信 : パラメータサーバーとノード間でパラメータ値をやり取りする. パラメータサーバはROSネットワーク内に１つだけ存在する</li>
+</ul>
+<h1>ノード間のメッセージ通信</h1>
+<p>全体のプログラムは、ノード同士が通信を行うことによって動く.そのときに行うのが、メッセージ通信である.</p>
+<p>ノード間のメッセージ通信には、トピックメッセージ通信とサービスメッセージ通信の2種類がある.</p>
+<p>また、メッセージを送信することをROSでは「配信」、受信することを「購読」という.</p>
+<ul>
+<li>トピックメッセージ通信 : 名前の通り、トピックという形式でメッセージを送受信すること. 1対多の通信が可能.</li>
+<li>サービスメッセージ通信 : サービスクライアントとサービスサーバー間の双方向の通信. 1対1のみの通信.</li>
+</ul>
+<p>ここで少しわかりずらいので、サービスについて説明する.</p>
+<h2>サービスとは</h2>
+<p>以下の2つによって構成されている.</p>
+<p>サービスクライアント : サービスを送信し情報を受け取る. リクエストを出力し、レスポンスを受け取る.
+サービスサーバー : リクエストを受け取ると情報を送信する. リクエストを受取、レスポンスを出力する.</p>
+<p>サービスはトピックとは異なり、一回限りの通信なので、リクエストとレスポンスが完了すると、一旦接続がきれる.</p>
+<h2>マスターの役割</h2>
+<p>ノード間が通信を行うためには、ノード同士で接続しなければならない. その接続を管理するのが、マスターである.</p>
+<p>ノードが生成されたら、「ノードの名前」「トピックやサービスの名前」「URIアドレス」「ポート」「パラメーター」などの情報をマスターに登録.ノードが他のノードと接続したいときは、マスターを介してこれらの情報を得る.</p>
+<h2>マスターの実行</h2>
+<p>ノード館の接続情報を管理するためにマスターを起動しなければいけない.それが以下のコマンドである.</p>
+<div class="highlight"><pre><span></span><span class="c">% roscore</span>
+</pre></div>
+
+
+<h2>購読者ノード、配信者ノードの実行</h2>
+<p>rosrunもしくはroslaunchコマンドにより実行する. 前述したとおり、実行時に、自分の情報をマスターに登録する.</p>
+<div class="highlight"><pre><span></span><span class="c">% rosrun PACKAGE_NAME NODE_NAME</span>
+<span class="c">% roslaunch PACKAGE_NAME LAUNCH_NAME</span>
+</pre></div>
+
+
+<p>購読者ノードは、マスターから配信者ノードの情報を取得する. その情報にもとづき、配信者ノードに直接接続を要請する.</p>
+<p>配信者ノードは要請に対する応答として、自身のURIアドレスとポートを送信する.その後、TCPROSという方式を用いて通信する.</p>
+<h2>メッセージ通信の例</h2>
+<p><a href="https://maro525.github.io/blog/ros_setup.html">ROSのセットアップ記事</a>で行ったサンプルを例にとる.</p>
+<ul>
+<li>配信者 : turtle_teleop_key(キーボードの情報を送信)</li>
+<li>購読者 : turtlesim_node(キーボードの情報を受信)</li>
+<li>トピック : 「/turtle/cmd_vel」</li>
+</ul>
+<h1>ファイルシステム</h1>
+<p>ROSをインストールすると、/optフォルダにrosというフォルダが作成され、その中にロボット関連のライブラリが入る.触ることはほぼない.</p>
+<p>基本的に作業するフォルダは、<code>~/catkin_ws/src</code>である.作業フォルダは、パッケージを保存しビルドする場所.</p>
+<p>(パッケージは、何かしらを動かすためのひとまとまりプログラムと考えればいい. 自分で書いたものを公開することもできる.)</p>
+<h1>ビルドシステム</h1>
+<p>CMakeを基本的には利用している. catkinビルドシステムは、CMakeをROSにあわせて改良したものである.</p>
+<h2>パッケージを作成してみる</h2>
+<p>パッケージを作成するコマンドは以下である.</p>
+<p><code>% catkin_create_pkg [PACKAGE_NAME] [依存するパッケージ1] ... [依存するパッケージN]</code></p>
+<p>実際にコマンドをうつ</p>
+<div class="highlight"><pre><span></span><span class="c">% cd ~/catkin_ws/src</span>
+<span class="c">% catkin_create_pkg my_first_ros_pkg std_msgs roscpp</span>
+</pre></div>
+
+
+<p>std_msgsとroscppが今回依存するパッケージとして指定したものである.</p>
+<p>パッケージを作成すると、<code>~/catkin_ws/src</code>下に、<code>my_first_ros_pkg</code>というフォルダが作成される.</p>
+<p>そのフォルダの中にある<code>package.xml</code>は、パッケージの名前や著作者、ライセンス、依存性パッケージなどの情報を保持している.</p>
+<p><code>CMakeList.txt</code>ファイルには、ビルドの設定などを記入する. 作成するパッケージ名、依存パッケージ名、実行可能ファイル名などを設定する.</p>
+<h1>CMakeList.txtの文法について</h1>
+<table>
+<thead>
+<tr>
+<th align="left">言葉</th>
+<th align="left">意味</th>
+<th align="left">例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">find_package</td>
+<td align="left">パッケージを探す</td>
+<td align="left">find_package(catkin REQUIRED COMPONENTS roscpp std_msgs)</td>
+</tr>
+<tr>
+<td align="left">catkin_python_setup()</td>
+<td align="left">Pythonを使用するときに用いる</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">add_message_files</td>
+<td align="left">メッセージファイルを追加するため</td>
+<td align="left">add_message_files(FILES Message1.msg Message2.msg)</td>
+</tr>
+<tr>
+<td align="left">add_service_files</td>
+<td align="left">サービスファイルを追加する</td>
+<td align="left">add_service_files(FILES Service1.srv Service2.srv)</td>
+</tr>
+<tr>
+<td align="left">generate_messages</td>
+<td align="left">依存しているメッセージを設定</td>
+<td align="left">generate_messages(DEPENDENCIES std_msgs)</td>
+</tr>
+<tr>
+<td align="left">catkin_package</td>
+<td align="left">catkinビルドオプション</td>
+<td align="left">catkin(INCLUDE_DIRS include LIBRARIES my_first_ros_pkg CATKIN_DEPENDS roscpp std_msgs DEPENDS system_lib)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>INCLUDE_DIRSでヘッダーファイルの置かれたフォルダを指定.</li>
+<li>LIBRARIESで「add_library」で指定したライブラリの保存先フォルダをしてい. このLIBRARIESフォルダは、<code>catkin_ws/devel/liv</code>下に作成される</li>
+<li>CATKIN_DEPENDSはroscppやstd_msgsなど、依存するパッケージを指定</li>
+<li>DEPENDSはシステム依存のパッケージを指定</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">言葉</th>
+<th align="left">意味</th>
+<th align="left">例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">include_directories</td>
+<td align="left">インクルードフォルダを指定</td>
+<td align="left" catkin_INCLUDE_DIRS>include_directories($</td>
+</tr>
+<tr>
+<td align="left">add_library</td>
+<td align="left">作成するライブラリを指定.ファイルと作成するライブラリを記述</td>
+<td PROJECT_NAME align="left">add_library(my_first_ros_pkg src/$</td>
+</tr>
+<tr>
+<td align="left">add_executable</td>
+<td align="left">作成する実行可能ファイルを指定する</td>
+<td align="left">add_executable(my_first_ros_pkg_node src/my_first_ros_pkg_node.cpp)</td>
+</tr>
+<tr>
+<td align="left">add_dependencies</td>
+<td align="left">ビルドする前にメッセージのヘッダーファイルを作成する必要がある場合</td>
+<td align="left">add_dependencies(my_first_ros_pkg_node my_first_ros_pkg_generate_message_cpp)</td>
+</tr>
+<tr>
+<td align="left">target_link_libraries</td>
+<td align="left">リンクするライブラリを指定</td>
+<td align="left" catkin_LIBRARIES>target_link_libraries(my_first_ros_pkg_node $</td>
+</tr>
+</tbody>
+</table>
+<p>まだこの時点では実感がわかずよくわからない.これらは、使っていくうちに覚えていくしかない.</p>
+<h2>例</h2>
+<div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">2.8.3</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">my_first_ros_pkg</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">catkin</span> <span class="s">REQUIRED</span> <span class="s">COMPONENTS</span> <span class="s">roscpp</span> <span class="s">std_msgs</span><span class="p">)</span>
+<span class="nb">catkin_package</span><span class="p">(</span> <span class="s">INCLUDE_DIRS</span> <span class="s">include</span>
+    <span class="s">CATKIN_DEPENDS</span> <span class="s">roscpp</span> <span class="s">std_msgs</span>
+    <span class="s">DEPENDS</span> <span class="s">system_lib</span>
+<span class="p">)</span>
+<span class="nb">include_directories</span><span class="p">(</span> <span class="o">${</span><span class="nv">catkin_INCLUDE_DIRS</span><span class="o">}</span> <span class="p">)</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">hello_world_node</span> <span class="s">src/hello_world_node.cpp</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">hello_world_node</span> <span class="s">src/hello_world_node.cpp</span><span class="p">)</span>
+<span class="nb">add_dependencies</span><span class="p">(</span><span class="s">hello_world_node</span> <span class="s">my_first_ros_pkg_generate_messages_cpp</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">hello_world_node</span> <span class="o">${</span><span class="nv">catkin_LIBRARIES</span><span class="o">}</span><span class="p">)</span>
+</pre></div>
+
+
+<p>CMakeList.txtをこのような形にする.</p>
+<p>add_executableの部分でhello_world_node.cppというファイルからhello_world_nodeという実行ファイルを作成するとしたので、<code>~/catkin_ws/src/my_first_ros_pkg/src</code>下に、hello_world_node.cppというファイルを作成する.</p>
+<p>ファイル名:hello_world_node.cpp</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;ros/ros.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;std_msgs/String.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+<span class="kr">int</span> <span class="nf">main</span><span class="p">(</span><span class="kr">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kr">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">ros</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">&quot;hello_world_node&quot;</span><span class="p">);</span>
+   <span class="n">ros</span><span class="o">::</span><span class="n">NodeHandle</span> <span class="n">nh</span><span class="p">;</span>
+   <span class="n">ros</span><span class="o">::</span><span class="n">Publisher</span> <span class="n">chatter_pub</span> <span class="o">=</span>
+     <span class="n">nh</span><span class="p">.</span><span class="n">advertise</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="kr">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;say_hello_world&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+   <span class="n">ros</span><span class="o">::</span><span class="n">Rate</span> <span class="n">loop_rate</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+   <span class="kr">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="k">while</span> <span class="p">(</span><span class="n">ros</span><span class="o">::</span><span class="n">ok</span><span class="p">())</span>
+   <span class="p">{</span>
+     <span class="n">std_msgs</span><span class="o">::</span><span class="kr">String</span> <span class="n">msg</span><span class="p">;</span>
+     <span class="n">std</span><span class="o">::</span><span class="n">stringstream</span> <span class="n">ss</span><span class="p">;</span>
+     <span class="n">ss</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;hello world &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">count</span><span class="p">;</span>
+     <span class="n">msg</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">ss</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+     <span class="n">ROS_INFO</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+     <span class="n">chatter_pub</span><span class="p">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+     <span class="n">ros</span><span class="o">::</span><span class="n">spinOnce</span><span class="p">();</span>
+     <span class="n">loop_rate</span><span class="p">.</span><span class="n">sleep</span><span class="p">();</span>
+     <span class="o">++</span><span class="n">count</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>ビルドする</h2>
+<p><code>% cd ~/catkin_ws &amp;&amp; catkin_make</code></p>
+<p>ROSセットアップ時にエイリアスをしているので、「cm」と入力するだけでもビルドできる.</p>
+<p>ビルドが終了すると、<code>~/catkin_ws/devel/lib/my_first_ros_pkg</code>に「hello_world_node」という名前のファイルが作成されている</p>
+<h2>実行する</h2>
+<p>まず、roscoreの実行</p>
+<p><code>% roscore</code></p>
+<p>別のウインドウを開き、ノードを実行</p>
+<div class="highlight"><pre><span></span><span class="c">% rosrun my_first_ros_pkg hello_world_node</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="mf">1423443540.131775283</span><span class="p">]:</span> <span class="n">hello</span> <span class="n">world</span> <span class="mi">0</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="mf">1423443540.231826916</span><span class="p">]:</span> <span class="n">hello</span> <span class="n">world</span> <span class="mi">1</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="mf">1423443540.331798085</span><span class="p">]:</span> <span class="n">hello</span> <span class="n">world</span> <span class="mi">2</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="mf">1423443540.431796634</span><span class="p">]:</span> <span class="n">hello</span> <span class="n">world</span> <span class="mi">3</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="mf">1423443540.531808660</span><span class="p">]:</span> <span class="n">hello</span> <span class="n">world</span> <span class="mi">4</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="mf">1423443540.631800431</span><span class="p">]:</span> <span class="n">hello</span> <span class="n">world</span> <span class="mi">5</span>
+<span class="p">[</span><span class="n">INFO</span><span class="p">]</span> <span class="p">[</span><span class="mf">1423443540.731805683</span><span class="p">]:</span> <span class="n">hello</span> <span class="n">world</span> <span class="mi">6</span>
+</pre></div>
+
+
+<p>ノードを実行すると、hello world 0,1,2などメッセージが配信されることが確認できる</p>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href="/author/hidemaro.html">@Hidemaro</a>
+            <span> in </span>
+            <span class="post_category"><a href="/category/puroguramingu.html" rel="bookmark" title="Permalink to プログラミング">[
+                    プログラミング ]</a></span>
+            <span class="post_date">Sat 30 September 2017</span>
+            <div><span>Tags : </span>
+                <span><a href="/tag/ubuntu.html">#Ubuntu, </a></span>
+                <span><a href="/tag/ros.html">#ROS, </a></span>
+            </div>
+
+            <!-- <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=/ros_fundamental1.html&text=ROSの基礎１ - 用語の理解~サンプル -&via="><img
+                            src="/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=/ros_fundamental1.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=/ros_fundamental1.html&t=ROSの基礎１ - 用語の理解~サンプル -"><img
+                            src="/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=/ros_fundamental1.html&title=ROSの基礎１ - 用語の理解~サンプル -"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=ROSの基礎１ - 用語の理解~サンプル -&amp;body=Viens découvrir un article à propos de [ROSの基礎１ - 用語の理解~サンプル -] sur le site de Hidemaro. /ros_fundamental1.html"
+                            title="Share by Email" target="_blank"><img
+                            src="/theme/images/icons/mail-s.png"></a></span>
+                </div> -->
+        </div>
+    </article>
+</section>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+
+</html>

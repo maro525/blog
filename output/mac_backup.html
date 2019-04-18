@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Site Meta Data -->
+    <title>mac環境のbackup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Hidemaro">
+
+    <link rel="shortcut icon" href="">
+
+    <!-- schema.org -->
+    <meta itemprop="name" content="Maro Notebook">
+    <meta itemprop="image" content="">
+    <meta itemprop="description" content="">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Style Meta Data -->
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+
+    <!-- Feed Meta Data -->
+
+    <!-- Twitter Feed -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="/mac_backup.html">
+<meta name="twitter:title" content="Maro Notebook ~ mac環境のbackup">
+<meta name="twitter:description" content="アプリについて 基本的にbrew-caskを使ってインストールする # brew-caskのインストール % brew install caskroom/cask/brew-cask # たとえばGoogle Chromeをインストールするとき % brew cask install google-chrome # アプリを探したいとき # たとえばfirefoxを探したいとき % brew cask search firefox ==&gt; Exact Match firefox ==&gt; Partial Matches multifirefox ==&gt; Remote Matches caskroom/versions/firefox-esr caskroom/versions/firefox-beta # dmgファイルなどのキャッシュ削除 brew cask cleanup # アプリ削除 brew cask uninstall firefox Brew-file Brew-fileを使うと、brewやbrew-caskを使ってインストールしたアプリやパッケージをファイルで管理できるようになる 一緒にmasというパッケージもインストールすると、BrewfileにApp Storeからダウンロードしたアプリも記録される # brew-fileのインストール …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Maro Notebook ~ mac環境のbackup" />
+<meta property="og:description" content="アプリについて 基本的にbrew-caskを使ってインストールする # brew-caskのインストール % brew install caskroom/cask/brew-cask # たとえばGoogle Chromeをインストールするとき % brew cask install google-chrome # アプリを探したいとき # たとえばfirefoxを探したいとき % brew cask search firefox ==&gt; Exact Match firefox ==&gt; Partial Matches multifirefox ==&gt; Remote Matches caskroom/versions/firefox-esr caskroom/versions/firefox-beta # dmgファイルなどのキャッシュ削除 brew cask cleanup # アプリ削除 brew cask uninstall firefox Brew-file Brew-fileを使うと、brewやbrew-caskを使ってインストールしたアプリやパッケージをファイルで管理できるようになる 一緒にmasというパッケージもインストールすると、BrewfileにApp Storeからダウンロードしたアプリも記録される # brew-fileのインストール …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside>
+        <!-- <center><a href=""><img id="avatar" src=""></a></center> -->
+        <h1 id="sitename"><a href="https://maro525.github.io/notebook/"></a>Maro Notebook</a></h1>
+        <br>
+
+
+        <nav class="nav">
+            <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://maro525.github.io/notebook/">HOME</a></li>
+                <li><a class="nav__link" href="https://maro525.github.io">ABOUT</a></li>
+
+
+            </ul>
+        </nav>
+
+        <p class="social">
+            <a href="https://twitter.com/HdmrF" target="_blank"><img src="/theme/images/icons/twitter.png"></a>
+            <a href="https://github.com/maro525" target="_blank"><img src="/theme/images/icons/github.png"></a>
+        </p>
+
+        <h2 class="categories">Categories</h2>
+        <ul class="navbar" id="categorylist">
+            <li ><a href="/category/ben.html">本</a></li>
+            <li ><a href="/category/dian-zi-gong-zuo.html">電子工作</a></li>
+            <li  class="active" ><a href="/category/puroguramingu.html">プログラミング</a></li>
+            <li ><a href="/category/si-kao-nobei-wang-lu.html">思考の備忘録</a></li>
+            <li ><a href="/category/yin-le.html">音楽</a></li>
+        </ul>
+
+
+    </aside>
+
+    <!-- Content -->
+    <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="/mac_backup.html" rel="bookmark" title="Permalink to mac環境のbackup">mac環境のbackup</a></h2>
+        <div class="entry-content blog-post">
+            <h1>アプリについて</h1>
+<ul>
+<li>基本的にbrew-caskを使ってインストールする</li>
+</ul>
+<div class="highlight"><pre><span></span># brew-caskのインストール
+% brew install caskroom/cask/brew-cask
+
+# たとえばGoogle Chromeをインストールするとき
+% brew cask install google-chrome
+
+# アプリを探したいとき
+# たとえばfirefoxを探したいとき
+% brew cask search firefox
+==&gt; Exact Match
+firefox
+==&gt; Partial Matches
+multifirefox
+==&gt; Remote Matches
+caskroom/versions/firefox-esr            caskroom/versions/firefox-beta
+
+# dmgファイルなどのキャッシュ削除
+brew cask cleanup
+
+# アプリ削除
+brew cask uninstall firefox
+</pre></div>
+
+
+<h1>Brew-file</h1>
+<ul>
+<li>Brew-fileを使うと、brewやbrew-caskを使ってインストールしたアプリやパッケージをファイルで管理できるようになる</li>
+<li>一緒にmasというパッケージもインストールすると、BrewfileにApp Storeからダウンロードしたアプリも記録される</li>
+</ul>
+<div class="highlight"><pre><span></span># brew-fileのインストール
+% brew tap rcmdnk/file
+% brew install brew-file
+
+# masのインストール
+% brew install mas
+</pre></div>
+
+
+<ul>
+<li>初期化</li>
+</ul>
+<p>Brewfileに最初に書き込むとき以下のコマンドを打つ.</p>
+<div class="highlight"><pre><span></span><span class="c">% brew file init</span>
+</pre></div>
+
+
+<p>すると、~/.brewfile/Brewfileに出力される.</p>
+<ul>
+<li>Brewfileの保存場所を変更したいときは、<code>.bashrc</code>や<code>.zshrc</code> のようなファイルに、</li>
+</ul>
+<div class="highlight"><pre><span></span>export HOMEBREW_BREWFILE=~/Dropbox
+</pre></div>
+
+
+<p>のように指定すれば、指定舌場所にファイルが保存される.</p>
+<ul>
+<li>Mas</li>
+</ul>
+<div class="highlight"><pre><span></span>122 # App Store applications
+123 appstore 808647808 ActivityTimer (2.0.5)
+124 appstore 896624060 Kobito (2.3.8)
+125 appstore 748212890 Memory Cleaner (2.4)
+126 appstore 497799835 Xcode (8.3.3)
+</pre></div>
+
+
+<p>masのお陰で、このように、AppStoreからインストールしたアプリケーションも記録される.</p>
+<ul>
+<li>再構築したいときは、</li>
+</ul>
+<div class="highlight"><pre><span></span>brew file install Brewfile
+</pre></div>
+
+
+<p>で完了する.</p>
+<ul>
+<li>コマンド</li>
+</ul>
+<div class="highlight"><pre><span></span># Brewfileを確認する
+% brew file cat
+
+# Brewfileを編集する
+% brew file edit
+
+# Brewfileを更新
+% brew file update &amp;&amp; brew  
+
+# brew cask に入っているアプリーケーションを更新
+% brew file cask_upgrade -C
+
+# brew や brew caskで新しいアプリケーションをインストールするときに、同時にBrewfileも更新するとき
+% brew file brew install &lt;package&gt;
+% brew file brew cask install &lt;package&gt;
+</pre></div>
+
+
+<ul>
+<li>上記以外の方法にもBrewfileを自動で更新する方法がある. 以下の分を<code>.zshrc</code>等に書くことで、brewコマンドが使われたとき、自動でBrewfileがアップデートされる</li>
+</ul>
+<div class="highlight"><pre><span></span>if [ -f $(brew --prefix)/etc/brew-wrap ];then
+  source $(brew --prefix)/etc/brew-wrap
+fi
+</pre></div>
+
+
+<h1>Mackup</h1>
+<ul>
+<li>mackupを使うと、アプリーケーションの設定を保存してくれる.</li>
+</ul>
+<div class="highlight"><pre><span></span># インストール
+% brew install mackup
+
+# バックアップ
+% mackup backup
+
+# 再構築
+% mackup restore
+</pre></div>
+
+
+<h1>Atomのパッケージのバックアップ</h1>
+<div class="highlight"><pre><span></span>apm list -bi &gt; Atomfile
+</pre></div>
+
+
+<p>のようにファイルを作成し、Dropboxなどに保存</p>
+<h1>参考</h1>
+<ul>
+<li><a href="https://rcmdnk.com/blog/2016/02/13/computer-mac-homebrew-brew-file/">Brew-fileでApp Storeのアプリも含めてMacを完全自動初期化</a></li>
+</ul>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href="/author/hidemaro.html">@Hidemaro</a>
+            <span> in </span>
+            <span class="post_category"><a href="/category/puroguramingu.html" rel="bookmark" title="Permalink to プログラミング">[
+                    プログラミング ]</a></span>
+            <span class="post_date">Sun 16 July 2017</span>
+            <div><span>Tags : </span>
+                <span><a href="/tag/mac.html">#Mac, </a></span>
+            </div>
+
+            <!-- <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=/mac_backup.html&text=mac環境のbackup&via="><img
+                            src="/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=/mac_backup.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=/mac_backup.html&t=mac環境のbackup"><img
+                            src="/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=/mac_backup.html&title=mac環境のbackup"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=mac環境のbackup&amp;body=Viens découvrir un article à propos de [mac環境のbackup] sur le site de Hidemaro. /mac_backup.html"
+                            title="Share by Email" target="_blank"><img
+                            src="/theme/images/icons/mail-s.png"></a></span>
+                </div> -->
+        </div>
+    </article>
+</section>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+
+</html>

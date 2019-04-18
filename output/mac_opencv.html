@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Site Meta Data -->
+    <title>Mac Sierra でOpencv使う</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Hidemaro">
+
+    <link rel="shortcut icon" href="">
+
+    <!-- schema.org -->
+    <meta itemprop="name" content="Maro Notebook">
+    <meta itemprop="image" content="">
+    <meta itemprop="description" content="">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Style Meta Data -->
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+
+    <!-- Feed Meta Data -->
+
+    <!-- Twitter Feed -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="/mac_opencv.html">
+<meta name="twitter:title" content="Maro Notebook ~ Mac Sierra でOpencv使う">
+<meta name="twitter:description" content="OpenCV3.3.0 最近のHomebrewのアップデートにより、opencvのバージョン3.3.0が導入されたが、Pythonでopencvを使ってみたところ、libjpegが見つからないとエラーが出た. そこで、ぐぐってでてきたQiita記事を参考に、libjpegとのシンボリックをはったら、正常にopencvを実行できた. しかし、pythonのコンソールでimport cv2したあとに、cv2.__version__を確認すると、3.2.0と表示された. そこで、brew info opencv3として、内容を確認してみると、3.2.0と3.3.0のパッケージが両方入っていることがわかった. そこでいろいろ調べてみると、 homebrewのパッケージの過去のversionを削除したい場合は、brew cleanup opencv3のようにすればいいことがわかったが、brewのパッケージについてもう少しいろいろ調べてみた. また、brew versionsコマンドを使うのような手段もによって、brewからインストールしたパッケージのバージョンを変更しながら使えることもわかった …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Maro Notebook ~ Mac Sierra でOpencv使う" />
+<meta property="og:description" content="OpenCV3.3.0 最近のHomebrewのアップデートにより、opencvのバージョン3.3.0が導入されたが、Pythonでopencvを使ってみたところ、libjpegが見つからないとエラーが出た. そこで、ぐぐってでてきたQiita記事を参考に、libjpegとのシンボリックをはったら、正常にopencvを実行できた. しかし、pythonのコンソールでimport cv2したあとに、cv2.__version__を確認すると、3.2.0と表示された. そこで、brew info opencv3として、内容を確認してみると、3.2.0と3.3.0のパッケージが両方入っていることがわかった. そこでいろいろ調べてみると、 homebrewのパッケージの過去のversionを削除したい場合は、brew cleanup opencv3のようにすればいいことがわかったが、brewのパッケージについてもう少しいろいろ調べてみた. また、brew versionsコマンドを使うのような手段もによって、brewからインストールしたパッケージのバージョンを変更しながら使えることもわかった …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside>
+        <!-- <center><a href=""><img id="avatar" src=""></a></center> -->
+        <h1 id="sitename"><a href="https://maro525.github.io/notebook/"></a>Maro Notebook</a></h1>
+        <br>
+
+
+        <nav class="nav">
+            <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://maro525.github.io/notebook/">HOME</a></li>
+                <li><a class="nav__link" href="https://maro525.github.io">ABOUT</a></li>
+
+
+            </ul>
+        </nav>
+
+        <p class="social">
+            <a href="https://twitter.com/HdmrF" target="_blank"><img src="/theme/images/icons/twitter.png"></a>
+            <a href="https://github.com/maro525" target="_blank"><img src="/theme/images/icons/github.png"></a>
+        </p>
+
+        <h2 class="categories">Categories</h2>
+        <ul class="navbar" id="categorylist">
+            <li ><a href="/category/ben.html">本</a></li>
+            <li ><a href="/category/dian-zi-gong-zuo.html">電子工作</a></li>
+            <li  class="active" ><a href="/category/puroguramingu.html">プログラミング</a></li>
+            <li ><a href="/category/si-kao-nobei-wang-lu.html">思考の備忘録</a></li>
+            <li ><a href="/category/yin-le.html">音楽</a></li>
+        </ul>
+
+
+    </aside>
+
+    <!-- Content -->
+    <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="/mac_opencv.html" rel="bookmark" title="Permalink to Mac Sierra でOpencv使う">Mac Sierra でOpencv使う</a></h2>
+        <div class="entry-content blog-post">
+            <h1>OpenCV3.3.0</h1>
+<p>最近のHomebrewのアップデートにより、opencvのバージョン3.3.0が導入されたが、Pythonでopencvを使ってみたところ、libjpegが見つからないとエラーが出た.</p>
+<p>そこで、ぐぐってでてきた<a href="http://qiita.com/hurutoriya/items/d162f9f50be6d2088630">Qiita記事</a>を参考に、libjpegとのシンボリックをはったら、正常にopencvを実行できた.</p>
+<p>しかし、pythonのコンソールで<code>import cv2</code>したあとに、<code>cv2.__version__</code>を確認すると、3.2.0と表示された.</p>
+<p>そこで、<code>brew info opencv3</code>として、内容を確認してみると、3.2.0と3.3.0のパッケージが両方入っていることがわかった.</p>
+<p>そこでいろいろ調べてみると、</p>
+<p>homebrewのパッケージの過去のversionを削除したい場合は、<code>brew cleanup opencv3</code>のようにすればいいことがわかったが、brewのパッケージについてもう少しいろいろ調べてみた.</p>
+<p>また、<a href="http://qiita.com/ysk24ok/items/91a7c502d33e0dde72ad"><code>brew versions</code>コマンドを使う</a>のような手段もによって、brewからインストールしたパッケージのバージョンを変更しながら使えることもわかった.</p>
+<p>その後、<a href="http://qiita.com/neriai/items/0d9b3dd4344bdfa428f8">この記事</a>から、Homebrewにおいて、Opencvの2系と3系のリポジトリが統一され、Opencv3に統一されたとのことだったので、一旦Homebrewからopencv3を削除してから、また新しく入れることにした.</p>
+<p>ということで、一旦削除する.</p>
+<div class="highlight"><pre><span></span>brew unisntall --force opencv3
+</pre></div>
+
+
+<p>実際に<code>brew info</code>で確認してみた.</p>
+<div class="highlight"><pre><span></span><span class="c">% brew info opencv</span>
+<span class="n">opencv</span><span class="p">:</span> <span class="n">stable</span> <span class="mf">3.3</span><span class="p">.</span><span class="mi">0</span> <span class="p">(</span><span class="n">bottled</span><span class="p">)</span>
+<span class="n">Open</span> <span class="n">source</span> <span class="n">computer</span> <span class="n">vision</span> <span class="n">library</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">opencv</span><span class="p">.</span><span class="n">org</span><span class="o">/</span>
+<span class="n">Not</span> <span class="n">installed</span>
+<span class="n">From</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">Homebrew</span><span class="o">/</span><span class="n">homebrew</span><span class="o">-</span><span class="n">core</span><span class="o">/</span><span class="n">blob</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">Formula</span><span class="o">/</span><span class="n">opencv</span><span class="p">.</span><span class="n">rb</span>
+<span class="o">==&gt;</span> <span class="n">Dependencies</span>
+<span class="n">Build</span><span class="p">:</span> <span class="n">cmake</span> ✔<span class="p">,</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span> ✔
+<span class="n">Required</span><span class="p">:</span> <span class="n">eigen</span> ✔<span class="p">,</span> <span class="n">ffmpeg</span> ✔<span class="p">,</span> <span class="n">jpeg</span> ✔<span class="p">,</span> <span class="n">libpng</span> ✔<span class="p">,</span> <span class="n">libtiff</span> ✔<span class="p">,</span> <span class="n">openexr</span> ✔<span class="p">,</span> <span class="n">numpy</span> ✔
+<span class="o">==&gt;</span> <span class="n">Requirements</span>
+<span class="n">Recommended</span><span class="p">:</span> <span class="n">python3</span> ✔
+<span class="o">==&gt;</span> <span class="n">Options</span>
+<span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">python</span>
+    <span class="n">Build</span> <span class="n">without</span> <span class="n">python2</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">python3</span>
+    <span class="n">Build</span> <span class="n">without</span> <span class="n">python3</span> <span class="n">support</span>
+
+
+
+
+<span class="c">% brew info opencv3</span>
+<span class="n">homebrew</span><span class="o">/</span><span class="n">science</span><span class="o">/</span><span class="n">opencv3</span><span class="p">:</span> <span class="n">stable</span> <span class="mf">3.3</span><span class="p">.</span><span class="mi">0</span> <span class="p">(</span><span class="n">bottled</span><span class="p">),</span> <span class="n">HEAD</span> <span class="p">[</span><span class="n">keg</span><span class="o">-</span><span class="n">only</span><span class="p">]</span>
+<span class="n">Open</span> <span class="n">source</span> <span class="n">computer</span> <span class="n">vision</span> <span class="n">library</span><span class="p">,</span> <span class="n">version</span> <span class="mi">3</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">opencv</span><span class="p">.</span><span class="n">org</span><span class="o">/</span>
+<span class="n">Not</span> <span class="n">installed</span>
+<span class="n">From</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">Homebrew</span><span class="o">/</span><span class="n">homebrew</span><span class="o">-</span><span class="n">science</span><span class="o">/</span><span class="n">blob</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">opencv3</span><span class="p">.</span><span class="n">rb</span>
+<span class="o">==&gt;</span> <span class="n">Dependencies</span>
+<span class="n">Build</span><span class="p">:</span> <span class="n">cmake</span> ✔<span class="p">,</span> <span class="n">pkg</span><span class="o">-</span><span class="n">config</span> ✔
+<span class="n">Recommended</span><span class="p">:</span> <span class="n">eigen</span> ✔<span class="p">,</span> <span class="n">jpeg</span> ✔<span class="p">,</span> <span class="n">libpng</span> ✔<span class="p">,</span> <span class="n">libtiff</span> ✔<span class="p">,</span> <span class="n">openexr</span> ✔<span class="p">,</span> <span class="n">numpy</span> ✔
+<span class="n">Optional</span><span class="p">:</span> <span class="n">ffmpeg</span> ✔<span class="p">,</span> <span class="n">gphoto2</span> ✘<span class="p">,</span> <span class="n">gstreamer</span> ✔<span class="p">,</span> <span class="n">jasper</span> ✘<span class="p">,</span> <span class="n">jpeg</span><span class="o">-</span><span class="n">turbo</span> ✘<span class="p">,</span> <span class="n">libdc1394</span> ✘<span class="p">,</span> <span class="n">openni</span> ✘<span class="p">,</span> <span class="n">openni2</span> ✘<span class="p">,</span> <span class="n">qt</span> ✔<span class="p">,</span> <span class="n">tbb</span> ✔<span class="p">,</span> <span class="n">vtk</span> ✘
+<span class="o">==&gt;</span> <span class="n">Requirements</span>
+<span class="n">Optional</span><span class="p">:</span> <span class="n">cuda</span> ✘<span class="p">,</span> <span class="n">java</span> ✔<span class="p">,</span> <span class="n">python3</span> ✔
+<span class="o">==&gt;</span> <span class="n">Options</span>
+<span class="o">--</span><span class="n">c</span><span class="o">++</span><span class="mi">11</span>
+    <span class="n">Build</span> <span class="n">using</span> <span class="n">C</span><span class="o">++</span><span class="mi">11</span> <span class="n">mode</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">contrib</span>
+    <span class="n">Build</span> &quot;<span class="n">extra</span>&quot; <span class="n">contributed</span> <span class="n">modules</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">cuda</span>
+    <span class="n">Build</span> <span class="n">with</span> <span class="n">CUDA</span> <span class="n">v7</span><span class="p">.</span><span class="mi">0</span><span class="o">+</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">examples</span>
+    <span class="n">Install</span> <span class="n">C</span> <span class="n">and</span> <span class="n">python</span> <span class="n">examples</span> <span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">ffmpeg</span>
+    <span class="n">Build</span> <span class="n">with</span> <span class="n">ffmpeg</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">gphoto2</span>
+    <span class="n">Build</span> <span class="n">with</span> <span class="n">gphoto2</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">gstreamer</span>
+    <span class="n">Build</span> <span class="n">with</span> <span class="n">gstreamer</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">jasper</span>
+    <span class="n">Build</span> <span class="n">with</span> <span class="n">jasper</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">java</span>
+    <span class="n">Build</span> <span class="n">with</span> <span class="n">Java</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">jpeg</span><span class="o">-</span><span class="n">turbo</span>
+    <span class="n">Build</span> <span class="n">with</span> <span class="n">libjpeg</span><span class="o">-</span><span class="n">turbo</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">libjpeg</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">libdc1394</span>
+    <span class="n">Build</span> <span class="n">with</span> <span class="n">libdc1394</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">nonfree</span>
+    <span class="n">Enable</span> <span class="n">non</span><span class="o">-</span><span class="n">free</span> <span class="n">algorithms</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">opengl</span>
+    <span class="n">Build</span> <span class="n">with</span> <span class="n">OpenGL</span> <span class="n">support</span> <span class="p">(</span><span class="n">must</span> <span class="n">use</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">qt</span><span class="p">)</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">openni</span>
+    <span class="n">Build</span> <span class="n">with</span> <span class="n">openni</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">openni2</span>
+    <span class="n">Build</span> <span class="n">with</span> <span class="n">openni2</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">python3</span>
+    <span class="n">Build</span> <span class="n">with</span> <span class="n">python3</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">qt</span>
+    <span class="n">Build</span> <span class="n">the</span> <span class="n">Qt</span> <span class="n">backend</span> <span class="n">to</span> <span class="n">HighGUI</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">static</span>
+    <span class="n">Build</span> <span class="n">static</span> <span class="n">libraries</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">tbb</span>
+    <span class="n">Enable</span> <span class="n">parallel</span> <span class="n">code</span> <span class="n">in</span> <span class="n">OpenCV</span> <span class="n">using</span> <span class="n">Intel</span> <span class="n">TBB</span>
+<span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">vtk</span>
+    <span class="n">Build</span> <span class="n">with</span> <span class="n">vtk</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">eigen</span>
+    <span class="n">Build</span> <span class="n">without</span> <span class="n">eigen</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">jpeg</span>
+    <span class="n">Build</span> <span class="n">without</span> <span class="n">jpeg</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">libpng</span>
+    <span class="n">Build</span> <span class="n">without</span> <span class="n">libpng</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">libtiff</span>
+    <span class="n">Build</span> <span class="n">without</span> <span class="n">libtiff</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">numpy</span>
+    <span class="n">Use</span> <span class="n">a</span> <span class="n">numpy</span> <span class="n">you</span><span class="o">&#39;</span><span class="n">ve</span> <span class="n">installed</span> <span class="n">yourself</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">a</span> <span class="n">Homebrew</span><span class="o">-</span><span class="n">packaged</span> <span class="n">numpy</span>
+<span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">opencl</span>
+    <span class="n">Disable</span> <span class="n">GPU</span> <span class="n">code</span> <span class="n">in</span> <span class="n">OpenCV</span> <span class="n">using</span> <span class="n">OpenCL</span>
+<span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">openexr</span>
+    <span class="n">Build</span> <span class="n">without</span> <span class="n">openexr</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">python</span>
+    <span class="n">Build</span> <span class="n">without</span> <span class="n">Python</span> <span class="n">support</span>
+<span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">test</span>
+    <span class="n">Build</span> <span class="n">without</span> <span class="n">accuracy</span> <span class="o">&amp;</span> <span class="n">performance</span> <span class="n">tests</span>
+<span class="o">--</span><span class="n">HEAD</span>
+    <span class="n">Install</span> <span class="n">HEAD</span> <span class="n">version</span>
+<span class="o">==&gt;</span> <span class="n">Caveats</span>
+<span class="n">This</span> <span class="n">formula</span> <span class="n">is</span> <span class="n">keg</span><span class="o">-</span><span class="n">only</span><span class="p">,</span> <span class="n">which</span> <span class="n">means</span> <span class="n">it</span> <span class="n">was</span> <span class="n">not</span> <span class="n">symlinked</span> <span class="n">into</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="p">,</span>
+<span class="n">because</span> <span class="n">opencv3</span> <span class="n">and</span> <span class="n">opencv</span> <span class="n">install</span> <span class="n">many</span> <span class="n">of</span> <span class="n">the</span> <span class="n">same</span> <span class="n">files</span><span class="p">.</span>
+</pre></div>
+
+
+<p>infoのところにあるURLに飛んでみたところ、opencv3の方のリンクが切れていたので、Homebrewのopencvはバージョン3に統一されたことが確認できた.</p>
+<p>また、以前までは、openvとopencv3のバージョンが違ったため、opencvはkeg-onlyとなっていたので、<code>brew link opencv3 --force</code>のようにして使う必要があったが、これからはその必要がなくなりそう.</p>
+<h1>再びopencvインストール</h1>
+<div class="highlight"><pre><span></span><span class="c">% brew install opencv</span>
+</pre></div>
+
+
+<p>僕は、pyenv-virtualenvからpythonを扱っているので、pyenvの環境にシンボリックリンクをはる.(NAMEの部分は、virtualenvの環境の名前)</p>
+<div class="highlight"><pre><span></span><span class="c">% ln -sf /usr/local/Cellar/opencv/3.3.0_2/lib/python3.6/site-packages/cv2.cpython-36m-darwin.so ~/.pyenv/versions/3.5.3/envs/NAME/lib/python3.5/site-packages/cv2.so</span>
+</pre></div>
+
+
+<p>これで挙動を確認してみる.</p>
+<div class="highlight"><pre><span></span><span class="n">Python</span> <span class="mf">3.5</span><span class="o">.</span><span class="mi">3</span> <span class="p">(</span><span class="n">default</span><span class="p">,</span> <span class="n">Jun</span> <span class="mi">29</span> <span class="mi">2017</span><span class="p">,</span> <span class="mi">21</span><span class="p">:</span><span class="mo">04</span><span class="p">:</span><span class="mi">15</span><span class="p">)</span>
+<span class="p">[</span><span class="n">GCC</span> <span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span> <span class="n">Compatible</span> <span class="n">Apple</span> <span class="n">LLVM</span> <span class="mf">8.1</span><span class="o">.</span><span class="mi">0</span> <span class="p">(</span><span class="n">clang</span><span class="o">-</span><span class="mf">802.0</span><span class="o">.</span><span class="mi">42</span><span class="p">)]</span> <span class="n">on</span> <span class="n">darwin</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">cv2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cv2</span><span class="o">.</span><span class="n">__version__</span>
+<span class="s1">&#39;3.3.0&#39;</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>となっていたので、問題なくopencvをインストールすることができた.</p>
+<h1>終わりに</h1>
+<p>brew cleanupの存在をうっすらとしかしらなくて、<code>brew cleanup</code>を実行してみたら、1.6GBも容量が減った.</p>
+<p>これからは頻繁に<code>brew cleanup</code>をしていこうと思う.</p>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href="/author/hidemaro.html">@Hidemaro</a>
+            <span> in </span>
+            <span class="post_category"><a href="/category/puroguramingu.html" rel="bookmark" title="Permalink to プログラミング">[
+                    プログラミング ]</a></span>
+            <span class="post_date">Wed 23 August 2017</span>
+            <div><span>Tags : </span>
+                <span><a href="/tag/python.html">#python, </a></span>
+                <span><a href="/tag/opencv.html">#opencv, </a></span>
+            </div>
+
+            <!-- <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=/mac_opencv.html&text=Mac Sierra でOpencv使う&via="><img
+                            src="/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=/mac_opencv.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=/mac_opencv.html&t=Mac Sierra でOpencv使う"><img
+                            src="/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=/mac_opencv.html&title=Mac Sierra でOpencv使う"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=Mac Sierra でOpencv使う&amp;body=Viens découvrir un article à propos de [Mac Sierra でOpencv使う] sur le site de Hidemaro. /mac_opencv.html"
+                            title="Share by Email" target="_blank"><img
+                            src="/theme/images/icons/mail-s.png"></a></span>
+                </div> -->
+        </div>
+    </article>
+</section>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Site Meta Data -->
+    <title>ESP-WROOM-02の駆動、電圧まわりについて調べてみた</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Hidemaro">
+
+    <link rel="shortcut icon" href="">
+
+    <!-- schema.org -->
+    <meta itemprop="name" content="Maro Notebook">
+    <meta itemprop="image" content="">
+    <meta itemprop="description" content="">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Style Meta Data -->
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+
+    <!-- Feed Meta Data -->
+
+    <!-- Twitter Feed -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="/esp_battery.html">
+<meta name="twitter:title" content="Maro Notebook ~ ESP-WROOM-02の駆動、電圧まわりについて調べてみた">
+<meta name="twitter:description" content="バッテリーの種類 乾電池 NiMH電池 → 5.4~4.0V アルカリ乾電池 → 4.95~2.7V ディープスリープモードで3ヶ月ほど持ち続けている 特定時しか動作しないようにして約6.8ヶ月の動作を確認 乾電池2個と昇圧電源回路で駆動 リチウムイオン電池 空気亜鉛電池 小型で大容量 ESP-WROOM-02には向いてないっぽい 回路の組み方 電圧について ESP-WROOM-02は、3.3Vをかけなければ動かない. また、瞬間的に350mAぐらい(コンデンサーに使っては変わる？他のサイトでは200mA)使うので、それを流しても落ちない電圧が必要. そして、Wi-Fi接続時は、75mA前後の電流消費で、時々120~180mA程度の電流が流れることがあるらしい. 三端子レギュレーター 電圧には変動があるので、回路の中で電源として用いる場合は、出力電圧が一定な3.3V出力の三端子レギュレーターを使うことになる. しかし、三端子レギュレーターの仕組みとして、入出力電圧の差に相当する損失（ドロップアウト）が生じる. なので、3.3Vの安定した出力電圧を作るためには、入力電圧に損失分も加えた電圧をレギュレータに投入する必要がある …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Maro Notebook ~ ESP-WROOM-02の駆動、電圧まわりについて調べてみた" />
+<meta property="og:description" content="バッテリーの種類 乾電池 NiMH電池 → 5.4~4.0V アルカリ乾電池 → 4.95~2.7V ディープスリープモードで3ヶ月ほど持ち続けている 特定時しか動作しないようにして約6.8ヶ月の動作を確認 乾電池2個と昇圧電源回路で駆動 リチウムイオン電池 空気亜鉛電池 小型で大容量 ESP-WROOM-02には向いてないっぽい 回路の組み方 電圧について ESP-WROOM-02は、3.3Vをかけなければ動かない. また、瞬間的に350mAぐらい(コンデンサーに使っては変わる？他のサイトでは200mA)使うので、それを流しても落ちない電圧が必要. そして、Wi-Fi接続時は、75mA前後の電流消費で、時々120~180mA程度の電流が流れることがあるらしい. 三端子レギュレーター 電圧には変動があるので、回路の中で電源として用いる場合は、出力電圧が一定な3.3V出力の三端子レギュレーターを使うことになる. しかし、三端子レギュレーターの仕組みとして、入出力電圧の差に相当する損失（ドロップアウト）が生じる. なので、3.3Vの安定した出力電圧を作るためには、入力電圧に損失分も加えた電圧をレギュレータに投入する必要がある …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside>
+        <!-- <center><a href=""><img id="avatar" src=""></a></center> -->
+        <h1 id="sitename"><a href="https://maro525.github.io/notebook/"></a>Maro Notebook</a></h1>
+        <br>
+
+
+        <nav class="nav">
+            <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://maro525.github.io/notebook/">HOME</a></li>
+                <li><a class="nav__link" href="https://maro525.github.io">ABOUT</a></li>
+
+
+            </ul>
+        </nav>
+
+        <p class="social">
+            <a href="https://twitter.com/HdmrF" target="_blank"><img src="/theme/images/icons/twitter.png"></a>
+            <a href="https://github.com/maro525" target="_blank"><img src="/theme/images/icons/github.png"></a>
+        </p>
+
+        <h2 class="categories">Categories</h2>
+        <ul class="navbar" id="categorylist">
+            <li ><a href="/category/ben.html">本</a></li>
+            <li  class="active" ><a href="/category/dian-zi-gong-zuo.html">電子工作</a></li>
+            <li ><a href="/category/puroguramingu.html">プログラミング</a></li>
+            <li ><a href="/category/si-kao-nobei-wang-lu.html">思考の備忘録</a></li>
+            <li ><a href="/category/yin-le.html">音楽</a></li>
+        </ul>
+
+
+    </aside>
+
+    <!-- Content -->
+    <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="/esp_battery.html" rel="bookmark" title="Permalink to ESP-WROOM-02の駆動、電圧まわりについて調べてみた">ESP-WROOM-02の駆動、電圧まわりについて調べてみた</a></h2>
+        <div class="entry-content blog-post">
+            <h1>バッテリーの種類</h1>
+<ul>
+<li>
+<p>乾電池</p>
+<ul>
+<li>NiMH電池 → 5.4~4.0V</li>
+<li>アルカリ乾電池 → 4.95~2.7V<ul>
+<li><a href="https://blogs.yahoo.co.jp/bokunimowakaru/55401333.html">ディープスリープモードで3ヶ月ほど持ち続けている</a></li>
+<li><a href="https://blogs.yahoo.co.jp/bokunimowakaru/55477942.html">特定時しか動作しないようにして約6.8ヶ月の動作を確認</a></li>
+<li><a href="http://cl.hatenablog.com/entry/esp-wroom-02-tps63000">乾電池2個と昇圧電源回路で駆動</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>リチウムイオン電池</p>
+</li>
+<li>
+<p>空気亜鉛電池</p>
+<ul>
+<li>小型で大容量</li>
+<li><a href="https://blogs.yahoo.co.jp/bokunimowakaru/folder/1681421.html">ESP-WROOM-02には向いてないっぽい</a></li>
+</ul>
+</li>
+</ul>
+<h1>回路の組み方</h1>
+<h2>電圧について</h2>
+<p>ESP-WROOM-02は、3.3Vをかけなければ動かない.</p>
+<p>また、瞬間的に350mAぐらい(コンデンサーに使っては変わる？他のサイトでは200mA)使うので、それを流しても落ちない電圧が必要.</p>
+<p>そして、Wi-Fi接続時は、75mA前後の電流消費で、時々120~180mA程度の電流が流れることがあるらしい.</p>
+<h2>三端子レギュレーター</h2>
+<p>電圧には変動があるので、回路の中で電源として用いる場合は、出力電圧が一定な3.3V出力の三端子レギュレーターを使うことになる.</p>
+<p>しかし、三端子レギュレーターの仕組みとして、入出力電圧の差に相当する損失（ドロップアウト）が生じる.</p>
+<p>なので、3.3Vの安定した出力電圧を作るためには、入力電圧に損失分も加えた電圧をレギュレータに投入する必要がある.</p>
+<p>秋月電子に、何種類か三端子レギュレーターが売っていて、今回は、Wi-Fiモジュールの特性を考えて、スタンバイ電流が少ないNJU7223F33を用いることにする.</p>
+<h2>コンデンサー</h2>
+<p>レギュレーターの入力側と出力側にコンデンサーを入れる</p>
+<p>コンデンサーを付加しないと、3端子レギュレーターが発振することがある. （発振 = 回路に振動が発生してしまうこと)</p>
+<p>入力側のコンデンサの容量は0.1~0.3μF程度のセラミックコンデンサ(周波数特性のよいもの)をつける</p>
+<p>出力側には、出力電流とレギュレーターでドロップする電圧からレギュレーターでの熱消費を計算して、必要な場合は放熱器をつける.</p>
+<p>出力側のコンデンサーの容量が47μFのとき、電源の立ち上がり時に200mAの電流が流れるらしい.</p>
+<h1>参考記事</h1>
+<ul>
+<li><a href="http://mag.switch-science.com/2016/02/12/arduino-lithium/">Arduinoをリチウムイオン電池で動かすには | スイッチサイエンス マガジン</a></li>
+<li><a href="http://qiita.com/ie4/items/ae850cdb2c617f3fd6af">ESP-WROOM-02 で、モバイル物理スイッチを作る - Qiita</a><ul>
+<li>設計が参考になる</li>
+</ul>
+</li>
+<li><a href="http://knaka0209.blogspot.jp/2015/08/esp-wroom-02-05.html">esp8266(esp-wroom-02)　電池ボックスから電源供給</a><ul>
+<li>レギュレーターやコンデンサーの説明が載っている</li>
+</ul>
+</li>
+<li><a href="http://okiraku-camera.tokyo/blog/?p=5032">ESP-WROOM-02とBME280 電池駆動で温度／湿度／気圧測定 (その1) | 東京お気楽カメラ</a><ul>
+<li>コンデンサの製品の特性を比べたり、電池の特性を比べている</li>
+<li>回路設計も参考になる</li>
+</ul>
+</li>
+<li><a href="https://ambidata.io/examples/esp8266-current/">ESP8266の消費電流の徹底調査 – Ambient</a></li>
+<li><a href="https://blogs.yahoo.co.jp/bokunimowakaru/folder/1681421.html">ESP8266+ESP32 - 詳細表示 - ボクにもわかる電子工作 - Yahoo!ブログ</a><ul>
+<li>空気亜鉛電池の説明</li>
+</ul>
+</li>
+<li><a href="http://makers-with-myson.blog.so-net.ne.jp/2016-06-02">ESP-WROOM-02 と心拍センサーをバッテリーで動かしてみた。：息子と一緒に Makers：So-netブログ</a><ul>
+<li>リチウムイオン電池の回路説明あり</li>
+</ul>
+</li>
+<li><a href="http://cl.hatenablog.com/entry/esp-wroom-02-tps63000">ESP-WROOM-02を昇圧電源回路で乾電池2本（2.4V）駆動 - M.C.P.C. (Mamesibori Creation Plus Communication)</a></li>
+<li><a href="http://make-muda.weblike.jp/2016/07/4209/">Hue Tapスイッチが高いのでESP-WROOM-02で物理スイッチを自作する　後編 | MUDAなことをしよう。</a></li>
+<li><a href="https://ambidata.io/examples/esp8266-current/">ESP8266の消費電流の徹底調査 – Ambient</a><ul>
+<li>ESP8266の消費電流について詳しい記述がある</li>
+<li>乾電池3つで駆動させた回路図参考になる</li>
+</ul>
+</li>
+<li><a href="http://www.riric.jp/electronics/design/power/regu3pin_usage.html">三端子レギュレータの使い方</a></li>
+<li><a href="http://sudoteck.way-nifty.com/blog/2010/06/ldo-b66b.html">LDOレギュレーターのはなし: SUDOTECK</a><ul>
+<li>Low DropOutレギュレーターの話</li>
+</ul>
+</li>
+<li><a href="http://www.cqpub.co.jp/hanbai/books/34/34391/34391_onboard.pdf">34391_onboard.pdf</a><ul>
+<li>三端子レギュレーターの基本動作と正しい使い方</li>
+<li>内部の仕組みの説明</li>
+</ul>
+</li>
+</ul>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href="/author/hidemaro.html">@Hidemaro</a>
+            <span> in </span>
+            <span class="post_category"><a href="/category/dian-zi-gong-zuo.html" rel="bookmark" title="Permalink to 電子工作">[
+                    電子工作 ]</a></span>
+            <span class="post_date">Sun 20 August 2017</span>
+            <div><span>Tags : </span>
+                <span><a href="/tag/esp-wroom-02.html">#ESP-WROOM-02, </a></span>
+            </div>
+
+            <!-- <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=/esp_battery.html&text=ESP-WROOM-02の駆動、電圧まわりについて調べてみた&via="><img
+                            src="/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=/esp_battery.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=/esp_battery.html&t=ESP-WROOM-02の駆動、電圧まわりについて調べてみた"><img
+                            src="/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=/esp_battery.html&title=ESP-WROOM-02の駆動、電圧まわりについて調べてみた"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=ESP-WROOM-02の駆動、電圧まわりについて調べてみた&amp;body=Viens découvrir un article à propos de [ESP-WROOM-02の駆動、電圧まわりについて調べてみた] sur le site de Hidemaro. /esp_battery.html"
+                            title="Share by Email" target="_blank"><img
+                            src="/theme/images/icons/mail-s.png"></a></span>
+                </div> -->
+        </div>
+    </article>
+</section>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+
+</html>

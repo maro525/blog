@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ja" itemscope itemtype="http://schema.org/Person">
+
+<head>
+    <meta charset="utf-8">
+    <!-- Site Meta Data -->
+    <title>PythonのGUIライブラリのKivyを使ってみる</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Hidemaro">
+
+    <link rel="shortcut icon" href="">
+
+    <!-- schema.org -->
+    <meta itemprop="name" content="Maro Notebook">
+    <meta itemprop="image" content="">
+    <meta itemprop="description" content="">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Style Meta Data -->
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" type="text/css" />
+
+    <!-- Feed Meta Data -->
+
+    <!-- Twitter Feed -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="">
+    <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="/kivy.html">
+<meta name="twitter:title" content="Maro Notebook ~ PythonのGUIライブラリのKivyを使ってみる">
+<meta name="twitter:description" content="Kivy = PythonのマルチプラットフォームGUIライブラリ そして、MITライセンスで使いやすい形になっている. 環境 Mac Sierra 10.12.6 Python3.5.3 Kivy 1.10.0 インストール 公式のページにあるように、Homebrewとpipをつかった方式でインストールしていく. 1.Homebrewで必要なものをインストール brew install pkg-config sdl2 sdl2_image sdl2_ttf sdl2_mixer gstreamer おそらく、sdl2はOpenGLを扱うためにインストールが必要 2.pipでCythonとkivyをインストール (pyenv-virtualenvで仮想環境を作ってから実行) pip install -U Cython pip install kivy pythonコンソールに移動して、import kivy と打ってみてエラーができなければOK iOS環境で動作させたいときはまた別にいろいろ準備が必要だがとりあえずパス …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="Maro Notebook ~ PythonのGUIライブラリのKivyを使ってみる" />
+<meta property="og:description" content="Kivy = PythonのマルチプラットフォームGUIライブラリ そして、MITライセンスで使いやすい形になっている. 環境 Mac Sierra 10.12.6 Python3.5.3 Kivy 1.10.0 インストール 公式のページにあるように、Homebrewとpipをつかった方式でインストールしていく. 1.Homebrewで必要なものをインストール brew install pkg-config sdl2 sdl2_image sdl2_ttf sdl2_mixer gstreamer おそらく、sdl2はOpenGLを扱うためにインストールが必要 2.pipでCythonとkivyをインストール (pyenv-virtualenvで仮想環境を作ってから実行) pip install -U Cython pip install kivy pythonコンソールに移動して、import kivy と打ってみてエラーができなければOK iOS環境で動作させたいときはまた別にいろいろ準備が必要だがとりあえずパス …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside>
+        <!-- <center><a href=""><img id="avatar" src=""></a></center> -->
+        <h1 id="sitename"><a href="https://maro525.github.io/notebook/"></a>Maro Notebook</a></h1>
+        <br>
+
+
+        <nav class="nav">
+            <ul class="list-bare">
+
+                <li><a class="nav__link" href="https://maro525.github.io/notebook/">HOME</a></li>
+                <li><a class="nav__link" href="https://maro525.github.io">ABOUT</a></li>
+
+
+            </ul>
+        </nav>
+
+        <p class="social">
+            <a href="https://twitter.com/HdmrF" target="_blank"><img src="/theme/images/icons/twitter.png"></a>
+            <a href="https://github.com/maro525" target="_blank"><img src="/theme/images/icons/github.png"></a>
+        </p>
+
+        <h2 class="categories">Categories</h2>
+        <ul class="navbar" id="categorylist">
+            <li ><a href="/category/ben.html">本</a></li>
+            <li ><a href="/category/dian-zi-gong-zuo.html">電子工作</a></li>
+            <li  class="active" ><a href="/category/puroguramingu.html">プログラミング</a></li>
+            <li ><a href="/category/si-kao-nobei-wang-lu.html">思考の備忘録</a></li>
+            <li ><a href="/category/yin-le.html">音楽</a></li>
+        </ul>
+
+
+    </aside>
+
+    <!-- Content -->
+    <article>
+<section id="content">
+    <article>
+        <h2 class="post_title post_detail"><a href="/kivy.html" rel="bookmark" title="Permalink to PythonのGUIライブラリのKivyを使ってみる">PythonのGUIライブラリのKivyを使ってみる</a></h2>
+        <div class="entry-content blog-post">
+            <p><strong>Kivy = PythonのマルチプラットフォームGUIライブラリ</strong></p>
+<p>そして、MITライセンスで使いやすい形になっている.</p>
+<h1>環境</h1>
+<p>Mac Sierra 10.12.6</p>
+<p>Python3.5.3</p>
+<p>Kivy 1.10.0</p>
+<h1>インストール</h1>
+<p><a href="https://kivy.org/docs/installation/installation-osx.html">公式のページ</a>にあるように、Homebrewとpipをつかった方式でインストールしていく.</p>
+<p>1.Homebrewで必要なものをインストール</p>
+<p><code>brew install pkg-config sdl2 sdl2_image sdl2_ttf sdl2_mixer gstreamer</code></p>
+<p>おそらく、sdl2はOpenGLを扱うためにインストールが必要</p>
+<p>2.pipでCythonとkivyをインストール</p>
+<p>(pyenv-virtualenvで仮想環境を作ってから実行)</p>
+<p><code>pip install -U Cython</code></p>
+<p><code>pip install kivy</code></p>
+<p>pythonコンソールに移動して、<code>import kivy</code> と打ってみてエラーができなければOK</p>
+<p>iOS環境で動作させたいときはまた別に<a href="https://github.com/kivy/kivy-ios">いろいろ準備</a>が必要だがとりあえずパス.</p>
+<h1>あとでやってみる</h1>
+<ul>
+<li>iOSで動かす</li>
+</ul>
+<h1>基本を<a href="https://kivy.org/docs/guide/basic.html#quickstart">公式のドキュメント</a>から学ぶ</h1>
+<h1>Kiyyの最小構成</h1>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">kivy</span>
+<span class="n">kivy</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="s1">&#39;1.10.0&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.button</span> <span class="kn">import</span> <span class="n">Button</span>
+
+<span class="k">class</span> <span class="nc">MyApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Button</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Hello World&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">MyApp</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+
+
+<ol>
+<li>Appクラスのサブクラスを作る</li>
+<li>buildというメソッドでウィジェット(説明するとしたら機能を持った部品？)を作る</li>
+<li>Appクラスでrun()させる</li>
+</ol>
+<h2>コードの説明</h2>
+<p>4行目: Appクラスのインポート. Appクラスのコードは<code>.pyenv/versions/NAME/lib/python3.5/site-package/kivy/</code>以下にある. Appクラスが何をしてるか知りたいとき参考になるかも  </p>
+<p>5行目: uixモジュールからボタンウィジェトを読み込む. uixモジュールは、ユーザーインターフェスを持っている.  </p>
+<p>7行目: kivyのAppの基本となるクラスを定義  </p>
+<p>9,10行目: Appクラスのbuileメソッドでウィジェットをreturnすることで、Buttonウィジェットがこのアプリでの'Root Widget'(一番根本のウィジェット的な？)になる.  </p>
+<p>12,13行目: MyAppのインスタンスを作って実行している. (インスタンスを作らなきゃいけないので、<code>MyApp.run()</code>だとエラー)  </p>
+<p>ターミナル等で<code>python ファイル名.py</code>で実行すると以下のようなウインドウが表示される  </p>
+<p><img alt="No Image!" src="/image/quickstart_kivy.png">  </p>
+<h1>カスタマイズしていく</h1>
+<h2>ユーザー名とパスワードを入力するインターフェースを作る</h2>
+<p>コードは以下のような感じ</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">kivy.app</span> <span class="kn">import</span> <span class="n">App</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.gridlayout</span> <span class="kn">import</span> <span class="n">GridLayout</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.label</span> <span class="kn">import</span> <span class="n">Label</span>
+<span class="kn">from</span> <span class="nn">kivy.uix.textinput</span> <span class="kn">import</span> <span class="n">TextInput</span>
+
+<span class="k">class</span> <span class="nc">LoginScreen</span><span class="p">(</span><span class="n">GridLayout</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LoginScreen</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cols</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">Label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;User Name&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">TextInput</span><span class="p">(</span><span class="n">multiline</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">Label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;password&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">TextInput</span><span class="p">(</span><span class="n">password</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">multiline</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">MyApp</span><span class="p">(</span><span class="n">App</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">LoginScreen</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">MyApp</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+
+
+<p>2行目: uixモジュールからGridLayoutを読み込み</p>
+<p>6行目: GridLayoutを使ってRoot Widgetを定義</p>
+<p>8行目: <code>__init__</code>メソッドで今回使うGridLayoutの動作を定義する</p>
+<p>9行目:　<code>__init__</code>をするとき必ずsuperを呼び、もとのGridLayoutクラスのプロパティやメソッド読み込む必要がある.</p>
+<ul>
+<li>ウインドウの大きさを変えると自動でウィジェットのサイズはリサイズされる</li>
+</ul>
+<h1>参考</h1>
+<ul>
+<li><a href="https://github.com/kivy/kivy">KivyのGithubのレポジトリ</a></li>
+<li><a href="http://myenigma.hatenablog.com/entry/2016/05/06/170854">PythonのマルチプラットフォームGUIライブラリkivyを使ってMac, Ubuntu, iOS用のGUIアプリを作る方法 - MyEnigma</a></li>
+</ul>
+        </div>
+        <div class="post_list">
+            <span>By </span>
+            <a href="/author/hidemaro.html">@Hidemaro</a>
+            <span> in </span>
+            <span class="post_category"><a href="/category/puroguramingu.html" rel="bookmark" title="Permalink to プログラミング">[
+                    プログラミング ]</a></span>
+            <span class="post_date">Sat 14 October 2017</span>
+            <div><span>Tags : </span>
+                <span><a href="/tag/kivy.html">#Kivy, </a></span>
+                <span><a href="/tag/python.html">#python, </a></span>
+            </div>
+
+            <!-- <div class="entry-social">
+                    <span class="twitter"><a target="_blank" rel="nofollow"
+                                             onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"
+                                             title="Twitter"
+                                             href="https://twitter.com/share?url=/kivy.html&text=PythonのGUIライブラリのKivyを使ってみる&via="><img
+                            src="/theme/images/icons/twitter-s.png"></a></span>
+
+                    <span class="gplus"><a target="_blank" title="Google +"
+                                           href="https://plus.google.com/share?url=/kivy.html&hl=fr"
+                                           rel="nofollow"
+                                           onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/google-s.png"></a></span>
+
+                    <span class="facebook"><a target="_blank" title="Facebook" rel="nofollow"
+                                              onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"
+                                              href="https://www.facebook.com/sharer.php?u=/kivy.html&t=PythonのGUIライブラリのKivyを使ってみる"><img
+                            src="/theme/images/icons/facebook-s.png"></a></span>
+
+                    <a target="_blank" title="Linkedin"
+                       href="https://www.linkedin.com/shareArticle?mini=true&url=/kivy.html&title=PythonのGUIライブラリのKivyを使ってみる"
+                       rel="nofollow"
+                       onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img
+                            src="/theme/images/icons/linkedin-s.png"></a>
+
+                    <span class="mail"><a
+                            href="mailto:?subject=PythonのGUIライブラリのKivyを使ってみる&amp;body=Viens découvrir un article à propos de [PythonのGUIライブラリのKivyを使ってみる] sur le site de Hidemaro. /kivy.html"
+                            title="Share by Email" target="_blank"><img
+                            src="/theme/images/icons/mail-s.png"></a></span>
+                </div> -->
+        </div>
+    </article>
+</section>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            Blog powered by <a href="http://getpelican.com/">Pelican</a>,
+            which takes great advantage of <a href="http://python.org">Python</a>.
+            Theme <a href="https://github.com/parbhat/pelican-blue">Pelican-Blue</a> by <a href="https://parbhatpuri.com/">@parbhat</a>.
+        </p>
+    </footer>
+
+
+</body>
+
+</html>
