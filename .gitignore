@@ -1,9 +1,9 @@
 ## Pelican
-output/*
-*.pid
+# output/*
+# *.pid
 
 ## Python
-*.py[cod]
+# *.py[cod]
 __pycache__/*
 
 ## Mac
