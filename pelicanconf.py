@@ -38,4 +38,4 @@ DEFAULT_PAGINATION = 5
 THEME = './themes/pelican-blue'
 
 MENUITEMS = (('HOME', "https://maro525.github.io/notebook/"),
-            ('ABOUT', "https://maro525.github.io"))
+            ('ABOUT', "hdmrf.site"))
